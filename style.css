@@ -1,0 +1,523 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+@font-face {
+  font-family: "Rebellion-squad-ZpprZ";
+  src: url(fonts/rebellion-squad-font/RebellionSquad-ZpprZ.ttf);
+}
+.hero-section {
+  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.4)),
+    url("images/hero-background.png");
+  background-repeat: no-repeat;
+  height: 119vh;
+  position: relative;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem 9.7rem 9.7rem;
+}
+.site-nav ul {
+  list-style: none;
+  position: relative;
+  display: flex;
+  gap: 4.2rem;
+  margin-top: 2rem;
+}
+.site-nav ul a {
+  color: rgb(230, 230, 230);
+  font-size: 1.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Baloo 2", sans-serif;
+}
+#clicked {
+  color: rgb(255, 255, 255);
+}
+.btn1 {
+  background-color: rgb(244, 39, 64);
+  color: rgb(255, 255, 255);
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  height: 8.6vh;
+  width: 15.4vw;
+  border-radius: 1.5rem;
+  font-size: 2rem;
+  border: none;
+  box-shadow: 10px 10px rgb(27, 26, 26);
+  margin-right: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.hero-sub-section-two {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 16rem 6rem;
+}
+.section-two-item-one {
+  display: flex;
+}
+.section-two-item-one h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2.8rem;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+#rocket-img {
+  width: 2.4vw;
+}
+.token-text {
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  font-size: 8rem;
+  color: rgb(255, 215, 0);
+  font-weight: 300;
+  text-shadow: 2px 12px rgb(0, 0, 0);
+}
+.token-text-two {
+  color: rgb(245, 245, 245);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.9rem;
+  padding-top: 1.8rem;
+  font-weight: 300;
+}
+.btn2 {
+  background-color: rgb(244, 39, 64);
+  color: rgb(255, 255, 255);
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 10px 10px rgb(8, 8, 8);
+  width: 13vw;
+  height: 8vh;
+  margin-top: 2.2rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.hero-last-section {
+  display: flex;
+  justify-content: center;
+}
+.wallet-address {
+  background-color: rgb(11, 8, 12);
+  border: solid 0.01rem rgb(110, 15, 37);
+  width: 45vw;
+  height: 8.5vh;
+  padding-left: 2.5rem;
+  border-top-left-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem;
+  z-index: 1;
+}
+::placeholder {
+  color: rgb(255, 255, 255);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2.3rem;
+}
+#copy-img {
+  width: 4.1vw;
+  margin-left: -0.2rem;
+  margin-top: -0.2rem;
+}
+.superman-section {
+  background-image: url("images/Superman.png");
+  height: 168vh;
+}
+.bigger-exchange {
+  background-color: rgb(2, 2, 2);
+  height: 100vh;
+}
+.exchange-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 4rem;
+}
+.exchange-container {
+  background-color: rgb(245, 245, 245);
+  width: 37vw;
+  height: 70vh;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 10px 15px rgb(50, 50, 50);
+  margin-top: 5rem;
+  margin-bottom: 1.5rem;
+  padding: 3rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.exchange-container h1 {
+  color: rgb(0, 0, 0);
+  font-size: 2.8rem;
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  padding-bottom: 1.7rem;
+  font-weight: 300;
+}
+.exchange-rate {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+.exchange-horizontal-one {
+  border-bottom: solid 0.3rem rgb(70, 70, 70);
+  width: 8vw;
+  margin-bottom: 1.3rem;
+}
+.exchange-rate p {
+  color: rgb(0, 0, 0);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  padding-top: 2rem;
+}
+.exchange-buttons {
+  display: flex;
+  gap: 4rem;
+  margin-top: 5rem;
+}
+.btn3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 215, 0);
+  font-weight: 600;
+  width: 7.5vw;
+  height: 7vh;
+  border-radius: 0.8rem;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.8rem;
+  gap: 0.4rem;
+  box-shadow: 2px 2px rgb(83, 83, 83);
+  margin-bottom: 2rem;
+}
+.btn4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 215, 0);
+  font-weight: 600;
+  width: 7.5vw;
+  height: 7vh;
+  border-radius: 0.8rem;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.8rem;
+  gap: 0.4rem;
+  box-shadow: 2px 2px rgb(161, 160, 160);
+  margin-bottom: 2rem;
+  border: solid 0.2rem rgb(161, 160, 160);
+  margin-right: 1rem;
+}
+.exchange-input {
+  display: flex;
+  gap: 7rem;
+}
+.usdt label {
+  color: white;
+}
+.btn5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 215, 0);
+  font-weight: 600;
+  width: 5vw;
+  height: 5vh;
+  border-radius: 0.4rem;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  border: solid 0.1rem rgb(32, 32, 32);
+  position: absolute;
+  top: 28.48rem;
+  left: 3.3rem;
+}
+.btn6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 215, 0);
+  font-weight: 600;
+  width: 5vw;
+  height: 5vh;
+  border-radius: 0.4rem;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  border: solid 0.1rem rgb(32, 32, 32);
+  position: absolute;
+  top: 28.48rem;
+  left: 29.5rem;
+}
+label {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+#usdt-input {
+  width: 14vw;
+  height: 7vh;
+  border: solid 0.2rem rgb(122, 121, 121);
+  border-radius: 0.6rem;
+  padding-left: 15rem;
+  margin-top: 1.5rem;
+}
+#small-diamond {
+  width: 2vw;
+}
+#flying-coin {
+  width: 1.6vw;
+}
+#usdt-input::placeholder {
+  color: rgb(0, 0, 0);
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: "Baloo 2", sans-serif;
+}
+.btn7 {
+  background-color: rgb(244, 39, 64);
+  color: rgb(255, 255, 255);
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  height: 8.6vh;
+  width: 16vw;
+  border-radius: 1.5rem;
+  font-size: 2rem;
+  border: none;
+  box-shadow: 10px 10px rgb(27, 26, 26);
+  margin-right: 1rem;
+  cursor: pointer;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+.latern-div {
+  display: flex;
+  justify-content: center;
+  gap: 33.5rem;
+}
+.about-container {
+  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.7)),
+    url("images/about-background.png");
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  gap: 20rem;
+  padding-top: 15rem;
+}
+.about-text-container {
+  margin-top: -4rem;
+}
+.about-text-container h1 {
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  padding-bottom: 1.7rem;
+  font-weight: 300;
+  color: rgb(255, 215, 0);
+  text-shadow: 2px 12px rgb(0, 0, 0);
+  font-size: 6.5rem;
+}
+.about-text-container p {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.9rem;
+  color: rgb(231, 229, 229);
+  font-weight: 300;
+}
+.about-text-container p span {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.tokenomics-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 9rem;
+  background-color: rgb(2, 2, 2);
+  height: 195vh;
+  position: relative;
+}
+.tokenomics-head {
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  padding-bottom: 2.1rem;
+  font-weight: 300;
+  color: rgb(255, 215, 0);
+  text-shadow: 2px 12px rgb(50, 50, 50);
+  font-size: 5.5rem;
+  text-align: center;
+}
+.tokenomics-body {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.9rem;
+  color: rgb(231, 229, 229);
+  font-weight: 300;
+  text-align: center;
+}
+.tokenomics-body span {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+#mother-n-baby {
+  position: absolute;
+  left: 3rem;
+  top: 25.9rem;
+  z-index: 1;
+}
+.tokenomics-box {
+  background-image: url("images/Tokenomics\ .png");
+  height: 96vh;
+  width: 91.3vw;
+  margin-top: 5.5rem;
+  z-index: 2;
+  padding-top: 13rem;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+.token {
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  padding-bottom: 2.1rem;
+  font-weight: 300;
+  color: rgb(255, 215, 0);
+  text-shadow: 2px 6px rgb(0, 0, 0);
+  font-size: 4.2rem;
+  padding-left: 7rem;
+  padding-bottom: 4rem;
+}
+.token-children {
+  color: rgb(245, 245, 245);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2.5rem;
+  padding-bottom: 2.3rem;
+  padding-left: -8rem;
+}
+.token-children-two {
+  color: rgb(245, 245, 245);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2.5rem;
+  padding-bottom: 2.3rem;
+  padding-left: 18rem;
+}
+.token-children span {
+  color: rgb(255, 215, 0);
+  font-weight: 600;
+}
+.token-special {
+  display: flex;
+  gap: 1rem;
+}
+#divider {
+  height: 7vh;
+}
+.tokenomics-latern {
+  display: flex;
+  gap: 88rem;
+  margin-top: -5.3rem;
+  z-index: 3;
+}
+.buying-section {
+  background-image: url("images/how-to-buy-bg.png");
+  background-color: rgb(0, 0, 0);
+  height: 290vh;
+  background-repeat: no-repeat;
+  padding-top: 8rem;
+}
+.black-background {
+  background-color: rgb(2, 2, 2);
+  height: 40vh;
+}
+.buying-head {
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  padding-bottom: 14rem;
+  font-weight: 300;
+  color: rgb(255, 215, 0);
+  text-shadow: 2px 12px rgb(0, 0, 0);
+  font-size: 5.5rem;
+  text-align: center;
+}
+.step-one-container {
+  margin-left: 5rem;
+}
+.step-one {
+  background-image: url("images/Steps\ Card.png");
+  height: 48vh;
+  width: 45vw;
+  margin-top: 5.5rem;
+  z-index: 1;
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-head {
+  font-family: "Rebellion-squad-ZpprZ", sans-serif;
+  padding-bottom: 2rem;
+  font-weight: 300;
+  color: rgb(255, 215, 0);
+  text-shadow: 1px 3.8px rgb(0, 0, 0);
+  font-size: 3.1rem;
+}
+.step-body {
+  color: rgb(235, 234, 234);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2rem;
+  font-weight: 100;
+}
+.step-body a {
+  color: rgb(235, 234, 234);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+}
+#step-latern {
+  z-index: 2;
+  margin-top: -2.8rem;
+  margin-left: -7rem;
+}
+#step-latern-two {
+  z-index: 2;
+  margin-top: -2.8rem;
+  margin-left: 48rem;
+}
+.step-two-container {
+  margin-left: 68rem;
+  margin-top: -22rem;
+}
+.step-three-container {
+  margin-left: 5rem;
+  margin-top: -22rem;
+}
+.footer-horizontal {
+  border-bottom: solid 0.1rem rgb(99, 98, 98);
+  width: 100%;
+}
+.footer {
+  background-color: rgb(2, 2, 2);
+  height: 16vh;
+  display: flex;
+  justify-content: center;
+  gap: 24.5rem;
+  padding-top: 4rem;
+}
+.footer p {
+  color: rgb(204, 204, 204);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.5rem;
+}
+.footer ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+.footer a {
+  color: rgb(204, 204, 204);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.socials {
+  margin-top: -2.2rem;
+}
