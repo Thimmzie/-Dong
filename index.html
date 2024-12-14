@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>$Dong</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="tablet.css" media="(max-width:1024px)" />
-    <link rel="stylesheet" href="mobile.css" media="(max-width:768px)" />
+    <link rel="stylesheet" href="tablet.css" />
+    <link rel="stylesheet" href="mobile.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -37,7 +37,9 @@
           <div class="menu-button">
             <button class="btn1">CONNECT WALLET</button>
           </div>
+          <div class="burger-icon"><i class="fa-solid fa-bars"></i></div>
         </div>
+        <div class="header-horizontal"></div>
         <div class="hero-sub-section-two">
           <div class="section-two-text">
             <div class="section-two-item-one">
@@ -57,7 +59,9 @@
             </p>
             <button class="btn2">BUY NOW</button>
           </div>
-          <div class="section-two-img"><img src="images/hero-img.png" /></div>
+          <div class="section-two-img">
+            <img id="hero-img" src="images/hero-img.png" />
+          </div>
         </div>
         <div class="hero-last-section">
           <div class="last-section-wrapper">
@@ -77,7 +81,9 @@
     <section>
       <div class="bigger-exchange">
         <div class="exchange-section">
-          <div><img src="images/big-latern.png" /></div>
+          <div class="exchange-laterns-side">
+            <img src="images/big-latern.png" />
+          </div>
           <div class="exchange-container">
             <h1>EXCHANGE RATE</h1>
             <div class="exchange-rate">
@@ -122,7 +128,9 @@
             </div>
             <div><button class="btn7">CONNECT WALLET</button></div>
           </div>
-          <div><img src="images/big-latern.png" /></div>
+          <div class="exchange-laterns-side">
+            <img src="images/big-latern.png" />
+          </div>
         </div>
         <div class="latern-div">
           <img src="images/small-latern.png" />
@@ -133,7 +141,7 @@
     <section id="about">
       <div class="about-container">
         <div>
-          <img src="images/man-woman.png" />
+          <img id="man-woman-img" src="images/man-woman.png" />
         </div>
         <div class="about-text-container">
           <h1>ABOUT</h1>
