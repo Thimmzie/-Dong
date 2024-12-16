@@ -56,6 +56,16 @@ html {
 #clicked {
   color: rgb(255, 255, 255);
 }
+.site-desktop-nav ul {
+  list-style: none;
+  position: relative;
+  display: none;
+  gap: 4.2rem;
+  margin-top: 2rem;
+  margin-left: 9rem;
+  display: none;
+  visibility: collape;
+}
 .btn1 {
   background-color: rgb(244, 39, 64);
   color: rgb(255, 255, 255);
@@ -94,12 +104,6 @@ html {
 }
 .hamburger.active .bar:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
-}
-.fa-bars {
-  display: block;
-  color: rgb(255, 255, 255);
-  font-size: 3rem;
-  margin-top: 1.5rem;
 }
 .header-horizontal {
   border-bottom: solid 0.1rem rgb(158, 157, 157);
@@ -644,23 +648,45 @@ label {
     justify-content: space-between;
     padding: 3rem 2.5rem;
   }
-  .site-nav ul {
+  .site-nav {
     list-style: none;
-    position: relative;
     display: flex;
-    gap: 4.2rem;
-    margin-top: 2rem;
-    display: none;
+    gap: 4rem;
+    padding-top: 5rem;
+    margin-top: -3rem;
+    position: fixed;
+    left: -100%;
+    flex-direction: column;
+    background-color: rgb(3, 7, 13);
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+    z-index: 999;
+  }
+  .site-nav.active {
+    left: 0;
   }
   .site-nav ul a {
     color: rgb(230, 230, 230);
-    font-size: 1.75rem;
+    font-size: 2.3rem;
     text-decoration: none;
     cursor: pointer;
     font-family: "Baloo 2", sans-serif;
   }
   #clicked {
     color: rgb(255, 255, 255);
+  }
+  .site-desktop-nav ul {
+    list-style: none;
+    position: relative;
+    display: none;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    margin-left: 9rem;
+    display: none;
+    visibility: collape;
   }
   .btn1 {
     background-color: rgb(244, 39, 64);
@@ -678,11 +704,28 @@ label {
     margin-bottom: 1rem;
     display: none;
   }
-  .fa-bars {
+  .bar {
     display: block;
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
-    margin-top: 1.5rem;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0, 3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(255, 255, 255);
+  }
+  .hamburger {
+    display: block;
+    z-index: 1000;
+    margin-top: 2rem;
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
   .header-horizontal {
     border-bottom: solid 0.1rem rgb(158, 157, 157);
@@ -1230,23 +1273,45 @@ label {
     justify-content: space-between;
     padding: 3rem 2.5rem;
   }
-  .site-nav ul {
+  .site-nav {
     list-style: none;
-    position: relative;
     display: flex;
-    gap: 4.2rem;
-    margin-top: 2rem;
-    display: none;
+    gap: 4rem;
+    padding-top: 5rem;
+    margin-top: -3rem;
+    position: fixed;
+    left: -100%;
+    flex-direction: column;
+    background-color: rgb(3, 7, 13);
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+    z-index: 999;
+  }
+  .site-nav.active {
+    left: 0;
   }
   .site-nav ul a {
     color: rgb(230, 230, 230);
-    font-size: 1.75rem;
+    font-size: 2.3rem;
     text-decoration: none;
     cursor: pointer;
     font-family: "Baloo 2", sans-serif;
   }
   #clicked {
     color: rgb(255, 255, 255);
+  }
+  .site-desktop-nav ul {
+    list-style: none;
+    position: relative;
+    display: none;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    margin-left: 9rem;
+    display: none;
+    visibility: collape;
   }
   .btn1 {
     background-color: rgb(244, 39, 64);
@@ -1264,11 +1329,28 @@ label {
     margin-bottom: 1rem;
     display: none;
   }
-  .fa-bars {
+  .bar {
     display: block;
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
-    margin-top: 1.5rem;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0, 3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(255, 255, 255);
+  }
+  .hamburger {
+    display: block;
+    z-index: 1000;
+    margin-top: 2rem;
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
   .header-horizontal {
     border-bottom: solid 0.1rem rgb(158, 157, 157);
@@ -1819,13 +1901,23 @@ label {
     padding-bottom: 8rem;
     gap: 0rem;
   }
-  .site-nav ul {
+  .site-nav {
     list-style: none;
-    position: relative;
-    display: flex;
-    gap: 4.2rem;
-    margin-top: 2rem;
-    margin-left: 9rem;
+    display: none;
+    gap: 4rem;
+    padding-top: 5rem;
+    margin-top: -3rem;
+    position: fixed;
+    left: -100%;
+    flex-direction: row;
+    background-color: rgb(3, 7, 13);
+    width: 50%;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+    z-index: 999;
+    visibility: collapse;
   }
   .site-nav ul a {
     color: rgb(230, 230, 230);
@@ -1836,6 +1928,22 @@ label {
   }
   #clicked {
     color: rgb(255, 255, 255);
+  }
+  .site-desktop-nav ul {
+    list-style: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    margin-left: 9rem;
+  }
+  .site-desktop-nav a {
+    color: rgb(230, 230, 230);
+    font-size: 2rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Baloo 2", sans-serif;
   }
   .btn1 {
     background-color: rgb(244, 39, 64);
@@ -1854,15 +1962,10 @@ label {
     margin-bottom: 1rem;
     display: block;
   }
-  .burger-icon {
-    visibility: collapse;
-  }
-  .fa-bars {
-    visibility: collapse;
+  .hamburger {
     display: none;
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
-    margin-top: 1.5rem;
+    z-index: 1000;
+    margin-top: 2rem;
   }
   .header-horizontal {
     visibility: collapse;
@@ -2384,7 +2487,7 @@ label {
       url("images/hero-background.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 125vh;
+    height: 100%;
     position: relative;
   }
   .menu {
@@ -2511,6 +2614,7 @@ label {
     border-top-left-radius: 0.6rem;
     border-bottom-left-radius: 0.6rem;
     z-index: 1;
+    margin-bottom: 5rem;
   }
   ::placeholder {
     color: rgb(255, 255, 255);
@@ -2518,18 +2622,18 @@ label {
     font-size: 2.3rem;
   }
   #copy-img {
-    width: 5.7vw;
+    width: 4.5vw;
     margin-left: -0.4rem;
     margin-top: 4rem;
   }
   .superman-section {
     background-image: url("images/Superman.png");
-    height: 168vh;
+    min-height: 168vh;
     background-repeat: no-repeat;
   }
   .bigger-exchange {
     background-color: rgb(2, 2, 2);
-    height: 120vh;
+    height: 127vh;
   }
   .exchange-section {
     display: flex;
@@ -2638,8 +2742,8 @@ label {
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 35.2rem;
-    left: 2.4rem;
+    top: 34.4rem;
+    left: 3.5rem;
   }
   .btn6 {
     display: flex;
@@ -2655,8 +2759,8 @@ label {
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 35.2rem;
-    left: 37.6rem;
+    top: 34.4rem;
+    left: 40.6rem;
   }
   label {
     font-family: "Baloo 2", sans-serif;
@@ -2711,7 +2815,7 @@ label {
       ),
       url("images/about-background.png");
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -2749,7 +2853,7 @@ label {
     align-items: center;
     padding-top: 9rem;
     background-color: rgb(2, 2, 2);
-    height: 190vh;
+    height: 200vh;
     position: relative;
   }
   .tokenomics-head {
@@ -2767,6 +2871,7 @@ label {
     color: rgb(231, 229, 229);
     font-weight: 300;
     text-align: center;
+    padding-bottom: 10rem;
   }
   .tokenomics-body br {
     display: block;
@@ -2788,7 +2893,7 @@ label {
     background-size: contain;
     height: 96vh;
     width: 91.3vw;
-    margin-top: 5.5rem;
+    margin-top: 30rem;
     z-index: 2;
     padding-top: 2rem;
     display: flex;
@@ -2838,13 +2943,14 @@ label {
   .tokenomics-latern {
     display: flex;
     gap: 77rem;
-    margin-top: -14rem;
+    margin-top: -8.5rem;
     z-index: 3;
   }
   .buying-section {
     background-image: url("images/how-to-buy-bg.png");
     background-color: rgb(0, 0, 0);
-    height: 260vh;
+    background-size: cover;
+    height: 100%;
     background-repeat: no-repeat;
     padding-top: 8rem;
   }
@@ -2899,13 +3005,13 @@ label {
   }
   #step-latern {
     z-index: 2;
-    margin-top: -8.4rem;
+    margin-top: -3rem;
     margin-left: -7rem;
     display: block;
   }
   #step-latern-two {
     z-index: 2;
-    margin-top: -8.4rem;
+    margin-top: -3rem;
     margin-left: 44rem;
     display: block;
   }
