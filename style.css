@@ -17,7 +17,7 @@ html {
   background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.8)),
     url("images/hero-background.png");
   background-repeat: no-repeat;
-  height: 135vh;
+  height: 155vh;
   background-size: cover;
   position: relative;
 }
@@ -201,7 +201,7 @@ html {
 }
 .exchange-horizontal-one {
   border-bottom: solid 0.3rem rgb(70, 70, 70);
-  width: 8vw;
+  width: 10vw;
   margin-bottom: 1.3rem;
 }
 .exchange-rate p {
@@ -269,7 +269,7 @@ html {
   margin-bottom: 2rem;
   border: solid 0.1rem rgb(32, 32, 32);
   position: absolute;
-  top: 31.2rem;
+  top: 31.4rem;
   left: 3.7rem;
 }
 .btn6 {
@@ -286,7 +286,7 @@ html {
   margin-bottom: 2rem;
   border: solid 0.1rem rgb(32, 32, 32);
   position: absolute;
-  top: 42.9rem;
+  top: 43.1rem;
   left: 3.7rem;
 }
 label {
@@ -341,7 +341,7 @@ label {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 150vh;
+  height: 170vh;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -381,7 +381,7 @@ label {
   align-items: center;
   padding-top: 9rem;
   background-color: rgb(2, 2, 2);
-  height: 172vh;
+  height: 190vh;
   position: relative;
 }
 .tokenomics-head {
@@ -456,6 +456,14 @@ label {
   color: rgb(255, 215, 0);
   font-weight: 600;
 }
+.token-childrenn {
+  color: rgb(245, 245, 245);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2.5rem;
+  padding-bottom: 2.3rem;
+  width: 92%;
+  padding-left: 2rem;
+}
 .token-special {
   display: flex;
   gap: 0rem;
@@ -473,7 +481,7 @@ label {
 .buying-section {
   background-image: url("images/how-to-buy-bg.png");
   background-color: rgb(0, 0, 0);
-  height: 270vh;
+  height: 290vh;
   background-repeat: no-repeat;
   padding-top: 8rem;
 }
@@ -510,6 +518,8 @@ label {
   color: rgb(255, 215, 0);
   text-shadow: 1px 3.8px rgb(0, 0, 0);
   font-size: 2.8rem;
+  width: 95%;
+  text-align: center;
 }
 .step-body {
   color: rgb(235, 234, 234);
@@ -517,6 +527,7 @@ label {
   font-size: 1.8rem;
   font-weight: 100;
   padding-left: 0.4rem;
+  width: 90%;
 }
 .step-body br {
   display: none;
@@ -524,7 +535,7 @@ label {
 .step-body a {
   color: rgb(235, 234, 234);
   font-family: "Baloo 2", sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
 }
 #step-latern {
