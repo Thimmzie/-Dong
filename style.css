@@ -17,7 +17,7 @@ html {
   background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.8)),
     url("images/hero-background.png");
   background-repeat: no-repeat;
-  height: 132vh;
+  height: 135vh;
   background-size: cover;
   position: relative;
 }
@@ -142,7 +142,7 @@ html {
   border-top-left-radius: 0.6rem;
   border-bottom-left-radius: 0.6rem;
   z-index: 1;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 ::placeholder {
   color: rgb(255, 255, 255);
@@ -152,7 +152,7 @@ html {
 #copy-img {
   width: 10vw;
   margin-left: 0rem;
-  margin-top: 1.9rem;
+  margin-top: 5rem;
 }
 .superman-section {
   background-image: url("images/Dong\ Image.png");
@@ -381,7 +381,7 @@ label {
   align-items: center;
   padding-top: 9rem;
   background-color: rgb(2, 2, 2);
-  height: 195vh;
+  height: 172vh;
   position: relative;
 }
 .tokenomics-head {
@@ -398,8 +398,9 @@ label {
   font-size: 2.2rem;
   color: rgb(231, 229, 229);
   font-weight: 300;
-  padding-left: 2rem;
-  width: 93%;
+  padding-left: 1rem;
+  padding-right: 1.3rem;
+  text-align: center;
 }
 .tokenomics-body span {
   color: rgb(255, 255, 255);
@@ -413,16 +414,19 @@ label {
   display: none;
 }
 .tokenomics-box {
-  background-image: url("images/Tokenomics\ .png");
+  background-image: url("images/Tokenomics\ Mobile.png");
   background-repeat: no-repeat;
-  background-size: 230vh;
+  background-size: cover;
+  background-position: center;
+  height: 105vh;
   margin-top: 5.5rem;
   z-index: 2;
-  padding-top: 13rem;
+  padding-top: 5rem;
   display: flex;
-  justify-content: center;
-  gap: 5rem;
-  margin: 0rem 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0rem;
+  margin: 2rem 1.4rem;
 }
 .token {
   font-family: "Rebellion-squad-ZpprZ", sans-serif;
@@ -431,22 +435,22 @@ label {
   color: rgb(255, 215, 0);
   text-shadow: 2px 6px rgb(0, 0, 0);
   font-size: 4.2rem;
-  padding-left: 7rem;
+  padding-left: 5rem;
   padding-bottom: 4rem;
 }
 .token-children {
   color: rgb(245, 245, 245);
   font-family: "Baloo 2", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   padding-bottom: 2.3rem;
-  padding-left: -8rem;
+  padding-left: 1.3rem;
 }
 .token-children-two {
   color: rgb(245, 245, 245);
   font-family: "Baloo 2", sans-serif;
-  font-size: 2.5rem;
-  padding-bottom: 2.3rem;
-  padding-left: 18rem;
+  font-size: 2.3rem;
+  padding-bottom: 1rem;
+  text-align: center;
 }
 .token-children span {
   color: rgb(255, 215, 0);
@@ -454,13 +458,14 @@ label {
 }
 .token-special {
   display: flex;
-  gap: 1rem;
+  gap: 0rem;
 }
 #divider {
   height: 7vh;
+  margin-left: -1rem;
 }
 .tokenomics-latern {
-  display: flex;
+  display: none;
   gap: 88rem;
   margin-top: -5.3rem;
   z-index: 3;
@@ -468,17 +473,14 @@ label {
 .buying-section {
   background-image: url("images/how-to-buy-bg.png");
   background-color: rgb(0, 0, 0);
-  height: 290vh;
+  height: 270vh;
   background-repeat: no-repeat;
   padding-top: 8rem;
 }
-.black-background {
-  background-color: rgb(2, 2, 2);
-  height: 40vh;
-}
+
 .buying-head {
   font-family: "Rebellion-squad-ZpprZ", sans-serif;
-  padding-bottom: 14rem;
+  padding-bottom: 2rem;
   font-weight: 300;
   color: rgb(255, 215, 0);
   text-shadow: 2px 12px rgb(0, 0, 0);
@@ -486,17 +488,17 @@ label {
   text-align: center;
 }
 .step-one-container {
-  margin-left: 5rem;
+  margin-left: 0rem;
 }
 .step-one {
-  background-image: url("images/Steps\ Card.png");
+  background-image: url("images/Step\ Card\ Mobile.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 48vh;
-  width: 90vw;
+  background-position: center;
+  height: 50vh;
   margin-top: 5.5rem;
   z-index: 1;
-  padding-top: 8rem;
+  padding-top: 12rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -507,13 +509,17 @@ label {
   font-weight: 300;
   color: rgb(255, 215, 0);
   text-shadow: 1px 3.8px rgb(0, 0, 0);
-  font-size: 3.1rem;
+  font-size: 2.8rem;
 }
 .step-body {
   color: rgb(235, 234, 234);
   font-family: "Baloo 2", sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 100;
+  padding-left: 0.4rem;
+}
+.step-body br {
+  display: none;
 }
 .step-body a {
   color: rgb(235, 234, 234);
@@ -534,12 +540,16 @@ label {
   display: none;
 }
 .step-two-container {
-  margin-left: 68rem;
-  margin-top: -22rem;
+  margin-left: 0rem;
+  margin-top: 5rem;
 }
 .step-three-container {
-  margin-left: 5rem;
-  margin-top: -22rem;
+  margin-left: 0rem;
+  margin-top: 5rem;
+}
+.black-background {
+  background-color: rgb(2, 2, 2);
+  height: 5vh;
 }
 .footer {
   background-color: rgb(2, 2, 2);
@@ -568,4 +578,2328 @@ label {
 }
 .socials {
   margin-top: -2.2rem;
+}
+
+@media (min-width: 640px) {
+  .hero-section {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.7),
+        rgb(0, 0, 0, 0.8)
+      ),
+      url("images/hero-background.png");
+    background-repeat: no-repeat;
+    height: 170vh;
+    background-size: cover;
+    position: relative;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 2.5rem;
+  }
+  .site-nav ul {
+    list-style: none;
+    position: relative;
+    display: flex;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    display: none;
+  }
+  .site-nav ul a {
+    color: rgb(230, 230, 230);
+    font-size: 1.75rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Baloo 2", sans-serif;
+  }
+  #clicked {
+    color: rgb(255, 255, 255);
+  }
+  .btn1 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 8.6vh;
+    width: 15.4vw;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
+  .fa-bars {
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+  .header-horizontal {
+    border-bottom: solid 0.1rem rgb(158, 157, 157);
+    width: 100%;
+    margin-top: -0.5rem;
+  }
+  .hero-sub-section-two {
+    display: block;
+    justify-content: space-between;
+    margin-top: 2.2rem;
+    margin-left: 2rem;
+  }
+  .section-two-item-one {
+    display: flex;
+    gap: 0rem;
+  }
+  .section-two-item-one h2 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    line-height: 3rem;
+    padding-bottom: 2rem;
+  }
+  #rocket-img {
+    width: 4.7vw;
+    position: absolute;
+    top: 14.5rem;
+    left: 45rem;
+  }
+  .token-text {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    font-size: 5rem;
+    color: rgb(255, 215, 0);
+    font-weight: 300;
+    text-shadow: 2px 12px rgb(0, 0, 0);
+  }
+  .token-text-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    padding-top: 1.8rem;
+    font-weight: 300;
+    width: 93%;
+    text-align: justify;
+  }
+  .token-text-two br {
+    display: none;
+  }
+  .btn2 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 10px 10px rgb(8, 8, 8);
+    width: 30vw;
+    height: 10vh;
+    margin-top: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  #hero-img {
+    width: 90vw;
+    margin-left: 1.4rem;
+    margin-top: 2rem;
+  }
+  .hero-last-section {
+    display: flex;
+    justify-content: center;
+  }
+  .wallet-address {
+    background-color: rgb(11, 8, 12);
+    border: solid 0.01rem rgb(110, 15, 37);
+    width: 87vw;
+    height: 9vh;
+    padding-left: 1.4rem;
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    z-index: 1;
+    margin-top: 4rem;
+  }
+  ::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+  }
+  #copy-img {
+    width: 10.6vw;
+    margin-left: -0.5rem;
+    margin-top: 3.9rem;
+    z-index: 3;
+  }
+  .superman-section {
+    background-image: url("images/Superman.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+  }
+  .bigger-exchange {
+    background-color: rgb(2, 2, 2);
+    height: 123vh;
+  }
+  .exchange-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 0.8rem;
+  }
+  .exchange-container {
+    background-color: rgb(245, 245, 245);
+    width: 96vw;
+    height: 110vh;
+    border-radius: 1.5rem;
+    border: none;
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+    padding: 3rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-left: 0.5rem;
+  }
+  .exchange-laterns-side {
+    display: none;
+  }
+  .exchange-container h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2.8rem;
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+  }
+  .exchange-rate {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+  }
+  .exchange-horizontal-one {
+    border-bottom: solid 0.3rem rgb(70, 70, 70);
+    width: 24vw;
+    margin-bottom: 1.4rem;
+  }
+  .exchange-rate p {
+    color: rgb(0, 0, 0);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 2rem;
+  }
+  .exchange-buttons {
+    display: flex;
+    gap: 4rem;
+    margin-top: 5rem;
+  }
+  .btn3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.5rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(83, 83, 83);
+    margin-bottom: 2rem;
+  }
+  .btn4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.5rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(161, 160, 160);
+    margin-bottom: 2rem;
+    border: solid 0.2rem rgb(161, 160, 160);
+    margin-right: 1rem;
+  }
+  .exchange-input {
+    display: block;
+    gap: 0rem;
+  }
+  .usdt label {
+    color: white;
+  }
+  .btn5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 14vw;
+    height: 8vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 32.5rem;
+    left: 6rem;
+  }
+  .btn6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 14vw;
+    height: 8vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 46.8rem;
+    left: 6rem;
+  }
+  label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  #usdt-input {
+    width: 80vw;
+    height: 12vh;
+    border: solid 0.2rem rgb(122, 121, 121);
+    border-radius: 0.6rem;
+    padding-left: 45rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  #small-diamond {
+    width: 3.6vw;
+  }
+  #flying-coin {
+    width: 3.2vw;
+  }
+  #usdt-input::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+  }
+  .btn7 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 12vh;
+    width: 50vw;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  .latern-div {
+    display: none;
+    justify-content: center;
+    gap: 33.5rem;
+  }
+  .about-container {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.8),
+        rgb(0, 0, 0, 0.7)
+      ),
+      url("images/about-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 140vh;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: start;
+    gap: 0rem;
+    padding-top: 7rem;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+  .about-text-container {
+    margin-top: -4rem;
+  }
+  .about-text-container h1 {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    font-size: 6rem;
+  }
+  .about-text-container p {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+  }
+  .about-text-container p span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #man-woman-img {
+    margin-top: 5rem;
+    width: 75vw;
+  }
+  .tokenomics-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 9rem;
+    background-color: rgb(2, 2, 2);
+    height: 210vh;
+    position: relative;
+  }
+  .tokenomics-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(50, 50, 50);
+    font-size: 5rem;
+    text-align: center;
+  }
+  .tokenomics-body {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+    padding-left: 3rem;
+    text-align: center;
+  }
+  .tokenomics-body br {
+    display: none;
+  }
+  .tokenomics-body span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #mother-n-baby {
+    position: absolute;
+    left: 3rem;
+    top: 25.9rem;
+    z-index: 1;
+    display: none;
+  }
+  .tokenomics-box {
+    background-image: url("images/Tokenomics\ Mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 160vh;
+    z-index: 2;
+    padding-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin: 3rem 1rem;
+  }
+  .token {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 6px rgb(0, 0, 0);
+    font-size: 4.2rem;
+    padding-bottom: 7rem;
+  }
+  .token-children {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .token-childrenn {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+    width: 92%;
+    padding-left: 2rem;
+  }
+  .token-children-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .token-children span {
+    color: rgb(255, 215, 0);
+    font-weight: 600;
+  }
+  .token-special {
+    display: flex;
+    gap: 1rem;
+  }
+  #divider {
+    height: 7vh;
+  }
+  .tokenomics-latern {
+    display: none;
+    gap: 88rem;
+    margin-top: -5.3rem;
+    z-index: 3;
+  }
+  .buying-section {
+    background-image: url("images/how-to-buy-bg.png");
+    background-color: rgb(0, 0, 0);
+    height: 267vh;
+    background-repeat: no-repeat;
+    padding-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0.3rem;
+  }
+  .black-background {
+    background-color: rgb(2, 2, 2);
+    height: 40vh;
+  }
+  .buying-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 3rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(0, 0, 0);
+    font-size: 5.5rem;
+    text-align: center;
+  }
+  .step-one-container {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .step-one {
+    background-image: url("images/Steps\ Card.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 5.5rem;
+    z-index: 1;
+    padding-top: 8rem;
+    display: block;
+    padding-left: 3rem;
+  }
+  .step-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 1px 3.8px rgb(0, 0, 0);
+    font-size: 2.8rem;
+  }
+  .step-body {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 100;
+  }
+  .step-body a {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  #step-latern {
+    z-index: 2;
+    margin-top: -2.8rem;
+    margin-left: -7rem;
+    display: none;
+  }
+  #step-latern-two {
+    z-index: 2;
+    margin-top: -2.8rem;
+    margin-left: 48rem;
+    display: none;
+  }
+  .step-two-container {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .step-three-container {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .footer {
+    background-color: rgb(2, 2, 2);
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+    padding-top: 4rem;
+  }
+  .footer p {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+  }
+  .footer ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  .footer a {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    text-decoration: none;
+  }
+  .socials {
+    margin-top: -2.2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.7),
+        rgb(0, 0, 0, 0.8)
+      ),
+      url("images/hero-background.png");
+    background-repeat: no-repeat;
+    height: 180vh;
+    background-size: cover;
+    position: relative;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 2.5rem;
+  }
+  .site-nav ul {
+    list-style: none;
+    position: relative;
+    display: flex;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    display: none;
+  }
+  .site-nav ul a {
+    color: rgb(230, 230, 230);
+    font-size: 1.75rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Baloo 2", sans-serif;
+  }
+  #clicked {
+    color: rgb(255, 255, 255);
+  }
+  .btn1 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 8.6vh;
+    width: 15.4vw;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
+  .fa-bars {
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+  .header-horizontal {
+    border-bottom: solid 0.1rem rgb(158, 157, 157);
+    width: 100%;
+    margin-top: -0.5rem;
+  }
+  .hero-sub-section-two {
+    display: block;
+    justify-content: space-between;
+    margin-top: 2.2rem;
+    margin-left: 2rem;
+  }
+  .section-two-item-one {
+    display: flex;
+    gap: 0rem;
+  }
+  .section-two-item-one h2 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.9rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    line-height: 3rem;
+    padding-bottom: 2rem;
+  }
+  #rocket-img {
+    width: 4.7vw;
+    position: absolute;
+    top: 14.5rem;
+    left: 52.3rem;
+  }
+  .token-text {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    font-size: 5rem;
+    color: rgb(255, 215, 0);
+    font-weight: 300;
+    text-shadow: 2px 12px rgb(0, 0, 0);
+  }
+  .token-text-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    padding-top: 1.8rem;
+    font-weight: 300;
+    width: 93%;
+    text-align: justify;
+  }
+  .token-text-two br {
+    display: none;
+  }
+  .btn2 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 10px 10px rgb(8, 8, 8);
+    width: 30vw;
+    height: 10vh;
+    margin-top: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  #hero-img {
+    width: 90vw;
+    margin-left: 1.7rem;
+    margin-top: 2rem;
+  }
+  .hero-last-section {
+    display: flex;
+    justify-content: center;
+  }
+  .wallet-address {
+    background-color: rgb(11, 8, 12);
+    border: solid 0.01rem rgb(110, 15, 37);
+    width: 87vw;
+    height: 9vh;
+    padding-left: 1.4rem;
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    z-index: 1;
+    margin-top: 4rem;
+  }
+  ::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+  }
+  #copy-img {
+    width: 9.5vw;
+    margin-left: -0.7rem;
+    margin-top: 3.6rem;
+    z-index: 3;
+  }
+  .superman-section {
+    background-image: url("images/Superman.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+  }
+  .bigger-exchange {
+    background-color: rgb(2, 2, 2);
+    height: 123vh;
+  }
+  .exchange-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 0.8rem;
+  }
+  .exchange-container {
+    background-color: rgb(245, 245, 245);
+    width: 96vw;
+    height: 110vh;
+    border-radius: 1.5rem;
+    border: none;
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+    padding: 3rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-left: 0.8rem;
+  }
+  .exchange-laterns-side {
+    display: none;
+  }
+  .exchange-container h1 {
+    color: rgb(0, 0, 0);
+    font-size: 3.5rem;
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+  }
+  .exchange-rate {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+  }
+  .exchange-horizontal-one {
+    border-bottom: solid 0.3rem rgb(70, 70, 70);
+    width: 24vw;
+    margin-bottom: 1.8rem;
+  }
+  .exchange-rate p {
+    color: rgb(0, 0, 0);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-top: 2rem;
+  }
+  .exchange-buttons {
+    display: flex;
+    gap: 4rem;
+    margin-top: 5rem;
+  }
+  .btn3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(83, 83, 83);
+    margin-bottom: 2rem;
+  }
+  .btn4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(161, 160, 160);
+    margin-bottom: 2rem;
+    border: solid 0.2rem rgb(161, 160, 160);
+    margin-right: 1rem;
+  }
+  .exchange-input {
+    display: block;
+    gap: 0rem;
+  }
+  .usdt label {
+    color: white;
+  }
+  .btn5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 14vw;
+    height: 9.5vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 34.4rem;
+    left: 7rem;
+  }
+  .btn6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 14vw;
+    height: 9.5vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 49.4rem;
+    left: 7rem;
+  }
+  label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  #usdt-input {
+    width: 80vw;
+    height: 12vh;
+    border: solid 0.2rem rgb(122, 121, 121);
+    border-radius: 0.6rem;
+    padding-left: 50rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  #small-diamond {
+    width: 3.6vw;
+  }
+  #flying-coin {
+    width: 3.2vw;
+  }
+  #usdt-input::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 2.2rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+  }
+  .btn7 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 12vh;
+    width: 50vw;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  .latern-div {
+    display: none;
+    justify-content: center;
+    gap: 33.5rem;
+  }
+  .about-container {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.8),
+        rgb(0, 0, 0, 0.7)
+      ),
+      url("images/about-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 170vh;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: start;
+    gap: 0rem;
+    padding-top: 7rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .about-text-container {
+    margin-top: -4rem;
+  }
+  .about-text-container h1 {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    font-size: 6rem;
+  }
+  .about-text-container p {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.3rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+  }
+  .about-text-container p span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #man-woman-img {
+    margin-top: 5rem;
+    width: 78vw;
+  }
+  .tokenomics-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 9rem;
+    background-color: rgb(2, 2, 2);
+    height: 210vh;
+    position: relative;
+  }
+  .tokenomics-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(50, 50, 50);
+    font-size: 5rem;
+    text-align: center;
+  }
+  .tokenomics-body {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.3rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+    padding-left: 2rem;
+    text-align: center;
+  }
+  .tokenomics-body br {
+    display: none;
+  }
+  .tokenomics-body span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #mother-n-baby {
+    position: absolute;
+    left: 3rem;
+    top: 25.9rem;
+    z-index: 1;
+    display: none;
+  }
+  .tokenomics-box {
+    background-image: url("images/Tokenomics\ Mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 160vh;
+    z-index: 2;
+    padding-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin: 3rem 1rem;
+  }
+  .token {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 6px rgb(0, 0, 0);
+    font-size: 4.2rem;
+    padding-bottom: 7rem;
+  }
+  .token-children {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .token-childrenn {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+    width: 100%;
+    padding-left: 1rem;
+  }
+  .token-children-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .token-children span {
+    color: rgb(255, 215, 0);
+    font-weight: 600;
+  }
+  .token-special {
+    display: flex;
+    gap: 1rem;
+  }
+  #divider {
+    height: 7vh;
+  }
+  .tokenomics-latern {
+    display: none;
+    gap: 88rem;
+    margin-top: -5.3rem;
+    z-index: 3;
+  }
+  .buying-section {
+    background-image: url("images/how-to-buy-bg.png");
+    background-color: rgb(0, 0, 0);
+    height: 267vh;
+    background-repeat: no-repeat;
+    padding-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0.3rem;
+  }
+  .black-background {
+    background-color: rgb(2, 2, 2);
+    height: 40vh;
+  }
+  .buying-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 3rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(0, 0, 0);
+    font-size: 5.5rem;
+    text-align: center;
+  }
+  .step-one-container {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .step-one {
+    background-image: url("images/Steps\ Card.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 5.5rem;
+    z-index: 1;
+    padding-top: 8rem;
+    display: block;
+    padding-left: 3rem;
+  }
+  .step-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 1px 3.8px rgb(0, 0, 0);
+    font-size: 2.8rem;
+  }
+  .step-body {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 100;
+  }
+  .step-body a {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  #step-latern {
+    z-index: 2;
+    margin-top: -2.8rem;
+    margin-left: -7rem;
+    display: none;
+  }
+  #step-latern-two {
+    z-index: 2;
+    margin-top: -2.8rem;
+    margin-left: 48rem;
+    display: none;
+  }
+  .step-two-container {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .step-three-container {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .footer {
+    background-color: rgb(2, 2, 2);
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+    padding-top: 4rem;
+  }
+  .footer p {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+  }
+  .footer ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  .footer a {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+  }
+  .socials {
+    margin-top: -2.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.4),
+        rgb(0, 0, 0, 0.4)
+      ),
+      url("images/hero-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120vh;
+    position: relative;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4rem;
+    padding-left: 9rem;
+    padding-bottom: 8rem;
+    gap: 0rem;
+  }
+  .site-nav ul {
+    list-style: none;
+    position: relative;
+    display: flex;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    margin-left: 9rem;
+  }
+  .site-nav ul a {
+    color: rgb(230, 230, 230);
+    font-size: 1.8rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Baloo 2", sans-serif;
+  }
+  #clicked {
+    color: rgb(255, 255, 255);
+  }
+  .btn1 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 8.6vh;
+    width: 16vw;
+    border-radius: 1.5rem;
+    font-size: 1.8rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    margin-left: 15rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .burger-icon {
+    visibility: collapse;
+  }
+  .fa-bars {
+    visibility: collapse;
+    display: none;
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+  .header-horizontal {
+    visibility: collapse;
+  }
+  .hero-sub-section-two {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 2rem 6rem;
+  }
+  .section-two-item-one {
+    display: flex;
+  }
+  .section-two-item-one h2 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.8rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #hero-img {
+    width: 40vw;
+    margin-left: 3rem;
+  }
+  #rocket-img {
+    width: 2.8vw;
+    position: absolute;
+    top: 22rem;
+    left: 51rem;
+  }
+  .token-text {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    font-size: 7.5rem;
+    color: rgb(255, 215, 0);
+    font-weight: 300;
+    text-shadow: 2px 12px rgb(0, 0, 0);
+  }
+  .token-text-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    padding-top: 1.8rem;
+    font-weight: 300;
+  }
+  .token-text-two br {
+    display: block;
+  }
+  .btn2 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 10px 10px rgb(8, 8, 8);
+    width: 15vw;
+    height: 8.5vh;
+    margin-top: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .hero-last-section {
+    display: flex;
+    justify-content: center;
+  }
+  .wallet-address {
+    background-color: rgb(11, 8, 12);
+    border: solid 0.01rem rgb(110, 15, 37);
+    width: 61vw;
+    height: 8.5vh;
+    padding-left: 2.5rem;
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    z-index: 1;
+  }
+  ::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.3rem;
+  }
+  #copy-img {
+    width: 6.1vw;
+    margin-left: -0.4rem;
+    margin-top: 4rem;
+  }
+  .superman-section {
+    background-image: url("images/Superman.png");
+    height: 168vh;
+    background-repeat: no-repeat;
+  }
+  .bigger-exchange {
+    background-color: rgb(2, 2, 2);
+    height: 100vh;
+  }
+  .exchange-section {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    padding: 0rem 1rem;
+  }
+  .exchange-laterns-side {
+    display: block;
+  }
+  .exchange-container {
+    background-color: rgb(245, 245, 245);
+    width: 60vw;
+    height: 70vh;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 10px 15px rgb(50, 50, 50);
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+    padding: 3rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .exchange-container h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2.8rem;
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+  }
+  .exchange-rate {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+  }
+  .exchange-horizontal-one {
+    border-bottom: solid 0.3rem rgb(70, 70, 70);
+    width: 8vw;
+    margin-bottom: 1.3rem;
+  }
+  .exchange-rate p {
+    color: rgb(0, 0, 0);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    padding-top: 2rem;
+  }
+  .exchange-buttons {
+    display: flex;
+    gap: 4rem;
+    margin-top: 5rem;
+  }
+  .btn3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 11vw;
+    height: 7vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.7rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(83, 83, 83);
+    margin-bottom: 2rem;
+  }
+  .btn4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 11vw;
+    height: 7vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.7rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(161, 160, 160);
+    margin-bottom: 2rem;
+    border: solid 0.2rem rgb(161, 160, 160);
+    margin-right: 1rem;
+  }
+  .exchange-input {
+    display: flex;
+    gap: 7rem;
+  }
+  .usdt label {
+    color: white;
+  }
+  .btn5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 7vw;
+    height: 5vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 29.8rem;
+    left: 2.4rem;
+  }
+  .btn6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 7vw;
+    height: 5vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 29.8rem;
+    left: 27.8rem;
+  }
+  label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  #usdt-input {
+    width: 18vw;
+    height: 7vh;
+    border: solid 0.2rem rgb(122, 121, 121);
+    border-radius: 0.6rem;
+    padding-left: 15rem;
+    margin-top: 1.5rem;
+  }
+  #small-diamond {
+    width: 2vw;
+  }
+  #flying-coin {
+    width: 1.6vw;
+  }
+  #usdt-input::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+  }
+  .btn7 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 8.6vh;
+    width: 20vw;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  .latern-div {
+    display: flex;
+    justify-content: center;
+    gap: 33.5rem;
+  }
+  .about-container {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.8),
+        rgb(0, 0, 0, 0.7)
+      ),
+      url("images/about-background.png");
+    background-repeat: no-repeat;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10rem;
+    padding-top: 1rem;
+  }
+  .about-text-container {
+    margin-top: -4rem;
+  }
+  .about-text-container h1 {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(0, 0, 0);
+    font-size: 6.5rem;
+  }
+  .about-text-container p {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+  }
+  .about-text-container p span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #man-woman-img {
+    margin-top: 3rem;
+    width: 30vw;
+  }
+  .tokenomics-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 9rem;
+    background-color: rgb(2, 2, 2);
+    height: 145vh;
+    position: relative;
+  }
+  .tokenomics-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(50, 50, 50);
+    font-size: 5.5rem;
+    text-align: center;
+  }
+  .tokenomics-body {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+    text-align: center;
+  }
+  .tokenomics-body br {
+    display: block;
+  }
+  .tokenomics-body span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #mother-n-baby {
+    position: absolute;
+    left: 3rem;
+    top: 25.9rem;
+    z-index: 1;
+    display: block;
+  }
+  .tokenomics-box {
+    background-image: url("images/Tokenomics\ .png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 96vh;
+    width: 91.3vw;
+    margin-top: 5.5rem;
+    z-index: 2;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: -7.8rem;
+  }
+  .token {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 6px rgb(0, 0, 0);
+    font-size: 4.2rem;
+    padding-left: 7rem;
+    padding-bottom: 4rem;
+  }
+  .second-token {
+    margin-top: -7rem;
+  }
+  .token-children {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+    padding-left: 4rem;
+  }
+  .token-children-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+    padding-left: 1rem;
+  }
+  .token-children span {
+    color: rgb(255, 215, 0);
+    font-weight: 600;
+  }
+  .token-special {
+    display: flex;
+    gap: 1rem;
+  }
+  #divider {
+    height: 7vh;
+  }
+  .tokenomics-latern {
+    display: flex;
+    gap: 55rem;
+    margin-top: -18.5rem;
+    z-index: 3;
+  }
+  .buying-section {
+    background-image: url("images/how-to-buy-bg.png");
+    background-color: rgb(0, 0, 0);
+    height: 217vh;
+    background-repeat: no-repeat;
+    padding-top: 8rem;
+  }
+  .black-background {
+    background-color: rgb(2, 2, 2);
+    height: 40vh;
+  }
+  .buying-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 3rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(0, 0, 0);
+    font-size: 5.5rem;
+    text-align: center;
+  }
+  .step-one-container {
+    margin-left: -40rem;
+  }
+  .step-one {
+    background-image: url("images/Steps\ Card.png");
+    background-repeat: no-repeat;
+    height: 48vh;
+    width: 45vw;
+    margin-top: 5rem;
+    z-index: 1;
+    padding-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: -10rem;
+  }
+  .step-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 1px 3.8px rgb(0, 0, 0);
+    font-size: 3.1rem;
+  }
+  .step-body {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    font-weight: 100;
+  }
+  .step-body a {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  #step-latern {
+    z-index: 2;
+    margin-top: -8.4rem;
+    margin-left: -7rem;
+    display: block;
+  }
+  #step-latern-two {
+    z-index: 2;
+    margin-top: -8.4rem;
+    margin-left: 32rem;
+    display: block;
+  }
+  .step-two-container {
+    margin-left: 48rem;
+    margin-top: -22rem;
+  }
+  .step-three-container {
+    margin-left: -40rem;
+    margin-top: -22rem;
+  }
+  .footer-horizontal {
+    border-bottom: solid 0.1rem rgb(99, 98, 98);
+    width: 100%;
+  }
+  .footer {
+    background-color: rgb(2, 2, 2);
+    height: 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10rem;
+    padding-top: 4rem;
+  }
+  .footer p {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.9rem;
+  }
+  .footer ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  .footer a {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.9rem;
+    text-decoration: none;
+  }
+  .socials {
+    margin-top: 1.4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-section {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.4),
+        rgb(0, 0, 0, 0.4)
+      ),
+      url("images/hero-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 125vh;
+    position: relative;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4rem;
+    padding-left: 9rem;
+    padding-bottom: 8rem;
+    gap: 0rem;
+  }
+  .site-nav ul {
+    list-style: none;
+    position: relative;
+    display: flex;
+    gap: 4.2rem;
+    margin-top: 2rem;
+    margin-left: 9rem;
+  }
+  .site-nav ul a {
+    color: rgb(230, 230, 230);
+    font-size: 2rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Baloo 2", sans-serif;
+  }
+  #clicked {
+    color: rgb(255, 255, 255);
+  }
+  .btn1 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 8.6vh;
+    width: 16vw;
+    border-radius: 1.5rem;
+    font-size: 1.8rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    margin-left: 15rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .burger-icon {
+    visibility: collapse;
+  }
+  .fa-bars {
+    visibility: collapse;
+    display: none;
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+  .header-horizontal {
+    visibility: collapse;
+  }
+  .hero-sub-section-two {
+    display: flex;
+    justify-content: center;
+    gap: 14rem;
+    margin: 2rem 2rem 6rem;
+  }
+  .section-two-item-one {
+    display: flex;
+  }
+  .section-two-item-one h2 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.8rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #hero-img {
+    width: 28vw;
+    margin-left: 3rem;
+  }
+  #rocket-img {
+    width: 2.8vw;
+    position: absolute;
+    top: 21rem;
+    left: 61.4rem;
+  }
+  .token-text {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    font-size: 8.4rem;
+    color: rgb(255, 215, 0);
+    font-weight: 300;
+    text-shadow: 2px 12px rgb(0, 0, 0);
+  }
+  .token-text-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    padding-top: 1.8rem;
+    font-weight: 300;
+  }
+  .token-text-two br {
+    display: block;
+  }
+  .btn2 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 10px 10px rgb(8, 8, 8);
+    width: 15vw;
+    height: 8.5vh;
+    margin-top: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .hero-last-section {
+    display: flex;
+    justify-content: center;
+  }
+  .wallet-address {
+    background-color: rgb(11, 8, 12);
+    border: solid 0.01rem rgb(110, 15, 37);
+    width: 55vw;
+    height: 9.4vh;
+    padding-left: 2.5rem;
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    z-index: 1;
+  }
+  ::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.3rem;
+  }
+  #copy-img {
+    width: 5.7vw;
+    margin-left: -0.4rem;
+    margin-top: 4rem;
+  }
+  .superman-section {
+    background-image: url("images/Superman.png");
+    height: 168vh;
+    background-repeat: no-repeat;
+  }
+  .bigger-exchange {
+    background-color: rgb(2, 2, 2);
+    height: 120vh;
+  }
+  .exchange-section {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    padding: 0rem 1rem;
+  }
+  .exchange-laterns-side {
+    display: block;
+  }
+  .exchange-container {
+    background-color: rgb(245, 245, 245);
+    width: 60vw;
+    height: 85vh;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 10px 15px rgb(50, 50, 50);
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+    padding: 3rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .exchange-container h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2.8rem;
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+  }
+  .exchange-rate {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+  }
+  .exchange-horizontal-one {
+    border-bottom: solid 0.3rem rgb(70, 70, 70);
+    width: 13vw;
+    margin-bottom: 1.6rem;
+  }
+  .exchange-rate p {
+    color: rgb(0, 0, 0);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-top: 2rem;
+  }
+  .exchange-buttons {
+    display: flex;
+    gap: 4rem;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+  }
+  .btn3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 11vw;
+    height: 7vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.7rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(83, 83, 83);
+    margin-bottom: 2rem;
+  }
+  .btn4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 11vw;
+    height: 7vh;
+    border-radius: 0.8rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.7rem;
+    gap: 0.4rem;
+    box-shadow: 2px 2px rgb(161, 160, 160);
+    margin-bottom: 2rem;
+    border: solid 0.2rem rgb(161, 160, 160);
+    margin-right: 1rem;
+  }
+  .exchange-input {
+    display: flex;
+    gap: 7rem;
+  }
+  .usdt label {
+    color: white;
+  }
+  .btn5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 7vw;
+    height: 6vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 35.2rem;
+    left: 2.4rem;
+  }
+  .btn6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 215, 0);
+    font-weight: 600;
+    width: 7vw;
+    height: 6vh;
+    border-radius: 0.4rem;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    border: solid 0.1rem rgb(32, 32, 32);
+    position: absolute;
+    top: 35.2rem;
+    left: 37.6rem;
+  }
+  label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  #usdt-input {
+    width: 22vw;
+    height: 8vh;
+    border: solid 0.2rem rgb(122, 121, 121);
+    border-radius: 0.6rem;
+    padding-left: 24rem;
+    margin-top: 1.5rem;
+  }
+  #small-diamond {
+    width: 2vw;
+  }
+  #flying-coin {
+    width: 1.6vw;
+  }
+  #usdt-input::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+  }
+  .btn7 {
+    background-color: rgb(244, 39, 64);
+    color: rgb(255, 255, 255);
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    height: 8.6vh;
+    width: 20vw;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 10px 10px rgb(27, 26, 26);
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  .latern-div {
+    display: flex;
+    justify-content: center;
+    gap: 33.5rem;
+  }
+  .about-container {
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0, 0.8),
+        rgb(0, 0, 0, 0.7)
+      ),
+      url("images/about-background.png");
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10rem;
+    padding-top: 1rem;
+  }
+  .about-text-container {
+    margin-top: -4rem;
+  }
+  .about-text-container h1 {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 1.7rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(0, 0, 0);
+    font-size: 6.5rem;
+  }
+  .about-text-container p {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+  }
+  .about-text-container p span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #man-woman-img {
+    margin-top: 3rem;
+    width: 30vw;
+  }
+  .tokenomics-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 9rem;
+    background-color: rgb(2, 2, 2);
+    height: 190vh;
+    position: relative;
+  }
+  .tokenomics-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(50, 50, 50);
+    font-size: 5.5rem;
+    text-align: center;
+  }
+  .tokenomics-body {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.1rem;
+    color: rgb(231, 229, 229);
+    font-weight: 300;
+    text-align: center;
+  }
+  .tokenomics-body br {
+    display: block;
+  }
+  .tokenomics-body span {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+  #mother-n-baby {
+    position: absolute;
+    left: 3rem;
+    top: 25.9rem;
+    z-index: 1;
+    display: block;
+  }
+  .tokenomics-box {
+    background-image: url("images/Tokenomics\ .png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 96vh;
+    width: 91.3vw;
+    margin-top: 5.5rem;
+    z-index: 2;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: -3rem;
+  }
+  .token {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2.1rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 6px rgb(0, 0, 0);
+    font-size: 4.2rem;
+    padding-left: 7rem;
+    padding-bottom: 4rem;
+  }
+  .second-token {
+    margin-top: -7rem;
+  }
+  .token-children {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+    padding-left: 0rem;
+  }
+  .token-children-two {
+    color: rgb(245, 245, 245);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2.3rem;
+    padding-left: 1rem;
+  }
+  .token-children span {
+    color: rgb(255, 215, 0);
+    font-weight: 600;
+  }
+  .token-special {
+    display: flex;
+    gap: 2.5rem;
+  }
+  #divider {
+    height: 7vh;
+  }
+  .tokenomics-latern {
+    display: flex;
+    gap: 77rem;
+    margin-top: -14rem;
+    z-index: 3;
+  }
+  .buying-section {
+    background-image: url("images/how-to-buy-bg.png");
+    background-color: rgb(0, 0, 0);
+    height: 260vh;
+    background-repeat: no-repeat;
+    padding-top: 8rem;
+  }
+  .black-background {
+    background-color: rgb(2, 2, 2);
+    height: 40vh;
+  }
+  .buying-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 3rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 12px rgb(0, 0, 0);
+    font-size: 5.5rem;
+    text-align: center;
+  }
+  .step-one-container {
+    margin-left: -50rem;
+  }
+  .step-one {
+    background-image: url("images/Steps\ Card.png");
+    background-repeat: no-repeat;
+    height: 48vh;
+    width: 45vw;
+    margin-top: 12rem;
+    z-index: 1;
+    padding-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: -10rem;
+  }
+  .step-head {
+    font-family: "Rebellion-squad-ZpprZ", sans-serif;
+    padding-bottom: 2rem;
+    font-weight: 300;
+    color: rgb(255, 215, 0);
+    text-shadow: 1px 3.8px rgb(0, 0, 0);
+    font-size: 3.1rem;
+  }
+  .step-body {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    font-weight: 100;
+  }
+  .step-body a {
+    color: rgb(235, 234, 234);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  #step-latern {
+    z-index: 2;
+    margin-top: -8.4rem;
+    margin-left: -7rem;
+    display: block;
+  }
+  #step-latern-two {
+    z-index: 2;
+    margin-top: -8.4rem;
+    margin-left: 44rem;
+    display: block;
+  }
+  .step-two-container {
+    margin-left: 55rem;
+    margin-top: -22rem;
+  }
+  .step-three-container {
+    margin-left: -50rem;
+    margin-top: -22rem;
+  }
+  .footer-horizontal {
+    border-bottom: solid 0.1rem rgb(99, 98, 98);
+    width: 100%;
+  }
+  .footer {
+    background-color: rgb(2, 2, 2);
+    height: 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10rem;
+    padding-top: 4rem;
+  }
+  .footer p {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+  }
+  .footer ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  .footer a {
+    color: rgb(204, 204, 204);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+  }
+  .socials {
+    margin-top: 1.4rem;
+  }
 }
