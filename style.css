@@ -300,16 +300,19 @@ html {
   align-items: center;
   background-color: rgb(255, 215, 0);
   font-weight: 600;
-  width: 19vw;
-  height: 5vh;
   border-radius: 0.4rem;
   font-family: "Baloo 2", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
   border: solid 0.1rem rgb(32, 32, 32);
   position: absolute;
-  top: 31.4rem;
-  left: 3.7rem;
+  top: -0.4rem;
+  left: 0.8rem;
+  bottom: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.7rem;
+  padding-bottom: 1.7rem;
 }
 .btn6 {
   display: flex;
@@ -317,21 +320,30 @@ html {
   align-items: center;
   background-color: rgb(255, 215, 0);
   font-weight: 600;
-  width: 19vw;
-  height: 5vh;
   border-radius: 0.4rem;
   font-family: "Baloo 2", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
   border: solid 0.1rem rgb(32, 32, 32);
   position: absolute;
-  top: 43.1rem;
-  left: 3.7rem;
+  top: -0.4rem;
+  left: 0.8rem;
+  bottom: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.7rem;
+  padding-bottom: 1.7rem;
+}
+.input-label {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 label {
   font-family: "Baloo 2", sans-serif;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 600;
+  position: relative;
 }
 #usdt-input {
   width: 80vw;
@@ -927,16 +939,19 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 14vw;
-    height: 8vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 33.4rem;
-    left: 6rem;
+    top: -1.1rem;
+    left: 0.8rem;
+    bottom: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
   }
   .btn6 {
     display: flex;
@@ -944,25 +959,34 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 14vw;
-    height: 8vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 48.5rem;
-    left: 6rem;
+    top: -1.1rem;
+    left: 0.8rem;
+    bottom: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+  }
+  .input-label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   label {
     font-family: "Baloo 2", sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 600;
+    position: relative;
   }
   #usdt-input {
     width: 80vw;
-    height: 12vh;
+    height: 9vh;
     border: solid 0.2rem rgb(122, 121, 121);
     border-radius: 0.6rem;
     padding-left: 45rem;
@@ -1552,16 +1576,19 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 14vw;
-    height: 9.5vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 34.4rem;
-    left: 7rem;
+    top: -2.2rem;
+    left: 1.2rem;
+    bottom: 0;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
   .btn6 {
     display: flex;
@@ -1569,21 +1596,30 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 14vw;
-    height: 9.5vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 49.4rem;
-    left: 7rem;
+    top: -2.2rem;
+    left: 1.2rem;
+    bottom: 0;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .input-label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   label {
     font-family: "Baloo 2", sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
+    position: relative;
   }
   #usdt-input {
     width: 80vw;
@@ -1595,10 +1631,10 @@ label {
     margin-bottom: 2rem;
   }
   #small-diamond {
-    width: 3.6vw;
+    width: 3.9vw;
   }
   #flying-coin {
-    width: 3.2vw;
+    width: 3.6vw;
   }
   #usdt-input::placeholder {
     color: rgb(0, 0, 0);
@@ -2155,16 +2191,19 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 7vw;
-    height: 5vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
     font-size: 1.2rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 29.8rem;
-    left: 2.4rem;
+    top: -0.7rem;
+    left: 0.6rem;
+    bottom: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   .btn6 {
     display: flex;
@@ -2172,21 +2211,30 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 7vw;
-    height: 5vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
     font-size: 1.2rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 29.8rem;
-    left: 27.8rem;
+    top: -0.7rem;
+    left: 0.6rem;
+    bottom: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
-  label {
+  .input-label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
+  }
+  label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
   }
   #usdt-input {
     width: 18vw;
@@ -2734,16 +2782,20 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 7vw;
-    height: 6vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
     font-size: 1.2rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 35rem;
-    left: 5rem;
+    top: -0.7rem;
+    left: 0.6rem;
+    bottom: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    overflow-y: hidden;
   }
   .btn6 {
     display: flex;
@@ -2751,25 +2803,35 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 7vw;
-    height: 6vh;
     border-radius: 0.4rem;
     font-family: "Baloo 2", sans-serif;
     font-size: 1.2rem;
     margin-bottom: 2rem;
     border: solid 0.1rem rgb(32, 32, 32);
     position: absolute;
-    top: 35rem;
-    left: 42rem;
+    top: -0.7rem;
+    left: 0.6rem;
+    bottom: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    overflow-y: hidden;
+  }
+  .input-label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.8rem;
     font-weight: 600;
+    position: relative;
   }
   #usdt-input {
     width: 22vw;
-    height: 8vh;
+    height: 9vh;
     border: solid 0.2rem rgb(122, 121, 121);
     border-radius: 0.6rem;
     padding-left: 24rem;
