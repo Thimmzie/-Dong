@@ -195,7 +195,7 @@ html {
   width: 90vw;
 }
 .hero-ca {
-  margin-left: 1.5rem;
+  margin-left: 1.7rem;
   margin-right: 1.5rem;
 }
 .last-section-wrapper {
@@ -666,7 +666,7 @@ label {
   height: 5vh;
 }
 .faq-page {
-  min-height: 100vh;
+  min-height: 70vh;
   width: 100%;
   margin: 0 auto;
   display: flex;
