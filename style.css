@@ -195,8 +195,8 @@ html {
   width: 90vw;
 }
 .hero-ca {
-  margin-left: 2rem;
-  margin-right: 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 .last-section-wrapper {
   display: flex;
