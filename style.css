@@ -194,6 +194,10 @@ html {
 #hero-img {
   width: 90vw;
 }
+.hero-ca {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
 .last-section-wrapper {
   display: flex;
   margin-bottom: 5rem;
@@ -241,7 +245,7 @@ html {
   height: 40vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background-size: 120vw;
+  background-size: 116vw;
   background-position: center;
 }
 .bigger-exchange {
@@ -662,7 +666,7 @@ label {
   height: 5vh;
 }
 .faq-page {
-  min-height: 80vh;
+  min-height: 100vh;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -718,6 +722,10 @@ label {
   transition: transform 0.5s ease-in;
   color: rgb(235, 234, 234);
   font-size: 1.5rem;
+}
+.footer-horizontal {
+  border-bottom: solid 0.1rem rgb(158, 157, 157);
+  width: 100%;
 }
 .footer {
   background-color: rgb(2, 2, 2);
