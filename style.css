@@ -14,10 +14,10 @@ html {
   src: url(fonts/rebellion-squad-font/RebellionSquad-ZpprZ.ttf);
 }
 .hero-section {
-  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)),
+  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.9)),
     url("images/Superman.png");
   background-repeat: no-repeat;
-  height: 118vh;
+  height: 115vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -253,10 +253,10 @@ html {
 
 .superman-section {
   background-image: url("images/Superman.png");
-  height: 40vh;
-  background-size: cover;
+  height: 32vh;
+
   background-repeat: no-repeat;
-  background-size: 116vw;
+  background-size: 100vw;
   background-position: center;
 }
 .bigger-exchange {
