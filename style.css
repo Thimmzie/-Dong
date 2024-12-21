@@ -253,10 +253,10 @@ html {
 
 .superman-section {
   background-image: url("images/Superman.png");
-  height: 32vh;
-
+  height: 40vh;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: 100vw;
+  background-size: 116vw;
   background-position: center;
 }
 .bigger-exchange {
