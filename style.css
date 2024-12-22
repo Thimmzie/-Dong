@@ -41,7 +41,7 @@ html {
   align-items: center;
   text-align: center;
   transition: 0.3s;
-  height: 100%;
+  height: 200%;
   z-index: 999;
 }
 .site-nav.active {
@@ -124,7 +124,7 @@ html {
   flex-direction: column;
   align-items: end;
   padding-right: 2rem;
-  padding-top: 14.5rem;
+  padding-top: 13.5rem;
 }
 .hero-second-section {
   background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.9)),
