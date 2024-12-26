@@ -43,3 +43,24 @@ faqs.forEach((faq) => {
     faq.classList.toggle("active");
   });
 });
+
+//this code is for the usd-dong conversion
+var usd = document.getElementById("usd");
+var dong = document.getElementById("dong");
+
+usd.addEventListener("input", function () {
+  let f = this.value;
+  let i = f * 25;
+
+  dong.value = i;
+});
+
+dong.addEventListener("input", function () {
+  let i = this.value;
+  let f = i / 25;
+
+  if (!Number.isInteger(f)) {
+    f = f.toFixed(2);
+  }
+  usd.value = f;
+});
