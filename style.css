@@ -2566,7 +2566,10 @@ label {
     margin: 5rem 2rem 2rem 0rem;
   }
   .section-two-text {
-    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 5rem;
   }
   .section-two-item-one {
     display: flex;
@@ -2577,14 +2580,17 @@ label {
     color: rgb(255, 255, 255);
     font-weight: 600;
   }
+  .hero-img-div {
+    width: 65%;
+  }
   #hero-img {
-    width: 40vw;
-    margin-left: 3rem;
+    width: 35vw;
+    margin-left: -4rem;
   }
 
   .token-text {
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
-    font-size: 7.5rem;
+    font-size: 6.5rem;
     color: rgb(255, 215, 0);
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
@@ -2592,10 +2598,11 @@ label {
   .token-text-two {
     color: rgb(245, 245, 245);
     font-family: "Baloo 2", sans-serif;
-    font-size: 2.3rem;
+    font-size: 2rem;
     padding-top: 1.8rem;
     font-weight: 300;
-    width: 90%;
+    width: 73%;
+    text-align: justify;
   }
   .token-text-two br {
     display: none;
@@ -3292,7 +3299,10 @@ label {
     margin: 5rem 2rem 2rem 0rem;
   }
   .section-two-text {
-    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 5rem;
   }
   .section-two-item-one {
     display: flex;
@@ -3303,9 +3313,12 @@ label {
     color: rgb(255, 255, 255);
     font-weight: 600;
   }
+  .hero-img-div {
+    width: 95%;
+  }
   #hero-img {
-    width: 40vw;
-    margin-left: 3rem;
+    width: 35vw;
+    margin-left: -6rem;
   }
 
   .token-text {
@@ -3321,7 +3334,8 @@ label {
     font-size: 2rem;
     padding-top: 1.8rem;
     font-weight: 300;
-    width: 90%;
+    width: 70.4%;
+    text-align: justify;
   }
   .token-text-two br {
     display: none;
@@ -3736,6 +3750,7 @@ label {
     background-image: url("images/how-to-buy-bg.png");
     background-color: rgb(0, 0, 0);
     height: 320vh;
+    background-size: cover;
     background-repeat: no-repeat;
     padding-top: 8rem;
   }
