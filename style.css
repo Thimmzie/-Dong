@@ -17,7 +17,7 @@ html {
   background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.6)),
     url("images/hero-background.png");
   background-repeat: no-repeat;
-  height: 20.8vh;
+  height: 19vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -110,7 +110,7 @@ html {
   border-bottom: solid 0.1rem rgb(158, 157, 157);
   width: 100%;
   margin-top: 0.5rem;
-  margin-bottom: -0.7rem;
+  margin-bottom: -1rem;
 }
 .superman-section-one {
   background-image: url("images/Superman.png");
@@ -189,7 +189,7 @@ html {
   color: rgb(255, 255, 255);
   font-weight: 600;
   line-height: 3rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1.8rem;
   text-align: center;
 }
 .token-text {
@@ -199,7 +199,7 @@ html {
   font-weight: 300;
   text-shadow: 2px 12px rgb(0, 0, 0);
   text-align: center;
-  padding-bottom: 2rem;
+  padding-bottom: 3.8rem;
 }
 .token-text-two {
   color: rgb(245, 245, 245);
@@ -846,7 +846,7 @@ label {
       ),
       url("images/hero-background.png");
     background-repeat: no-repeat;
-    height: 28vh;
+    height: 24vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -939,7 +939,7 @@ label {
     border-bottom: solid 0.1rem rgb(158, 157, 157);
     width: 100%;
     margin-top: 0.5rem;
-    margin-bottom: 0.9rem;
+    margin-bottom: -1rem;
   }
   .superman-section-one {
     background-image: url("images/Superman.png");
@@ -1032,7 +1032,7 @@ label {
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
     text-align: center;
-    padding-bottom: 2rem;
+    padding-bottom: 3.8rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
@@ -1685,7 +1685,7 @@ label {
       ),
       url("images/hero-background.png");
     background-repeat: no-repeat;
-    height: 30vh;
+    height: 24.5vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1778,7 +1778,7 @@ label {
     border-bottom: solid 0.1rem rgb(158, 157, 157);
     width: 100%;
     margin-top: 0.5rem;
-    margin-bottom: 0.9rem;
+    margin-bottom: -1rem;
   }
   .superman-section-one {
     background-image: url("images/Superman.png");
@@ -1871,7 +1871,7 @@ label {
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
     text-align: center;
-    padding-bottom: 2.5rem;
+    padding-bottom: 4.2rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
