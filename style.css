@@ -17,7 +17,7 @@ html {
   background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.6)),
     url("images/hero-background.png");
   background-repeat: no-repeat;
-  height: 32vh;
+  height: 20.8vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -110,7 +110,7 @@ html {
   border-bottom: solid 0.1rem rgb(158, 157, 157);
   width: 100%;
   margin-top: 0.5rem;
-  margin-bottom: 2.2rem;
+  margin-bottom: -0.7rem;
 }
 .superman-section-one {
   background-image: url("images/Superman.png");
@@ -168,7 +168,7 @@ html {
   background-size: cover;
   background-position: top;
   position: relative;
-  padding-top: 3rem;
+  padding-top: 1rem;
 }
 .hero-sub-section-two {
   display: block;
@@ -199,6 +199,7 @@ html {
   font-weight: 300;
   text-shadow: 2px 12px rgb(0, 0, 0);
   text-align: center;
+  padding-bottom: 2rem;
 }
 .token-text-two {
   color: rgb(245, 245, 245);
@@ -845,7 +846,7 @@ label {
       ),
       url("images/hero-background.png");
     background-repeat: no-repeat;
-    height: 33vh;
+    height: 28vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -938,7 +939,7 @@ label {
     border-bottom: solid 0.1rem rgb(158, 157, 157);
     width: 100%;
     margin-top: 0.5rem;
-    margin-bottom: 2.2rem;
+    margin-bottom: 0.9rem;
   }
   .superman-section-one {
     background-image: url("images/Superman.png");
@@ -1000,7 +1001,7 @@ label {
     background-size: cover;
     background-position: top;
     position: relative;
-    padding-top: 3rem;
+    padding-top: 1rem;
   }
   .hero-sub-section-two {
     display: block;
@@ -1031,6 +1032,7 @@ label {
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
     text-align: center;
+    padding-bottom: 2rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
@@ -1683,7 +1685,7 @@ label {
       ),
       url("images/hero-background.png");
     background-repeat: no-repeat;
-    height: 40vh;
+    height: 30vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1776,7 +1778,7 @@ label {
     border-bottom: solid 0.1rem rgb(158, 157, 157);
     width: 100%;
     margin-top: 0.5rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 0.9rem;
   }
   .superman-section-one {
     background-image: url("images/Superman.png");
@@ -1834,11 +1836,11 @@ label {
       ),
       url("images/hero-background.png");
     background-repeat: no-repeat;
-    height: 128vh;
+    height: 142vh;
     background-size: cover;
     background-position: top;
     position: relative;
-    padding-top: 3rem;
+    padding-top: 1rem;
   }
   .hero-sub-section-two {
     display: block;
@@ -1869,6 +1871,7 @@ label {
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
     text-align: center;
+    padding-bottom: 2.5rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
@@ -2521,7 +2524,7 @@ label {
       url("images/hero-background.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40vh;
+    height: 30vh;
     position: relative;
   }
   .menu {
@@ -2530,6 +2533,7 @@ label {
     padding-top: 4rem;
     padding-left: 4rem;
     padding-bottom: 0rem;
+    margin-bottom: -1rem;
     gap: 8rem;
   }
   .site-nav {
@@ -2744,6 +2748,7 @@ label {
     flex-direction: column;
     align-items: start;
     margin-left: 5rem;
+    padding-top: 8rem;
   }
   .section-two-item-one {
     display: flex;
@@ -3372,7 +3377,7 @@ label {
       url("images/hero-background.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 48vh;
+    height: 33vh;
     position: relative;
   }
   .menu {
@@ -3381,6 +3386,7 @@ label {
     padding-top: 4rem;
     padding-left: 4rem;
     padding-bottom: 1rem;
+    margin-bottom: -2.5rem;
     gap: 15rem;
   }
   .site-nav {
@@ -3594,7 +3600,7 @@ label {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    margin: 5rem 2rem 2rem 0rem;
+    margin: 1rem 2rem 2rem 0rem;
   }
   .section-two-text {
     display: flex;
@@ -3617,6 +3623,7 @@ label {
   #hero-img {
     width: 35vw;
     margin-left: -6rem;
+    margin-top: 6rem;
   }
 
   .token-text {
