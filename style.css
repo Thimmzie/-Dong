@@ -14,13 +14,12 @@ html {
   src: url(fonts/rebellion-squad-font/RebellionSquad-ZpprZ.ttf);
 }
 .hero-section {
-  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.6)),
-    url("images/hero-background.png");
+  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)),
+    url("images/Superman.png");
   background-repeat: no-repeat;
-  height: 19vh;
+  height: 65vh;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 .menu {
   display: flex;
@@ -110,7 +109,7 @@ html {
   border-bottom: solid 0.1rem rgb(158, 157, 157);
   width: 100%;
   margin-top: 0.5rem;
-  margin-bottom: -1rem;
+  margin-bottom: 1rem;
 }
 .superman-section-one {
   background-image: url("images/Superman.png");
@@ -119,6 +118,7 @@ html {
   background-size: cover;
   background-position: center;
   position: relative;
+  display: none;
 }
 .art-exchange {
   display: none;
@@ -148,14 +148,15 @@ html {
   background-color: rgb(244, 39, 64);
   color: rgb(255, 255, 255);
   font-family: "Rebellion-squad-ZpprZ", sans-serif;
-  height: 6vh;
-  width: 42vw;
+  height: 7vh;
+  width: 55vw;
   border-radius: 1rem;
   font-size: 1.7rem;
   border: none;
   margin-right: 1rem;
   cursor: pointer;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 .super-ca {
   display: none;
@@ -169,6 +170,7 @@ html {
   background-position: top;
   position: relative;
   padding-top: 1rem;
+  display: none;
 }
 .hero-sub-section-two {
   display: block;
@@ -189,7 +191,7 @@ html {
   color: rgb(255, 255, 255);
   font-weight: 600;
   line-height: 3rem;
-  padding-bottom: 1.8rem;
+  padding-bottom: 1rem;
   text-align: center;
 }
 .token-text {
@@ -199,13 +201,13 @@ html {
   font-weight: 300;
   text-shadow: 2px 12px rgb(0, 0, 0);
   text-align: center;
-  padding-bottom: 3.8rem;
+  padding-bottom: 2rem;
 }
 .token-text-two {
   color: rgb(245, 245, 245);
   font-family: "Baloo 2", sans-serif;
   font-size: 2.1rem;
-  padding-top: 1.8rem;
+  padding-top: 0.3rem;
   font-weight: 300;
   text-align: center;
   padding-left: 0.5rem;
@@ -255,6 +257,15 @@ html {
   width: 90vw;
 }
 .hero-ca {
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+.mid-ex-div {
+  background-color: rgb(0, 0, 0);
+  height: 11vh;
+}
+.hero-ex-mid-ca {
   display: flex;
   justify-content: center;
 }
@@ -511,7 +522,8 @@ label {
   margin-bottom: 5rem;
 }
 .exchange-ca {
-  margin-left: -1rem;
+  display: flex;
+  justify-content: center;
 }
 .latern-div {
   display: none;
@@ -668,6 +680,7 @@ label {
   height: 290vh;
   background-repeat: no-repeat;
   padding-top: 8rem;
+  display: none;
 }
 
 .buying-head {
@@ -1134,6 +1147,8 @@ label {
   .bigger-exchange {
     background-color: rgb(2, 2, 2);
     height: 150vh;
+    display: block;
+    visibility: visible;
   }
   .exchange-section {
     display: flex;
@@ -2698,6 +2713,59 @@ label {
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(161, 160, 160);
     margin-right: 1rem;
+  }
+  label {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    position: relative;
+  }
+  #usdtwo {
+    width: 20vw;
+    height: 7vh;
+    border: solid 0.2rem rgb(122, 121, 121);
+    border-radius: 0.6rem;
+    padding-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+    outline: none;
+  }
+  #usdtwo:focus {
+    border: solid 0.2rem rgb(49, 49, 49);
+  }
+  #dongtwo {
+    width: 20vw;
+    height: 7vh;
+    border: solid 0.2rem rgb(122, 121, 121);
+    border-radius: 0.6rem;
+    padding-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+    outline: none;
+  }
+  #dongtwo:focus {
+    border: solid 0.2rem rgb(49, 49, 49);
+  }
+
+  #usdtwo::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+  }
+  #dongtwo::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
   }
   .superman-buttons {
     display: flex;
