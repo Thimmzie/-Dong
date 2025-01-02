@@ -75,7 +75,6 @@ html {
   border-radius: 1.5rem;
   font-size: 2rem;
   border: none;
-  box-shadow: 10px 10px rgb(27, 26, 26);
   margin-right: 1rem;
   cursor: pointer;
   margin-top: 1rem;
@@ -202,16 +201,18 @@ html {
   text-shadow: 2px 12px rgb(0, 0, 0);
   text-align: center;
   padding-bottom: 2rem;
+  margin-top: -1rem;
 }
 .token-text-two {
   color: rgb(245, 245, 245);
   font-family: "Baloo 2", sans-serif;
-  font-size: 2.1rem;
+  font-size: 1.8rem;
   padding-top: 0.3rem;
   font-weight: 300;
   text-align: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  line-height: 2.7rem;
 }
 .token-text-two br {
   display: none;
@@ -854,12 +855,12 @@ label {
   .hero-section {
     background-image: linear-gradient(
         0deg,
-        rgb(0, 0, 0, 0.5),
-        rgb(0, 0, 0, 0.6)
+        rgb(0, 0, 0, 0.8),
+        rgb(0, 0, 0, 0.7)
       ),
-      url("images/hero-background.png");
+      url("images/Superman.png");
     background-repeat: no-repeat;
-    height: 24vh;
+    height: 80vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -918,7 +919,6 @@ label {
     border-radius: 1.5rem;
     font-size: 2rem;
     border: none;
-    box-shadow: 10px 10px rgb(27, 26, 26);
     margin-right: 1rem;
     cursor: pointer;
     margin-top: 1rem;
@@ -990,14 +990,15 @@ label {
     background-color: rgb(244, 39, 64);
     color: rgb(255, 255, 255);
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
-    height: 7vh;
-    width: 30vw;
+    height: 8vh;
+    width: 37vw;
     border-radius: 1rem;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     border: none;
     margin-right: 1rem;
     cursor: pointer;
     margin-bottom: 3rem;
+    margin-top: 3rem;
   }
   .super-ca {
     display: none;
@@ -1031,11 +1032,11 @@ label {
   }
   .section-two-item-one h2 {
     font-family: "Baloo 2", sans-serif;
-    font-size: 3.1rem;
+    font-size: 3rem;
     color: rgb(255, 255, 255);
     font-weight: 600;
     line-height: 3rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     text-align: center;
   }
   .token-text {
@@ -1045,12 +1046,14 @@ label {
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
     text-align: center;
-    padding-bottom: 3.8rem;
+    padding-bottom: 2.5rem;
+    margin-top: -1rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
     font-family: "Baloo 2", sans-serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 3.5rem;
     padding-top: 1.8rem;
     font-weight: 300;
     text-align: center;
@@ -1102,6 +1105,7 @@ label {
   .hero-ca {
     display: flex;
     justify-content: center;
+    display: none;
   }
   .last-section-wrapper {
     display: flex;
@@ -1695,12 +1699,12 @@ label {
   .hero-section {
     background-image: linear-gradient(
         0deg,
-        rgb(0, 0, 0, 0.5),
-        rgb(0, 0, 0, 0.6)
+        rgb(0, 0, 0, 0.8),
+        rgb(0, 0, 0, 0.7)
       ),
-      url("images/hero-background.png");
+      url("images/Superman.png");
     background-repeat: no-repeat;
-    height: 24.5vh;
+    height: 86vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1759,7 +1763,6 @@ label {
     border-radius: 1.5rem;
     font-size: 2rem;
     border: none;
-    box-shadow: 10px 10px rgb(27, 26, 26);
     margin-right: 1rem;
     cursor: pointer;
     margin-top: 1rem;
@@ -1831,10 +1834,10 @@ label {
     background-color: rgb(244, 39, 64);
     color: rgb(255, 255, 255);
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
-    height: 7vh;
-    width: 30vw;
+    height: 7.6vh;
+    width: 34vw;
     border-radius: 1rem;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     border: none;
     margin-right: 1rem;
     cursor: pointer;
@@ -1872,11 +1875,11 @@ label {
   }
   .section-two-item-one h2 {
     font-family: "Baloo 2", sans-serif;
-    font-size: 3.8rem;
+    font-size: 3.3rem;
     color: rgb(255, 255, 255);
     font-weight: 600;
     line-height: 3rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     text-align: center;
   }
   .token-text {
@@ -1886,7 +1889,7 @@ label {
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
     text-align: center;
-    padding-bottom: 4.2rem;
+    padding-bottom: 3rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
@@ -1894,6 +1897,7 @@ label {
     font-size: 2.5rem;
     padding-top: 1.8rem;
     font-weight: 300;
+    line-height: 4rem;
     text-align: center;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -1943,6 +1947,7 @@ label {
   .hero-ca {
     display: flex;
     justify-content: center;
+    display: none;
   }
   .last-section-wrapper {
     display: flex;
@@ -1984,6 +1989,14 @@ label {
   .copy-btn:disabled {
     background-color: rgb(216, 214, 201);
     color: rgb(66, 66, 66);
+  }
+  .mid-ex-div {
+    background-color: rgb(0, 0, 0);
+    height: 14vh;
+  }
+  .hero-ex-mid-ca {
+    display: flex;
+    justify-content: center;
   }
   .bigger-exchange {
     background-color: rgb(2, 2, 2);
@@ -2536,10 +2549,10 @@ label {
         rgb(0, 0, 0, 0.7),
         rgb(0, 0, 0, 0.8)
       ),
-      url("images/hero-background.png");
+      url("images/Superman.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 30vh;
+    height: 86vh;
     position: relative;
   }
   .menu {
@@ -2604,7 +2617,6 @@ label {
     border-radius: 1.5rem;
     font-size: 1.8rem;
     border: none;
-    box-shadow: 10px 10px rgb(27, 26, 26);
     margin-right: 2rem;
     margin-left: 3rem;
     cursor: pointer;
@@ -2693,7 +2705,6 @@ label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.5rem;
     gap: 0.4rem;
-    box-shadow: 2px 2px rgb(83, 83, 83);
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(83, 83, 83);
   }
@@ -2709,7 +2720,6 @@ label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.5rem;
     gap: 0.4rem;
-    box-shadow: 2px 2px rgb(161, 160, 160);
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(161, 160, 160);
     margin-right: 1rem;
@@ -2782,7 +2792,6 @@ label {
     height: 9vh;
     width: 28vw;
     border-radius: 1.5rem;
-    box-shadow: 10px 10px rgb(27, 26, 26);
     font-size: 1.8rem;
     border: none;
     margin-right: 1rem;
@@ -2806,17 +2815,16 @@ label {
   }
   .hero-sub-section-two {
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     margin: 5rem 2rem 2rem 0rem;
   }
   .section-two-text {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    margin-left: 5rem;
-    padding-top: 8rem;
+    align-items: center;
+    margin-left: 0rem;
+    padding-top: 3rem;
   }
   .section-two-item-one {
     display: flex;
@@ -2827,13 +2835,6 @@ label {
     color: rgb(255, 255, 255);
     font-weight: 600;
   }
-  .hero-img-div {
-    width: 115%;
-  }
-  #hero-img {
-    width: 35vw;
-    margin-left: 0rem;
-  }
   .hero-head {
     margin-top: -3rem;
   }
@@ -2843,18 +2844,18 @@ label {
     color: rgb(255, 215, 0);
     font-weight: 300;
     text-shadow: 2px 12px rgb(0, 0, 0);
+    margin-top: -1rem;
   }
   .token-text-two {
     color: rgb(245, 245, 245);
     font-family: "Baloo 2", sans-serif;
     font-size: 2rem;
-    padding-top: 1.8rem;
+    padding-top: 1.5rem;
     font-weight: 300;
-    width: 90%;
-    text-align: justify;
+    text-align: center;
   }
   .token-text-two br {
-    display: none;
+    display: block;
   }
   .btn2 {
     background-color: rgb(244, 39, 64);
@@ -2862,9 +2863,8 @@ label {
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
     border-radius: 1.5rem;
     border: none;
-    box-shadow: 10px 10px rgb(8, 8, 8);
     width: 15vw;
-    height: 8.5vh;
+    height: 10vh;
     margin-top: 2.2rem;
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -2925,11 +2925,18 @@ label {
   .btn8 {
     display: none;
   }
+  .mid-ex-div {
+    background-color: rgb(0, 0, 0);
+    height: 11vh;
+    display: none;
+  }
+  .hero-ex-mid-ca {
+    display: flex;
+    justify-content: center;
+  }
   .bigger-exchange {
     background-color: rgb(2, 2, 2);
     height: 140vh;
-    display: none;
-    visibility: collapse;
   }
   .exchange-section {
     display: flex;
@@ -2998,7 +3005,6 @@ label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.9rem;
     gap: 0.4rem;
-    box-shadow: 2px 2px rgb(83, 83, 83);
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(83, 83, 83);
   }
@@ -3014,7 +3020,6 @@ label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.9rem;
     gap: 0.4rem;
-    box-shadow: 2px 2px rgb(161, 160, 160);
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(161, 160, 160);
     margin-right: 1rem;
@@ -3094,7 +3099,7 @@ label {
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
     border-radius: 1.5rem;
     border: none;
-    height: 7vh;
+    height: 10vh;
     width: 20vw;
     margin-top: 1rem;
     font-size: 1.8rem;
@@ -3105,7 +3110,7 @@ label {
     background-color: rgb(244, 39, 64);
     color: rgb(255, 255, 255);
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
-    height: 7vh;
+    height: 10vh;
     width: 20vw;
     border-radius: 1.5rem;
     font-size: 1.8rem;
@@ -3114,7 +3119,6 @@ label {
     cursor: pointer;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 10px 10px rgb(27, 26, 26);
   }
   .exchange-ca {
     margin-left: -1rem;
@@ -3442,10 +3446,10 @@ label {
         rgb(0, 0, 0, 0.7),
         rgb(0, 0, 0, 0.8)
       ),
-      url("images/hero-background.png");
+      url("images/Superman.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 33vh;
+    height: 140vh;
     position: relative;
   }
   .menu {
@@ -3454,7 +3458,7 @@ label {
     padding-top: 4rem;
     padding-left: 4rem;
     padding-bottom: 1rem;
-    margin-bottom: -2.5rem;
+    margin-bottom: 1rem;
     gap: 15rem;
   }
   .site-nav {
@@ -3510,7 +3514,6 @@ label {
     border-radius: 1.5rem;
     font-size: 1.8rem;
     border: none;
-    box-shadow: 10px 10px rgb(27, 26, 26);
     margin-right: 2rem;
     margin-left: 3rem;
     cursor: pointer;
@@ -3538,7 +3541,7 @@ label {
     background-repeat: no-repeat;
   }
   .art-exchange {
-    display: block;
+    display: none;
     visibility: visible;
     margin-left: 98rem;
     margin-top: 8rem;
@@ -3605,7 +3608,6 @@ label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.5rem;
     gap: 0.4rem;
-    box-shadow: 2px 2px rgb(83, 83, 83);
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(83, 83, 83);
   }
@@ -3621,7 +3623,6 @@ label {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.5rem;
     gap: 0.4rem;
-    box-shadow: 2px 2px rgb(161, 160, 160);
     margin-bottom: 2rem;
     border: solid 0.2rem rgb(161, 160, 160);
     margin-right: 1rem;
@@ -3641,7 +3642,6 @@ label {
     height: 9vh;
     width: 17vw;
     border-radius: 1.5rem;
-    box-shadow: 10px 10px rgb(27, 26, 26);
     font-size: 1.8rem;
     border: none;
     margin-right: 1rem;
@@ -3665,33 +3665,25 @@ label {
   }
   .hero-sub-section-two {
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    margin: 1rem 2rem 2rem 0rem;
+    justify-content: center;
+    margin: 0rem 0rem 0rem 0rem;
+    padding-top: 7rem;
   }
   .section-two-text {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    margin-left: 5rem;
+    align-items: center;
   }
   .section-two-item-one {
     display: flex;
   }
   .section-two-item-one h2 {
     font-family: "Baloo 2", sans-serif;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     color: rgb(255, 255, 255);
     font-weight: 600;
-  }
-  .hero-img-div {
-    width: 95%;
-  }
-  #hero-img {
-    width: 35vw;
-    margin-left: -6rem;
-    margin-top: 6rem;
   }
 
   .token-text {
@@ -3705,13 +3697,12 @@ label {
     color: rgb(245, 245, 245);
     font-family: "Baloo 2", sans-serif;
     font-size: 2rem;
-    padding-top: 1.8rem;
+    padding-top: 1.6rem;
     font-weight: 300;
-    width: 70.4%;
-    text-align: justify;
+    text-align: center;
   }
   .token-text-two br {
-    display: none;
+    display: block;
   }
   .btn2 {
     background-color: rgb(244, 39, 64);
@@ -3719,7 +3710,6 @@ label {
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
     border-radius: 1.5rem;
     border: none;
-    box-shadow: 10px 10px rgb(8, 8, 8);
     width: 15vw;
     height: 8.5vh;
     margin-top: 2.2rem;
@@ -3847,7 +3837,7 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 15vw;
+    width: 12vw;
     height: 8vh;
     border-radius: 0.8rem;
     font-family: "Baloo 2", sans-serif;
@@ -3863,7 +3853,7 @@ label {
     align-items: center;
     background-color: rgb(255, 215, 0);
     font-weight: 600;
-    width: 15vw;
+    width: 12vw;
     height: 8vh;
     border-radius: 0.8rem;
     font-family: "Baloo 2", sans-serif;
@@ -3949,7 +3939,7 @@ label {
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
     border-radius: 1.5rem;
     border: none;
-    height: 8vh;
+    height: 10vh;
     width: 18vw;
     margin-top: 2.2rem;
     font-size: 1.7rem;
@@ -3961,7 +3951,7 @@ label {
     background-color: rgb(244, 39, 64);
     color: rgb(255, 255, 255);
     font-family: "Rebellion-squad-ZpprZ", sans-serif;
-    height: 8vh;
+    height: 10vh;
     width: 18vw;
     border-radius: 1.5rem;
     font-size: 1.7rem;
@@ -3970,7 +3960,6 @@ label {
     cursor: pointer;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 10px 10px rgb(27, 26, 26);
   }
   .exchange-ca {
     margin-left: -1rem;
