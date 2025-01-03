@@ -14,7 +14,7 @@ html {
   src: url(fonts/rebellion-squad-font/RebellionSquad-ZpprZ.ttf);
 }
 .hero-section {
-  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)),
+  background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
     url("images/Superman.png");
   background-repeat: no-repeat;
   height: 65vh;
@@ -256,6 +256,10 @@ html {
 }
 #hero-img {
   width: 90vw;
+}
+.hero-buynow {
+  display: none;
+  visibility: collapse;
 }
 .hero-ca {
   display: flex;
@@ -855,8 +859,8 @@ label {
   .hero-section {
     background-image: linear-gradient(
         0deg,
-        rgb(0, 0, 0, 0.8),
-        rgb(0, 0, 0, 0.7)
+        rgb(0, 0, 0, 0.5),
+        rgb(0, 0, 0, 0.5)
       ),
       url("images/Superman.png");
     background-repeat: no-repeat;
@@ -1101,6 +1105,10 @@ label {
   }
   #hero-img {
     width: 75vw;
+  }
+  .hero-buynow {
+    display: none;
+    visibility: collapse;
   }
   .hero-ca {
     display: flex;
@@ -1699,8 +1707,8 @@ label {
   .hero-section {
     background-image: linear-gradient(
         0deg,
-        rgb(0, 0, 0, 0.8),
-        rgb(0, 0, 0, 0.7)
+        rgb(0, 0, 0, 0.5),
+        rgb(0, 0, 0, 0.5)
       ),
       url("images/Superman.png");
     background-repeat: no-repeat;
@@ -1943,6 +1951,10 @@ label {
   }
   #hero-img {
     width: 75vw;
+  }
+  .hero-buynow {
+    display: none;
+    visibility: collapse;
   }
   .hero-ca {
     display: flex;
@@ -2546,8 +2558,8 @@ label {
   .hero-section {
     background-image: linear-gradient(
         0deg,
-        rgb(0, 0, 0, 0.7),
-        rgb(0, 0, 0, 0.8)
+        rgb(0, 0, 0, 0.5),
+        rgb(0, 0, 0, 0.5)
       ),
       url("images/Superman.png");
     background-repeat: no-repeat;
@@ -2868,6 +2880,10 @@ label {
     margin-top: 2.2rem;
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+  .hero-buynow {
+    display: block;
+    visibility: visible;
   }
   .hero-last-section {
     display: flex;
@@ -3443,8 +3459,8 @@ label {
   .hero-section {
     background-image: linear-gradient(
         0deg,
-        rgb(0, 0, 0, 0.7),
-        rgb(0, 0, 0, 0.8)
+        rgb(0, 0, 0, 0.5),
+        rgb(0, 0, 0, 0.5)
       ),
       url("images/Superman.png");
     background-repeat: no-repeat;
@@ -3715,6 +3731,10 @@ label {
     margin-top: 2.2rem;
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+  .hero-buynow {
+    display: block;
+    visibility: visible;
   }
   .hero-last-section {
     display: flex;
@@ -4108,6 +4128,9 @@ label {
     gap: 78rem;
     margin-top: -20rem;
     z-index: 3;
+  }
+  .tokenomics-ca {
+    margin-top: rem;
   }
   .buying-section {
     background-image: url("images/how-to-buy-bg.png");
