@@ -26,6 +26,12 @@ html {
   justify-content: space-between;
   padding: 1rem 2.5rem;
 }
+.site-logo-div {
+  margin-top: 1.2rem;
+}
+#site-logo {
+  width: 4rem;
+}
 .site-nav {
   list-style: none;
   display: flex;
@@ -874,6 +880,12 @@ label {
     display: flex;
     justify-content: space-between;
     padding: 2rem 2.5rem;
+  }
+  .site-logo-div {
+    margin-top: 1rem;
+  }
+  #site-logo {
+    width: 5rem;
   }
   .site-nav {
     list-style: none;
@@ -1734,6 +1746,12 @@ label {
     display: flex;
     justify-content: space-between;
     padding: 2rem 2.5rem;
+  }
+  .site-logo-div {
+    margin-top: 0.5rem;
+  }
+  #site-logo {
+    width: 5rem;
   }
   .site-nav {
     list-style: none;
