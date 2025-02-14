@@ -64,25 +64,3 @@ dong.addEventListener("input", function () {
   }
   usd.value = f;
 });
-
-//duplicating code for usd-dong converter
-
-var usdtwo = document.getElementById("usdtwo");
-var dongtwo = document.getElementById("dongtwo");
-
-usd.addEventListener("input", function () {
-  let f = this.value;
-  let i = f * 25;
-
-  dongtwo.value = i;
-});
-
-dong.addEventListener("input", function () {
-  let i = this.value;
-  let f = i / 25;
-
-  if (!Number.isInteger(f)) {
-    f = f.toFixed(2);
-  }
-  usdtwo.value = f;
-});

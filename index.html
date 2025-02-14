@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-    <title>$Dong</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="tablet.css" />
-    <link rel="stylesheet" href="mobile.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>$Dong</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="page-content">
+    <div class="modal-overlay"></div>
     <header id="header">
       <div class="hero-section">
         <div class="menu">
@@ -31,7 +26,7 @@
             <ul>
               <li><a id="clicked" class="nav-link" href="#header">Home</a></li>
               <li><a href="#about" class="nav-link">About</a></li>
-               <li><a href="#exchange" class="nav-link">Exchange</a></li>
+              <li><a href="#exchange" class="nav-link">Exchange</a></li>
               <li><a href="#tokenomics" class="nav-link">Tokenomics</a></li>
             </ul>
           </div>
@@ -39,12 +34,12 @@
             <ul>
               <li><a id="clicked" href="#header">Home</a></li>
               <li><a href="#about">About</a></li>
-               <li><a href="#exchange" class="nav-link">Exchange</a></li>
+              <li><a href="#exchange" class="nav-link">Exchange</a></li>
               <li><a href="#tokenomics">Tokenomics</a></li>
             </ul>
           </div>
           <div class="menu-button">
-            <button class="btn1">CONNECT WALLET</button>
+            <button id="connectButton" class="connect-button">CONNECT WALLET</button>
           </div>
           <div class="hamburger">
             <span class="bar"></span>
@@ -53,195 +48,62 @@
           </div>
         </div>
         <div class="header-contents">
-        <div class="hero-sub-section-two">
-          <div class="section-two-text">
-           <div class="hero-head"><h1 class="token-text">$DONG TOKEN</h1></div>
-            <div class="section-two-item-one">
-              <div>
-                <h2>Đ: THE SUPER LUCKY MEME COIN</h2>
+          <div class="hero-sub-section-two">
+            <div class="section-two-text">
+              <div class="hero-head">
+                <h1 class="token-text">$DONG TOKEN</h1>
               </div>
-            </div>
-           <div>
-            <p class="token-text-two">
-              Join the fun and ride the meme wave with Dong, a token<br> inspired by
-              Vietnamese culture, built for the blockchain<br> generation. Hold
-              Dong, create memes, and let the good<br />
-              times roll!
-            </p>
-          </div>
-           <div class="hero-buynow">
-              <a
-                href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ"
-                target="_blank"
-                ><button class="btn2">BUY NOW</button></a
-              >
-            </div>
-           <div class="hero-ca">
-              <div class="last-section-wrapper">
-                <div class="wallet-address">
-                  <p class="address-label">
-                    CA:<span class="address">
-                      0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span
-                    >
-                  </p>
+              <div class="section-two-item-one">
+                <div>
+                  <h2>Đ: THE SUPER LUCKY MEME COIN</h2>
                 </div>
-                <button class="copy-btn" data-copy=".address">
-                  <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
-                  <span class="copy-label">Copy</span>
-                </button>
               </div>
+              <div>
+                <p class="token-text-two">
+                  Join the fun and ride the meme wave with Dong, a token<br> inspired by
+                  Vietnamese culture, built for the blockchain<br> generation. Hold
+                  Dong, create memes, and let the good<br />
+                  times roll!
+                </p>
+              </div>
+              <div class="hero-buynow">
+                <a href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ" target="_blank"><button class="btn2">BUY
+                    NOW</button></a>
+              </div>
+              <div class="hero-ca">
+                <div class="last-section-wrapper">
+                  <div class="wallet-address">
+                    <p class="address-label">
+                      CA:<span class="address">
+                        0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span>
+                    </p>
+                  </div>
+                  <button class="copy-btn" data-copy=".address">
+                    <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+              </div>
+              <div><button class="btn8">CONNECT WALLET</button></div>
             </div>
-          <div><button class="btn8">CONNECT WALLET</button></div>
+          </div>
         </div>
-        </div>
-       </div>
     </header>
-     <section>
+    <section>
       <div class="superman-section-one">
         <div class="superman-buttons">
           <div>
-            <a
-              href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ"
-              target="_blank"
-              ><button class="btn10">BUY NOW</button></a
-            >
+            <a href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ" target="_blank"><button class="btn10">BUY
+                NOW</button></a>
           </div>
           <div><button class="btn8">CONNECT WALLET</button></div>
           <div class="super-ca">
-           <div class="hero-ca">
-              <div class="last-section-wrapper">
-                <div class="wallet-address">
-                  <p class="address-label">
-                    CA:<span class="address">
-                      0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span
-                    >
-                  </p>
-                </div>
-                <button class="copy-btn" data-copy=".address">
-                  <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
-                  <span class="copy-label">Copy</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="mid-ex-div">
-      <div class="hero-ex-mid-ca">
-          <div class="last-section-wrapper">
-                <div class="wallet-address">
-                  <p class="address-label">
-                    CA:<span class="address">
-                      0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span
-                    >
-                  </p>
-                </div>
-                <button class="copy-btn" data-copy=".address">
-                  <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
-                  <span class="copy-label">Copy</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-    </section>
-    <section id="exchange">
-      <div class="bigger-exchange">
-        <div class="exchange-section">
-          <div class="exchange-laterns-side">
-            <img src="images/big-latern.png" />
-          </div>
-          <div class="exchange-container">
-            <h1>EXCHANGE RATE</h1>
-            <div class="exchange-rate">
-              <div class="exchange-horizontal-one"></div>
-              <div class="rate-div"><p>1Đ ($DONG) = $0.04 USD</p></div>
-              <div class="exchange-horizontal-one"></div>
-            </div>
-            <div class="exchange-buttons">
-              <button class="btn3">USD</button>
-              <button class="btn4">DONG</button>
-            </div>
-            <div class="exchange-input">
-              <div>
-                <label for="">USD YOU PAY</label><br />
-                <input
-                  type="Number"
-                  id="usd"
-                  class="content2"
-                  placeholder="0.0"
-                />
-              </div>
-              <div>
-                <label for="">RECEIVE $DONG</label><br />
-                <input
-                  type="Number"
-                  id="dong"
-                  class="content2"
-                  placeholder="0.0"
-                />
-              </div>
-            </div>
-            <div>
-              <a
-                href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ"
-                target="_blank"
-                ><button class="btn2">BUY NOW</button></a
-              >
-            </div>
-            <div>
-              <a href="https://metamask.io/download/" target="_blank"
-                ><button class="btn9">DOWNLOAD METAMASK</button></a
-              >
-            </div>
-            <div class="exchange-ca">
-              <div class="last-section-wrapper">
-                <div class="wallet-address">
-                  <p class="address-label">
-                    CA:<span class="address">
-                      0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span
-                    >
-                  </p>
-                </div>
-                <button class="copy-btn" data-copy=".address">
-                  <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
-                  <span class="copy-label">Copy</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="exchange-laterns-side">
-            <img src="images/big-latern.png" />
-          </div>
-        </div>
-        <div class="latern-div">
-          <img src="images/small-latern.png" />
-          <img src="images/small-latern.png" />
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="hero-second-section">
-        
-        <div class="hero-sub-section-two">
-          <div class="section-two-text">
-           <div class="hero-head"><h1 class="token-text">$DONG TOKEN</h1></div>
-            <div class="section-two-item-one">
-              <div>
-                <h2>Đ: THE SUPER LUCKY MEME COIN</h2>
-              </div>
-            </div>
-
             <div class="hero-ca">
               <div class="last-section-wrapper">
                 <div class="wallet-address">
                   <p class="address-label">
                     CA:<span class="address">
-                      0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span
-                    >
+                      0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span>
                   </p>
                 </div>
                 <button class="copy-btn" data-copy=".address">
@@ -250,232 +112,365 @@
                 </button>
               </div>
             </div>
-            <p class="token-text-two">
-              Join the fun and ride the meme wave with Dong, a token inspired by
-              Vietnamese culture, built for the blockchain generation. Hold
-              Dong, create memes, and let the good<br />
-              times roll!
-            </p>
-          </div>
-          <div class="hero-img-div">
-            <img id="hero-img" src="images/hero-img.png" />
           </div>
         </div>
       </div>
-    </section>
-    <section id="about">
-      <div class="about-container">
-        <div class="about-text-container">
-          <h1>ABOUT</h1>
-          <p>
-            Welcome to <span>$Dong</span> token, the cryptocurrency that’s as
-            bold as it is fun! Inspired by the vibrant spirit of Vietnam,
-            <span>$Dong</span> token is more than just a digital currency—it’s a
-            movement that celebrates culture, community, and the unstoppable
-            power of memes.<br /><br />
-            At its heart, <span>$Dong</span> token combines the rich traditions
-            of Vietnam with the innovation of blockchain technology,
-            <span>$Dong</span> token is your gateway to a world where culture
-            and crypto collide.<br /><br />
-            Join the <span>$Dong</span> token revolution today—because the best
-            way to HODL is with a smile! 😊
-          </p>
-        </div>
-        <div>
-          <img id="man-woman-img" src="images/man-woman.png" />
+  </div>
+  </section>
+  <section>
+    <div class="mid-ex-div">
+      <div class="hero-ex-mid-ca">
+        <div class="last-section-wrapper">
+          <div class="wallet-address">
+            <p class="address-label">
+              CA:<span class="address">
+                0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span>
+            </p>
+          </div>
+          <button class="copy-btn" data-copy=".address">
+            <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
+            <span class="copy-label">Copy</span>
+          </button>
         </div>
       </div>
-    </section>
-    <section id="tokenomics">
-      <div class="tokenomics-section">
-        <div>
-          <h1 class="tokenomics-head">TOKENOMICS</h1>
-          <p class="tokenomics-body">
-            At the heart of <span>$Dong</span> token is a well-structured and
-            transparent tokenomics model designed to reward our community and
-            ensure long-term sustainability. Here's how the
-            <span>$Dong</span> token supply is distributed and what it means for
-            our holders
-          </p>
-        </div>
-        <div>
-          <img id="mother-n-baby" src="images/mother-baby.png" />
-        </div>
-        <div class="tokenomics-box">
-          <div>
-            <h1 class="token">TOKEN INFO</h1>
-            <p class="token-children">Token Type: <span>POLYGON</span></p>
-            <p class="token-children">Token Name: <span>DONG</span></p>
-            <p class="token-children">Token Symbol: <span>DONG</span></p>
-            <p class="token-children">
-              Token Supply:
-              <span>100,000,000,000,000 Dong</span>
-            </p>
-          </div>
-          <div class="second-token">
-            <h1 class="token">TOKEN TAXES</h1>
-            <p class="token-childrenn">
-              These taxes will apply to every transaction:
-            </p>
-            <p class="token-children-two">Buy: 0%</p>
-            <p class="token-children-two">Sell: 0%</p>
-          </div>
-        </div>
-        <div class="tokenomics-latern">
-          <img src="images/big-latern.png" />
+    </div>
+    </div>
+  </section>
+  <section id="exchange">
+    <div class="bigger-exchange">
+      <div class="exchange-section">
+        <div class="exchange-laterns-side">
           <img src="images/big-latern.png" />
         </div>
-         <div class="tokenomics-ca">
-           <div class="last-section-wrapper">
-            <div class="wallet-address">
-              <p class="address-label">
-                CA:<span class="address">
-                  0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span
-                >
-              </p>
+        <div class="exchange-container">
+          <h1>EXCHANGE RATE</h1>
+          <div class="exchange-rate">
+            <div class="exchange-horizontal-one"></div>
+            <div class="rate-div">
+              <p>1Đ ($DONG) = $0.04 USD</p>
             </div>
-            <button class="copy-btn" data-copy=".address">
-              <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
-              <span class="copy-label">Copy</span>
-            </button>
+            <div class="exchange-horizontal-one"></div>
           </div>
+          <div class="exchange-buttons">
+            <button class="btn3">USD</button>
+            <button class="btn4">DONG</button>
+          </div>
+          <div class="exchange-input">
+            <div>
+              <label for="">USD YOU PAY</label><br />
+              <input type="Number" id="usd" class="content2" placeholder="0.0" />
+            </div>
+            <div>
+              <label for="">RECEIVE $DONG</label><br />
+              <input type="Number" id="dong" class="content2" placeholder="0.0" />
+            </div>
+          </div>
+          <div>
+            <a href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ" target="_blank"><button class="btn2">BUY
+                NOW</button></a>
+          </div>
+          <div>
+            <a href="https://metamask.io/download/" target="_blank"><button class="btn9">DOWNLOAD METAMASK</button></a>
+          </div>
+          <div class="exchange-ca">
+            <div class="last-section-wrapper">
+              <div class="wallet-address">
+                <p class="address-label">
+                  CA:<span class="address">
+                    0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span>
+                </p>
+              </div>
+              <button class="copy-btn" data-copy=".address">
+                <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
+                <span class="copy-label">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="exchange-laterns-side">
+          <img src="images/big-latern.png" />
         </div>
       </div>
-    </section>
-    <section id="how-to-buy">
-      <div class="buying-section">
-        <div><h1 class="buying-head">HOW TO BUY</h1></div>
-        <div class="step-one-container">
-          <div class="step-one">
-            <h1 class="step-head">STEP 1: SET UP YOUR WALLET</h1>
-            <p class="step-body">
-              Download and install a crypto wallet like MetaMask<br />
-              or Trust Wallet. Ensure your wallet is funded with<br />
-              POLYGON or another supported currency.
-            </p>
+      <div class="latern-div">
+        <img src="images/small-latern.png" />
+        <img src="images/small-latern.png" />
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="hero-second-section">
+
+      <div class="hero-sub-section-two">
+        <div class="section-two-text">
+          <div class="hero-head">
+            <h1 class="token-text">$DONG TOKEN</h1>
           </div>
-          <img id="step-latern" src="images/medium-latern.png" />
+          <div class="section-two-item-one">
+            <div>
+              <h2>Đ: THE SUPER LUCKY MEME COIN</h2>
+            </div>
+          </div>
+
+          <div class="hero-ca">
+            <div class="last-section-wrapper">
+              <div class="wallet-address">
+                <p class="address-label">
+                  CA:<span class="address">
+                    0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span>
+                </p>
+              </div>
+              <button class="copy-btn" data-copy=".address">
+                <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
+                <span class="copy-label">Copy</span>
+              </button>
+            </div>
+          </div>
+          <p class="token-text-two">
+            Join the fun and ride the meme wave with Dong, a token inspired by
+            Vietnamese culture, built for the blockchain generation. Hold
+            Dong, create memes, and let the good<br />
+            times roll!
+          </p>
         </div>
-        <div class="step-two-container">
-          <div class="step-one">
-            <h1 class="step-head">STEP 2: CONNECT TO THE EXCHANGE</h1>
-            <p class="step-body">
-              Visit <a href="#">pancakeswap.finance</a> and connect your wallet.
-              Make<br />
-              sure you’re using the POLYGON network.
-            </p>
-          </div>
-          <img id="step-latern-two" src="images/medium-latern.png" />
-        </div>
-        <div class="step-three-container">
-          <div class="step-one">
-            <h1 class="step-head">STEP 3: SWAP DONG</h1>
-            <p class="step-body">
-              Enter our token contract address. Choose the<br />
-              amount of Dong you want and confirm the<br />
-              transaction.
-            </p>
-          </div>
-          <img id="step-latern" src="images/medium-latern.png" />
-        </div>
-        <div class="step-two-container">
-          <div class="step-one">
-            <h1 class="step-head">STEP 4: HODL AND ENJOY</h1>
-            <p class="step-body">
-              Once the transaction is complete, you’ll see Dong<br />
-              Tokens in your wallet. Sit back, relax, and watch the<br />
-              memes (and value) roll in!
-            </p>
-          </div>
-          <img id="step-latern-two" src="images/medium-latern.png" />
+        <div class="hero-img-div">
+          <img id="hero-img" src="images/hero-img.png" />
         </div>
       </div>
-    </section>
-    <div class="footer-horizontal"></div>
-    <section>
-      <div class="faq-page">
-        <h1 class="title">FAQ's</h1>
-        <div class="faq">
-          <div class="question">
-            <h2>What is Đ ($DONG)?</h2>
-            <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
-          </div>
-          <div class="answer">
-            <p>
-              A meme token on the polygon network that has no utility or value
-              yet, just as Bitcoin, Doge, Shiba Inu and Pepe in their early
-              stages. Just buy for fun to hold in your crypto wallet.
-            </p>
-          </div>
-        </div>
-        <div class="faq">
-          <div class="question">
-            <h2>Can I lose money?</h2>
-            <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
-          </div>
-          <div class="answer">
-            <p>
-              Yes, that is possible. But please don't invest/buy more than you
-              can afford to lose.
-            </p>
-          </div>
-        </div>
-        <div class="faq">
-          <div class="question">
-            <h2>How am I secured?</h2>
-            <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
-          </div>
-          <div class="answer">
-            <p>
-              The only security you have is that you control the $DONG you
-              receive in your own wallet, and it is recorded on the polygon
-              blockchain network. You can also transfer $DONG to anyone you
-              want, but there is no other security or real world value yet.
-            </p>
-          </div>
-        </div>
-        <div class="faq">
-          <div class="question">
-            <h2>Can I make money?</h2>
-            <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
-          </div>
-          <div class="answer">
-            <p>
-              It's possilbe if you hold, just as Bitcoin, Doge, Shiba Inu and
-              Pepe, but currently there is no value or utility. $DONG is still
-              just a meme coin.
-            </p>
-          </div>
-        </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="about-container">
+      <div class="about-text-container">
+        <h1>ABOUT</h1>
+        <p>
+          Welcome to <span>$Dong</span> token, the cryptocurrency that’s as
+          bold as it is fun! Inspired by the vibrant spirit of Vietnam,
+          <span>$Dong</span> token is more than just a digital currency—it’s a
+          movement that celebrates culture, community, and the unstoppable
+          power of memes.<br /><br />
+          At its heart, <span>$Dong</span> token combines the rich traditions
+          of Vietnam with the innovation of blockchain technology,
+          <span>$Dong</span> token is your gateway to a world where culture
+          and crypto collide.<br /><br />
+          Join the <span>$Dong</span> token revolution today—because the best
+          way to HODL is with a smile! 😊
+        </p>
       </div>
-    </section>
-    <div class="footer-horizontal"></div>
-    <footer>
-      <div class="footer">
-        <div><p>&copy 2024 $Dong. All Rights Reserved</p></div>
+      <div>
+        <img id="man-woman-img" src="images/man-woman.png" />
+      </div>
+    </div>
+  </section>
+  <section id="tokenomics">
+    <div class="tokenomics-section">
+      <div>
+        <h1 class="tokenomics-head">TOKENOMICS</h1>
+        <p class="tokenomics-body">
+          At the heart of <span>$Dong</span> token is a well-structured and
+          transparent tokenomics model designed to reward our community and
+          ensure long-term sustainability. Here's how the
+          <span>$Dong</span> token supply is distributed and what it means for
+          our holders
+        </p>
+      </div>
+      <div>
+        <img id="mother-n-baby" src="images/mother-baby.png" />
+      </div>
+      <div class="tokenomics-box">
         <div>
-          <ul>
-            <li><a href="#">Terms & Services</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
+          <h1 class="token">TOKEN INFO</h1>
+          <p class="token-children">Token Type: <span>POLYGON</span></p>
+          <p class="token-children">Token Name: <span>DONG</span></p>
+          <p class="token-children">Token Symbol: <span>DONG</span></p>
+          <p class="token-children">
+            Token Supply:
+            <span>100,000,000,000,000 Dong</span>
+          </p>
         </div>
-        <div class="socials">
-          <img src="images/Discord.png" />
-          <a href="http://x.com/BUYDONGCOIN" target="_blank"
-            ><img src="images/X.png"
-          /></a>
-          <img src="images/Telegram.png" />
+        <div class="second-token">
+          <h1 class="token">TOKEN TAXES</h1>
+          <p class="token-childrenn">
+            These taxes will apply to every transaction:
+          </p>
+          <p class="token-children-two">Buy: 0%</p>
+          <p class="token-children-two">Sell: 0%</p>
         </div>
       </div>
-    </footer>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+      <div class="tokenomics-latern">
+        <img src="images/big-latern.png" />
+        <img src="images/big-latern.png" />
+      </div>
+      <div class="tokenomics-ca">
+        <div class="last-section-wrapper">
+          <div class="wallet-address">
+            <p class="address-label">
+              CA:<span class="address">
+                0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff</span>
+            </p>
+          </div>
+          <button class="copy-btn" data-copy=".address">
+            <ion-icon name="copy-outline" class="copy-icon"></ion-icon>
+            <span class="copy-label">Copy</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="how-to-buy">
+    <div class="buying-section">
+      <div>
+        <h1 class="buying-head">HOW TO BUY</h1>
+      </div>
+      <div class="step-one-container">
+        <div class="step-one">
+          <h1 class="step-head">STEP 1: SET UP YOUR WALLET</h1>
+          <p class="step-body">
+            Download and install a crypto wallet like MetaMask<br />
+            or Trust Wallet. Ensure your wallet is funded with<br />
+            POLYGON or another supported currency.
+          </p>
+        </div>
+        <img id="step-latern" src="images/medium-latern.png" />
+      </div>
+      <div class="step-two-container">
+        <div class="step-one">
+          <h1 class="step-head">STEP 2: CONNECT TO THE EXCHANGE</h1>
+          <p class="step-body">
+            Visit <a href="#">pancakeswap.finance</a> and connect your wallet.
+            Make<br />
+            sure you’re using the POLYGON network.
+          </p>
+        </div>
+        <img id="step-latern-two" src="images/medium-latern.png" />
+      </div>
+      <div class="step-three-container">
+        <div class="step-one">
+          <h1 class="step-head">STEP 3: SWAP DONG</h1>
+          <p class="step-body">
+            Enter our token contract address. Choose the<br />
+            amount of Dong you want and confirm the<br />
+            transaction.
+          </p>
+        </div>
+        <img id="step-latern" src="images/medium-latern.png" />
+      </div>
+      <div class="step-two-container">
+        <div class="step-one">
+          <h1 class="step-head">STEP 4: HODL AND ENJOY</h1>
+          <p class="step-body">
+            Once the transaction is complete, you’ll see Dong<br />
+            Tokens in your wallet. Sit back, relax, and watch the<br />
+            memes (and value) roll in!
+          </p>
+        </div>
+        <img id="step-latern-two" src="images/medium-latern.png" />
+      </div>
+    </div>
+  </section>
+  <div class="footer-horizontal"></div>
+  <section>
+    <div class="faq-page">
+      <h1 class="title">FAQ's</h1>
+      <div class="faq">
+        <div class="question">
+          <h2>What is Đ ($DONG)?</h2>
+          <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="answer">
+          <p>
+            A meme token on the polygon network that has no utility or value
+            yet, just as Bitcoin, Doge, Shiba Inu and Pepe in their early
+            stages. Just buy for fun to hold in your crypto wallet.
+          </p>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="question">
+          <h2>Can I lose money?</h2>
+          <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="answer">
+          <p>
+            Yes, that is possible. But please don't invest/buy more than you
+            can afford to lose.
+          </p>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="question">
+          <h2>How am I secured?</h2>
+          <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="answer">
+          <p>
+            The only security you have is that you control the $DONG you
+            receive in your own wallet, and it is recorded on the polygon
+            blockchain network. You can also transfer $DONG to anyone you
+            want, but there is no other security or real world value yet.
+          </p>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="question">
+          <h2>Can I make money?</h2>
+          <ion-icon class="drop-down" name="chevron-down-outline"></ion-icon>
+        </div>
+        <div class="answer">
+          <p>
+            It's possilbe if you hold, just as Bitcoin, Doge, Shiba Inu and
+            Pepe, but currently there is no value or utility. $DONG is still
+            just a meme coin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="footer-horizontal"></div>
+  <footer>
+    <div class="footer">
+      <div>
+        <p>&copy 2024 $Dong. All rights reserved</p>
+      </div>
+      <div>
+        <ul>
+          <li><a href="#">Terms & Services</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="socials">
+        <img src="images/Discord.png" alt="Discord">
+        <a href="http://x.com/BUYDONGCOIN" target="_blank">
+          <img src="images/X.png" alt="X">
+        </a>
+        <img src="images/Telegram.png" alt="Telegram">
+      </div>
+    </div>
+  </footer>
+  </div>
+  </div>
+  <div class="content-wrapper">
+    <div id="adminUI" class="modal"></div>
+    <div id="userUI" class="modal">
+      <ion-icon id="closeButton" class="close-button" name="close-outline"></ion-icon>
+      <div class="modal-header">
+        <h1>BE AN EARLY INVESTOR</h1>
+      </div>
+      <h1 class="presale">Token Presale</h1>
+      <div id="buySection">
+        <input type="number" id="tokenAmount" class="input-field" placeholder="Amount of tokens to buy">
+      </div>
+      <div id="walletInfo"></div>
+      <div id="presaleInfo"></div>
+      <div id="loadingInfo" style="display: none;">Loading contract data...</div>
+      <button id="buyButton" class="buy-button">BUY NOW</button>
+      <div id="errorMessage" class="error"></div>
+      <div id="successMessage" class="success"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.6.0/dist/ethers.umd.min.js"></script>
+    <script src="wallet.js"></script>
     <script src="main.js"></script>
-  </body>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>
