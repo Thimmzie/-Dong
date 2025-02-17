@@ -550,7 +550,7 @@ async function getContractInfo() {
     // Add try-catch for each contract call
     try {
       const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = ethers.formatEther(left);
+      state.tokensLeft = ethers.formatEther(left, 18);
     } catch (err) {
       console.error("Error getting tokens left:", err);
       state.tokensLeft = "Error loading";
