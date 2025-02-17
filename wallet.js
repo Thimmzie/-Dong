@@ -520,7 +520,10 @@ async function handleConnectWallet() {
     const ownerAddr = await fetchOwnerAddress();
     state.isOwner =
       state.connectedAddress.toLowerCase() === ownerAddr?.toLowerCase();
-
+    if (state.isOwner) {
+      const adminUI = new AdminUI();
+      await adminUI.initializeUI();
+    }
     await getContractInfo();
 
     state.isLoading = false;
@@ -558,7 +561,7 @@ async function getContractInfo() {
 
     try {
       const balance = await presaleContract.tokensOwned(state.connectedAddress);
-      state.userBalance = ethers.formatUnits(balance, 18);
+      state.userBalance = ethers.formatUnits(balance);
     } catch (err) {
       console.error("Error getting user balance:", err);
       state.userBalance = "Error loading";
@@ -638,7 +641,7 @@ class AdminUI {
       console.error("Not authorized as owner");
       return;
     }
-
+    this.contractAddress = CONTRACT_ADDRESS;
     this.initializeUI().catch((err) => {
       console.error("Failed to initialize admin UI:", err);
       elements.adminUI.innerHTML = `
