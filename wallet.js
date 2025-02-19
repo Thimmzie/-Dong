@@ -667,44 +667,45 @@ class AdminUI {
   createAdminTemplate() {
     return `
             <div class="admin-panel">
-                <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px;">
-                    Token Presale Admin Panel
-                </h1>
-                <p style="font-size: 1.2rem; margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.5); padding: 10px 20px; border-radius: 10px;">
-                    <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
-                </p>
+    <ion-icon id="closeButton" class="close-button" name="close-outline"></ion-icon>
+    <h1 class="admin-pre-panel">
+      Token Presale Admin Panel
+    </h1>
+    <p class="connected-p">
+      <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
+    </p>
 
-                <!-- Manage Presale Section -->
-                <div class="admin-section">
-                    <h2 class="section-title">Manage Presale</h2>
-                    <div class="input-group">
-                        <label>Start Time:</label>
-                        <input type="datetime-local" id="startDate">
-                    </div>
-                    <div class="input-group">
-                        <label>End Time:</label>
-                        <input type="datetime-local" id="endDate">
-                        <button class="update-button" id="updateTimesBtn">Update Times</button>
-                    </div>
-                </div>
+    <!-- Manage Presale Section -->
+    <div class="admin-section">
+      <h2 class="section-title">Manage Presale</h2>
+      <div class="input-group">
+        <label class="time-label">Start Time:</label><br>
+        <input type="datetime-local" id="startDate">
+      </div>
+      <div class="input-group">
+        <label class="time-label">End Time:</label><br>
+        <input type="datetime-local" id="endDate">
+      </div>
+      <button class="update-button" id="updateTimesBtn">Update Times</button>
+    </div>
 
-                <!-- Withdraw Tokens Section -->
-                <div class="admin-section">
-                    <h2 class="section-title">Withdraw Unsold Tokens</h2>
-                    <p><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
-                    <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
-                </div>
+    <!-- Withdraw Tokens Section -->
+    <div class="admin-section">
+      <h2 class="section-title">Withdraw Unsold Tokens</h2>
+      <p class="unsold"><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
+      <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
+    </div>
 
-                <!-- Transfer Ownership Section -->
-                <div class="admin-section">
-                    <h2 class="section-title">Transfer Ownership</h2>
-                    <div class="input-group">
-                        <label>New Owner Address:</label>
-                        <input type="text" id="newOwnerAddress">
-                        <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
-                    </div>
-                </div>
-            </div>
+    <!-- Transfer Ownership Section -->
+    <div class="admin-section">
+      <h2 class="section-title">Transfer Ownership</h2>
+      <div class="input-group">
+        <label class="time-label">New Owner Address:</label>
+        <input type="text" id="newOwnerAddress"><br>
+        <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
+      </div>
+    </div>
+  </div>
         `;
   }
 
@@ -918,6 +919,13 @@ if (elements.closeButton) {
   elements.closeButton.addEventListener("click", () => {
     if (elements.userUI) {
       elements.userUI.classList.remove("active");
+      document.querySelector(".page-content").style.filter = "none";
+      document.querySelector(".modal-overlay").style.display = "none";
+      document.body.style.overflow = "auto";
+      document.body.style.height = "auto";
+    }
+    if (elements.adminUI) {
+      elements.adminUI.classList.remove("active");
       document.querySelector(".page-content").style.filter = "none";
       document.querySelector(".modal-overlay").style.display = "none";
       document.body.style.overflow = "auto";
