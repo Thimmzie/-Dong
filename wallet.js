@@ -562,7 +562,7 @@ async function getContractInfo() {
       // Fix: Use tokensOwned instead of tokensBalanced
       const balance = await presaleContract.tokensOwned(state.connectedAddress);
       // Fix: The balance is already in wei (10^18), so we just need to format it once
-      state.userBalance = ethers.formatEther(balance);
+      state.userBalance = balance.toString();
     } catch (err) {
       console.error("Error getting user balance:", err);
       state.userBalance = "Error loading";
