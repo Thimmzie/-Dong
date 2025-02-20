@@ -550,7 +550,6 @@ async function getContractInfo() {
       provider
     );
 
-    // Add try-catch for each contract call
     try {
       const left = await presaleContract.getTokensLeft();
       state.tokensLeft = ethers.formatEther(left);
@@ -560,22 +559,14 @@ async function getContractInfo() {
     }
 
     try {
-      const balance = await presaleContract.tokensBalanced(state.connectedAddress);
-	    console.log(balance)
-	    console.log(balance*10**18)
-     // state.userBalance = ethers.formatUnits(balance*10**18);
+      // Fix: Use tokensOwned instead of tokensBalanced
+      const balance = await presaleContract.tokensOwned(state.connectedAddress);
+      // Fix: The balance is already in wei (10^18), so we just need to format it once
+      state.userBalance = ethers.formatEther(balance);
     } catch (err) {
       console.error("Error getting user balance:", err);
       state.userBalance = "Error loading";
     }
-
-    /* try {
-                    const price = await presaleContract.getTokenPriceInMatic();
-                    state.maticPrice = ethers.formatEther(price);
-                } catch (err) {
-                    console.error('Error getting token price:', err);
-                    state.maticPrice = 'Error loading';
-                } */
 
     updateUI();
   } catch (err) {
