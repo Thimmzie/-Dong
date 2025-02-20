@@ -561,6 +561,8 @@ async function getContractInfo() {
 
     try {
       const balance = await presaleContract.tokensBalanced(state.connectedAddress);
+	    console.log(balance)
+	    console.log(balance*10**18)
       state.userBalance = ethers.formatUnits(balance*10**18);
     } catch (err) {
       console.error("Error getting user balance:", err);
