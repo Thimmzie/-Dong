@@ -92,7 +92,7 @@ html {
   width: 25px;
   height: 3px;
   margin: 5px auto;
-  -webkit-transition: all 0, 3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   background-color: rgb(255, 255, 255);
 }
@@ -3814,8 +3814,13 @@ label {
     padding: 10px;
     background: rgb(1, 22, 24, 0.2);
     border-radius: 5px;
+    font-size: 1.7rem;
+    font-family: "baloo 2", serif;
   }
-
+  .success {
+    font-size: 1.7rem;
+    font-family: "baloo 2", serif;
+  }
   .loading-indicator {
     display: inline-block;
     margin-left: 10px;
