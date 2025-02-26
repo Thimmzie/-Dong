@@ -552,7 +552,7 @@ async function getContractInfo() {
 
     try {
       const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = formatEther(left/1000);
+      state.tokensLeft = formatEther(left);
     } catch (err) {
       console.error("Error getting tokens left:", err);
       state.tokensLeft = "Error loading";
