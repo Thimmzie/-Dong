@@ -485,7 +485,7 @@ function updateUI() {
     elements.presaleInfo.innerHTML = `
                     <p><span>Tokens Left:</span> ${state.tokensLeft}</p>
                     <p><span>Your Balance:</span> ${state.userBalance}</p>
-                    <p><span>Price (USD):</span>  0.04$</p>
+                    <p><span>Price (USD):</span>  $0.04</p>
                 `;
   }
 }
@@ -552,7 +552,7 @@ async function getContractInfo() {
 
     try {
       const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = formatUnits(left, 4);
+      state.tokensLeft = formatEther(left/1000);
     } catch (err) {
       console.error("Error getting tokens left:", err);
       state.tokensLeft = "Error loading";
