@@ -483,8 +483,8 @@ function updateUI() {
   // Update presale info if available
   if (elements.presaleInfo) {
     elements.presaleInfo.innerHTML = `
-                    <p><span>Tokens Left:</span> ${state.tokensLeft}</p>
-                    <p><span>Your Balance:</span> ${state.userBalance}</p>
+                    <p><span>Tokens Left:</span> ${state.tokensLeft} DONG</p>
+                    <p><span>Your Balance:</span> ${state.userBalance} DONG</p>
                     <p><span>Price (USD):</span>  $0.04</p>
                 `;
   }
