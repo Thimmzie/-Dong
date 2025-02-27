@@ -536,6 +536,10 @@ async function handleConnectWallet() {
   }
 }
 
+function formatNumberWithCommas(number) {
+    return number.toLocaleString();
+}
+
 async function getContractInfo() {
   if (!state.connectedAddress) return;
 
@@ -552,7 +556,7 @@ async function getContractInfo() {
 
     try {
       const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = formatEther(left);
+      state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
     } catch (err) {
       console.error("Error getting tokens left:", err);
       state.tokensLeft = "Error loading";
@@ -562,7 +566,7 @@ async function getContractInfo() {
       // Fix: Use tokensOwned instead of tokensBalanced
       const balance = await presaleContract.tokensOwned(state.connectedAddress);
       // Fix: The balance is already in wei (10^18), so we just need to format it once
-      state.userBalance = balance.toString();
+      state.userBalance = formatNumberWithCommas(Number(balance.toString()));
     } catch (err) {
       console.error("Error getting user balance:", err);
       state.userBalance = "Error loading";
