@@ -4,349 +4,349 @@ const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 // Contract ABIs
 const PRESALE_ABI = [
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_tokenAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_owner",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_start",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_end",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "buyer",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "TokensPurchased",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "recipient",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "TokensWithdrawn",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "numberOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "buyTokens",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "endTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getCurrentTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getDeployedTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getEndTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getMaticUSDPrice",
-		"outputs": [
-			{
-				"internalType": "int256",
-				"name": "",
-				"type": "int256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getStartTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getTokenPriceInMatic",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getTokensLeft",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "saleToken",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_end",
-				"type": "uint256"
-			}
-		],
-		"name": "setEndTime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_start",
-				"type": "uint256"
-			}
-		],
-		"name": "setStartTime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "startTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "tokenAddress",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "tokenBalances",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			}
-		],
-		"name": "tokensOwned",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "tokensSold",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdrawUnsoldTokens",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	}
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_tokenAddress",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_owner",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_start",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_end",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "buyer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "TokensPurchased",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "recipient",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "TokensWithdrawn",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "numberOfTokens",
+        type: "uint256",
+      },
+    ],
+    name: "buyTokens",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "endTime",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getCurrentTime",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getDeployedTime",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getEndTime",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getMaticUSDPrice",
+    outputs: [
+      {
+        internalType: "int256",
+        name: "",
+        type: "int256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getStartTime",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getTokenPriceInMatic",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getTokensLeft",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "saleToken",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_end",
+        type: "uint256",
+      },
+    ],
+    name: "setEndTime",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_start",
+        type: "uint256",
+      },
+    ],
+    name: "setStartTime",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startTime",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "tokenAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "tokenBalances",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+    ],
+    name: "tokensOwned",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "tokensSold",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "withdrawUnsoldTokens",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
 ];
 
 const ERC20_ABI = [
@@ -378,6 +378,7 @@ const elements = {
   tokenAmount: document.getElementById("tokenAmount"),
   buyButton: document.getElementById("buyButton"),
   closeButton: document.getElementById("closeButton"),
+  closeAdminButton: document.getElementById("adminCloseButton"),
   errorMessage: document.getElementById("errorMessage"),
   successMessage: document.getElementById("successMessage"),
 };
@@ -646,9 +647,12 @@ class AdminUI {
   }
 
   async initializeUI() {
-    // Create admin UI element
-    const adminUI = document.getElementById("adminUI");
-    adminUI.innerHTML = this.createAdminTemplate();
+    this.adminUI = document.getElementById("adminUI");
+
+    if (!this.adminUI) {
+      console.error("Missing DOM element: adminUI");
+      return;
+    }
 
     // Initialize contract
     await this.initContract();
@@ -657,50 +661,50 @@ class AdminUI {
     this.addEventListeners();
   }
 
-  createAdminTemplate() {
-    return `
-            <div class="admin-panel">
-    <ion-icon id="closeButton" class="close-button" name="close-outline"></ion-icon>
-    <h1 class="admin-pre-panel">
-      Token Presale Admin Panel
-    </h1>
-    <p class="connected-p">
-      <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
-    </p>
+  // createAdminTemplate() {
+  //   return `
+  //           <div class="admin-panel">
+  //   <ion-icon id="adminCloseButton" class="close-button" name="close-outline"></ion-icon>
+  //   <h1 class="admin-pre-panel">
+  //     Token Presale Admin Panel
+  //   </h1>
+  //   <p class="connected-p">
+  //     <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
+  //   </p>
 
-    <!-- Manage Presale Section -->
-    <div class="admin-section">
-      <h2 class="section-title">Manage Presale</h2>
-      <div class="input-group">
-        <label class="time-label">Start Time:</label><br>
-        <input type="datetime-local" id="startDate">
-      </div>
-      <div class="input-group">
-        <label class="time-label">End Time:</label><br>
-        <input type="datetime-local" id="endDate">
-      </div>
-      <button class="update-button" id="updateTimesBtn">Update Times</button>
-    </div>
+  //   <!-- Manage Presale Section -->
+  //   <div class="admin-section">
+  //     <h2 class="section-title">Manage Presale</h2>
+  //     <div class="input-group">
+  //       <label class="time-label">Start Time:</label><br>
+  //       <input type="datetime-local" id="startDate">
+  //     </div>
+  //     <div class="input-group">
+  //       <label class="time-label">End Time:</label><br>
+  //       <input type="datetime-local" id="endDate">
+  //     </div>
+  //     <button class="update-button" id="updateTimesBtn">Update Times</button>
+  //   </div>
 
-    <!-- Withdraw Tokens Section -->
-    <div class="admin-section">
-      <h2 class="section-title">Withdraw Unsold Tokens</h2>
-      <p class="unsold"><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
-      <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
-    </div>
+  //   <!-- Withdraw Tokens Section -->
+  //   <div class="admin-section">
+  //     <h2 class="section-title">Withdraw Unsold Tokens</h2>
+  //     <p class="unsold"><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
+  //     <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
+  //   </div>
 
-    <!-- Transfer Ownership Section -->
-    <div class="admin-section">
-      <h2 class="section-title">Transfer Ownership</h2>
-      <div class="input-group">
-        <label class="time-label">New Owner Address:</label>
-        <input type="text" id="newOwnerAddress"><br>
-        <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
-      </div>
-    </div>
-  </div>
-        `;
-  }
+  //   <!-- Transfer Ownership Section -->
+  //   <div class="admin-section">
+  //     <h2 class="section-title">Transfer Ownership</h2>
+  //     <div class="input-group">
+  //       <label class="time-label">New Owner Address:</label>
+  //       <input type="text" id="newOwnerAddress"><br>
+  //       <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
+  //     </div>
+  //   </div>
+  // </div>
+  //       `;
+  // }
 
   async initContract() {
     if (!window.ethereum) {
@@ -882,6 +886,10 @@ connectButton.addEventListener("click", handleConnectWallet);
 buyButton.addEventListener("click", buyTokens);
 closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 
+// closeAdminButton.addEventListener("click", () =>
+//   adminUI.classList.remove("active")
+// );
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   // Verify all elements exist
@@ -917,6 +925,19 @@ if (elements.closeButton) {
       document.body.style.overflow = "auto";
       document.body.style.height = "auto";
     }
+    // if (elements.adminUI) {
+    //   elements.adminUI.classList.remove("active");
+    //   document.querySelector(".page-content").style.filter = "none";
+    //   document.querySelector(".modal-overlay").style.display = "none";
+    //   document.body.style.overflow = "auto";
+    //   document.body.style.height = "auto";
+    // }
+    state.isModalOpen = false;
+  });
+}
+
+if (elements.closeAdminButton) {
+  elements.closeAdminButton.addEventListener("click", () => {
     if (elements.adminUI) {
       elements.adminUI.classList.remove("active");
       document.querySelector(".page-content").style.filter = "none";
@@ -927,7 +948,6 @@ if (elements.closeButton) {
     state.isModalOpen = false;
   });
 }
-
 // Initialize MetaMask Events
 if (window.ethereum) {
   window.ethereum.on("accountsChanged", async (accounts) => {
