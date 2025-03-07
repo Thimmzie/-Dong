@@ -3532,7 +3532,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 65rem;
-    height: 45rem;
+    height: 48rem;
     transform: translate(-50%, -50%);
     background: linear-gradient(270deg, rgb(109, 24, 34), rgb(13, 43, 46));
     transform: translate(-50%, -50%);
@@ -3627,6 +3627,7 @@ label {
     text-shadow: 2px 12px rgb(0, 0, 0);
     margin-top: 1rem;
     margin-bottom: 1rem;
+    text-align: center;
   }
   #presaleInfo {
     color: rgb(226, 223, 223);
@@ -3636,10 +3637,12 @@ label {
   }
   #presaleInfo p {
     display: flex;
+    justify-content: space-between;
     gap: 18rem;
     padding-top: 1.5rem;
     padding-bottom: 1.2rem;
     border-bottom: solid 0.1rem rgb(107, 105, 105);
+    text-align: center;
   }
   .close-button {
     color: rgb(255, 255, 255);
