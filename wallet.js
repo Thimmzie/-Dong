@@ -1,5 +1,5 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x808C0E791cc78F54aB32A53a22a2bB0091aC8c55";
+const CONTRACT_ADDRESS = "0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 // Contract ABIs
@@ -484,8 +484,8 @@ function updateUI() {
   // Update presale info if available
   if (elements.presaleInfo) {
     elements.presaleInfo.innerHTML = `
-                    <p><span>Tokens Left:</span> ${state.tokensLeft}</p>
-                    <p><span>Your Balance:</span> ${state.userBalance}</p>
+                    <p><span>Tokens Left:</span> ${state.tokensLeft} DONG</p>
+                    <p><span>Your Balance:</span> ${state.userBalance} DONG</p>
                     <p><span>Price (USD):</span>  $0.04</p>
                 `;
   }
@@ -537,6 +537,10 @@ async function handleConnectWallet() {
   }
 }
 
+function formatNumberWithCommas(number) {
+  return number.toLocaleString();
+}
+
 async function getContractInfo() {
   if (!state.connectedAddress) return;
 
@@ -553,7 +557,7 @@ async function getContractInfo() {
 
     try {
       const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = formatEther(left);
+      state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
     } catch (err) {
       console.error("Error getting tokens left:", err);
       state.tokensLeft = "Error loading";
@@ -563,7 +567,7 @@ async function getContractInfo() {
       // Fix: Use tokensOwned instead of tokensBalanced
       const balance = await presaleContract.tokensOwned(state.connectedAddress);
       // Fix: The balance is already in wei (10^18), so we just need to format it once
-      state.userBalance = balance.toString();
+      state.userBalance = formatNumberWithCommas(Number(balance.toString()));
     } catch (err) {
       console.error("Error getting user balance:", err);
       state.userBalance = "Error loading";
