@@ -439,7 +439,7 @@ async function fetchOwnerAddress() {
       PRESALE_ABI,
       provider
     );
-    const owner = "0x624C7A7699d7fc10e240082908261F99ab5Fac9E";
+    const owner = await contract.owner();
     state.ownerAddress = owner;
     return owner;
   } catch (error) {

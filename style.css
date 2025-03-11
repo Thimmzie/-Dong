@@ -1279,7 +1279,7 @@ label {
     flex-direction: column;
     align-items: end;
     padding-right: 0.5rem;
-    padding-top: 21.5rem;
+    padding-top: 19rem;
   }
   .btn10 {
     background-color: rgb(244, 39, 64);
@@ -1347,7 +1347,7 @@ label {
   }
   .modal-two.active {
     opacity: 1;
-    top: 56%;
+    top: 49%;
     transform: translate(-50%, -50%) scale(1);
     transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
     display: flex;
