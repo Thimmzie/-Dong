@@ -16,8 +16,9 @@
 </head>
 
 <body>
+  <div class="modal-overlay"></div>
   <div class="page-content">
-    <div class="modal-overlay"></div>
+
     <header id="header">
       <div class="hero-section">
         <div class="menu">
@@ -39,7 +40,7 @@
             </ul>
           </div>
           <div class="menu-button">
-            <button id="connectButton">CONNECT WALLET</button>
+            <button id="connectButton-desktop" class="connect-button">CONNECT WALLET</button>
           </div>
           <div class="hamburger">
             <span class="bar"></span>
@@ -84,7 +85,7 @@
                   </button>
                 </div>
               </div>
-              <div><button class="btn8">CONNECT WALLET</button></div>
+              <div><button id="unused-btn" class="connect-button">CONNECT WALLET</button></div>
             </div>
           </div>
         </div>
@@ -96,7 +97,7 @@
             <a href="https://www.paypal.com/ncp/payment/5W6H3BFR8X6BJ" target="_blank"><button class="btn10">BUY
                 NOW</button></a>
           </div>
-          <div><button id="connect-button" class="connectButton">CONNECT WALLET</button></div>
+          <div><button id="connectButton" class="connect-button">CONNECT WALLET</button></div>
           <div class="super-ca">
             <div class="hero-ca">
               <div class="last-section-wrapper">
@@ -140,7 +141,7 @@
     <div class="bigger-exchange">
       <div class="exchange-section">
         <div class="exchange-laterns-side">
-          <img src="images/big-latern.png" />
+          <img id="latern" src="images/big-latern.png" />
         </div>
         <div class="exchange-container">
           <h1>EXCHANGE RATE</h1>
@@ -188,7 +189,7 @@
           </div>
         </div>
         <div class="exchange-laterns-side">
-          <img src="images/big-latern.png" />
+          <img id="latern" src="images/big-latern.png" />
         </div>
       </div>
       <div class="latern-div">
@@ -297,8 +298,8 @@
         </div>
       </div>
       <div class="tokenomics-latern">
-        <img src="images/big-latern.png" />
-        <img src="images/big-latern.png" />
+        <img id="latern" src="images/big-latern.png" />
+        <img id="latern" src="images/big-latern.png" />
       </div>
       <div class="tokenomics-ca">
         <div class="last-section-wrapper">
@@ -494,7 +495,7 @@
       <div class="admin-panel">
         <ion-icon id="adminCloseButton" class="close-button" name="close-outline"></ion-icon>
         <h1 class="admin-pre-panel">
-          Token Presale Admin Panel
+          Admin Panel<br> Token Presale
         </h1>
         <p class="connected-p">
           <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>

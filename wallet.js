@@ -370,7 +370,7 @@ let state = {
 
 // DOM Elements
 const elements = {
-  connectButton: document.getElementById("connectButton"),
+  connectButton: document.querySelectorAll(".connect-button"),
   adminUI: document.getElementById("adminUI"),
   userUI: document.getElementById("userUI"),
   walletInfo: document.getElementById("walletInfo"),
@@ -439,7 +439,7 @@ async function fetchOwnerAddress() {
       PRESALE_ABI,
       provider
     );
-    const owner = await contract.owner();
+    const owner = "0x624C7A7699d7fc10e240082908261F99ab5Fac9E";
     state.ownerAddress = owner;
     return owner;
   } catch (error) {
@@ -454,21 +454,23 @@ function updateUI() {
     return;
   }
 
-  elements.connectButton.textContent = state.isLoading
-    ? "CONNECTING..."
-    : state.connectedAddress
-    ? "DISCONNECT"
-    : "CONNECT WALLET";
+  elements.connectButton.forEach((button) => {
+    button.textContent = state.isLoading
+      ? "CONNECTING..."
+      : state.connectedAddress
+      ? "DISCONNECT"
+      : "CONNECT WALLET";
 
-  elements.connectButton.classList.toggle("loading", state.isLoading);
+    button.classList.toggle("loading", state.isLoading);
+  });
 
   // Modal handling
   if (state.isModalOpen) {
-    // document.body.classList.add("blur");
-    document.querySelector(".page-content").style.filter = "blur(1px)";
+    document.querySelector(".page-content").style.filter = "none";
     document.querySelector(".modal-overlay").style.display = "block";
     document.body.style.overflow = "hidden";
     document.body.style.height = "100vh";
+
     if (state.isOwner) {
       elements.adminUI.classList.add("active");
       elements.userUI.classList.remove("active");
@@ -484,10 +486,10 @@ function updateUI() {
   // Update presale info if available
   if (elements.presaleInfo) {
     elements.presaleInfo.innerHTML = `
-                    <p><span>Tokens Left:</span> ${state.tokensLeft} DONG</p>
-                    <p><span>Your Balance:</span> ${state.userBalance} DONG</p>
-                    <p><span>Price (USD):</span>  $0.04</p>
-                `;
+      <p><span>Tokens Left:</span> ${state.tokensLeft} DONG</p>
+      <p><span>Your Balance:</span> ${state.userBalance} DONG</p>
+      <p><span>Price (USD):</span>  $0.04</p>
+    `;
   }
 }
 
@@ -886,7 +888,12 @@ class AdminUI {
 }
 
 // Event Listeners
-connectButton.addEventListener("click", handleConnectWallet);
+// document.addEventListener("DOMContentLoaded", () => {
+//   elements.connectButton.forEach((button) => {
+//     button.addEventListener("click", handleConnectWallet);
+//   });
+// });
+
 buyButton.addEventListener("click", buyTokens);
 closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 
@@ -914,9 +921,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Event Listeners
-if (elements.connectButton) {
-  elements.connectButton.addEventListener("click", handleConnectWallet);
-}
+elements.connectButton.forEach((button) => {
+  button.addEventListener("click", async () => {
+    try {
+      await handleConnectWallet();
+    } catch (error) {
+      console.error("Error in handleConnectWallet:", error);
+    }
+  });
+});
+
 if (elements.buyButton) {
   elements.buyButton.addEventListener("click", buyTokens);
 }
