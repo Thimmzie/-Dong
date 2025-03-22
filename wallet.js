@@ -443,7 +443,7 @@ async function fetchOwnerAddress() {
       PRESALE_ABI,
       provider
     );
-    const owner = await contract.owner();
+    const owner = 0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10 //await contract.owner();
     state.ownerAddress = owner;
     return owner;
   } catch (error) {
