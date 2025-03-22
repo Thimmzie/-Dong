@@ -768,13 +768,13 @@ class AdminUI {
       });
       adminWalletAddress.textContent = currentAddress[0] || "Not connected";
 
-/*       // Update unsold tokens display
+      // Update unsold tokens display
        document.getElementById("unsoldTokensAmount").textContent =
-        ethers.formatUnits(unsoldTokens, 18); */ 
+        ethers.formatUnits(unsoldTokens, 18);
      
-     const left = await presaleContract.getTokensLeft();
+/*      const left = await presaleContract.getTokensLeft();
      state.tokensLeft = formatNumberWithCommas(Number(unsoldTokens.toString()));
-     document.getElementById("unsoldTokensAmount").textContent = state.tokensLeft;
+     document.getElementById("unsoldTokensAmount").textContent = state.tokensLeft; */
 
       // Update dates if they exist
       if (startTime) {
