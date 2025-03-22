@@ -762,8 +762,12 @@ class AdminUI {
       adminWalletAddress.textContent = currentAddress[0] || "Not connected";
 
       // Update unsold tokens display
-      document.getElementById("unsoldTokensAmount").textContent =
-        ethers.formatUnits(unsoldTokens, 18);
+/*       document.getElementById("unsoldTokensAmount").textContent =
+        ethers.formatUnits(unsoldTokens, 18); */
+
+     const left = await presaleContract.getTokensLeft();
+     state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
+     document.getElementById("unsoldTokensAmount").textContent = state.tokensLeft;
 
       // Update dates if they exist
       if (startTime) {
