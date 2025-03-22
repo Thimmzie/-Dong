@@ -754,6 +754,13 @@ class AdminUI {
         this.contract.getTokensLeft(),
       ]);
 
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        PRESALE_ABI,
+        provider
+      );
+
       // Update wallet address display
       const adminWalletAddress = document.getElementById("adminWalletAddress");
       const currentAddress = await window.ethereum.request({
@@ -761,12 +768,12 @@ class AdminUI {
       });
       adminWalletAddress.textContent = currentAddress[0] || "Not connected";
 
-      // Update unsold tokens display
-/*       document.getElementById("unsoldTokensAmount").textContent =
-        ethers.formatUnits(unsoldTokens, 18); */
-
+/*       // Update unsold tokens display
+       document.getElementById("unsoldTokensAmount").textContent =
+        ethers.formatUnits(unsoldTokens, 18); */ 
+     
      const left = await presaleContract.getTokensLeft();
-     state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
+     state.tokensLeft = formatNumberWithCommas(Number(unsoldTokens.toString()));
      document.getElementById("unsoldTokensAmount").textContent = state.tokensLeft;
 
       // Update dates if they exist
