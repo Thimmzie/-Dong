@@ -431,7 +431,7 @@ async function switchToPolygon() {
 
 const checkMobileDevice = () => {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  state.isMobile = /android|ios|iphone|ipad/i.test(userAgent.toLowerCase());
+  state.isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(userAgent.toLowerCase());
 };
 
 async function fetchOwnerAddress() {
@@ -517,6 +517,29 @@ async function handleConnectWallet() {
 
     state.isLoading = true;
     updateUI();
+
+    if (state.isMobile) {
+      // Handle mobile wallet connection
+      if (window.ethereum) {
+        console.log("Using in-app browser with ethereum provider");
+      } else {
+        // For mobile browsers without built-in wallet
+        const dappUrl = window.location.href;
+        // Different deep linking formats based on wallet
+        const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
+        //const trustWalletDeepLink = `https://link.trustwallet.com/open_url?url=${dappUrl}`;
+        
+        // Show options to user
+        showMobileWalletOptions([
+          { name: "MetaMask", deepLink: metamaskDeepLink },
+          /* { name: "Trust Wallet", deepLink: trustWalletDeepLink } */
+        ]);
+        
+        state.isLoading = false;
+        updateUI();
+        return;
+      }
+    }
 
     await switchToPolygon();
 
