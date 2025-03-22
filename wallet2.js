@@ -366,6 +366,7 @@ const ERC20_ABI = [
             userBalance: 0,
             maticPrice: 0,
             contractBalance: 0
+            isMobile: false
         };
 
         // DOM Elements - Using classes instead of IDs
@@ -382,6 +383,19 @@ const ERC20_ABI = [
             successMessage: document.querySelector('.success-message'),
             loadingInfo: document.querySelector('.loading-info')
         };
+
+// Check if user is on a mobile device
+const checkMobileDevice = () => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    state.isMobile = /android|ios|iphone|ipad/i.test(userAgent.toLowerCase());
+    
+    // You can add mobile-specific UI adjustments here
+    if (state.isMobile) {
+        console.log("Mobile device detected");
+        // For example, add mobile-specific CSS classes
+        document.body.classList.add('mobile-device');
+    }
+};
 
         // User Interface Functions
         async function switchToPolygon() {
@@ -463,6 +477,12 @@ function updateUI() {
                     : "CONNECT WALLET";
             
             elements.connectButton.classList.toggle('loading', state.isLoading);
+
+            if (state.isMobile) {
+                elements.connectButton.classList.add('mobile-button');
+            } else {
+                elements.connectButton.classList.remove('mobile-button');
+            }
 
             if (state.isModalOpen) {
                 document.querySelector(".page-content").style.filter = "blur(1px)";
@@ -641,10 +661,15 @@ class AdminUI {
                 // Create admin UI element
                 this.adminUI = document.querySelector('.admin-ui');
 
-                    if (!this.adminUI) {
-                        console.error("Missing DOM element: adminUI");
-                        return;
-                      }
+                if (!this.adminUI) {
+                    console.error("Missing DOM element: adminUI");
+                    return;
+                  }
+
+                        // Adjust UI for mobile if needed
+                if (state.isMobile) {
+                    this.adminUI.classList.add('mobile-admin-ui');
+                }
 
                 // Initialize contract
                 await this.initContract();
@@ -818,6 +843,9 @@ elements.buyButton.addEventListener("click", buyTokens);
 elements.closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 
 document.addEventListener('DOMContentLoaded', async () => {
+            //check if user is on mobile device
+            checkMobileDevice();
+  
             // Verify all elements exist
             Object.entries(elements).forEach(([key, element]) => {
                 if (!element) {
@@ -884,3 +912,6 @@ if (window.ethereum) {
     updateUI();
   });
 }
+
+// Listen for resize events to re-check mobile status
+window.addEventListener('resize', checkMobileDevice);
