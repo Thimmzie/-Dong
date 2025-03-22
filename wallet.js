@@ -3,8 +3,7 @@ const CONTRACT_ADDRESS = "0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 // Contract ABIs
-const PRESALE_ABI = [
-  {
+const PRESALE_ABI = [{
     inputs: [
       {
         internalType: "address",
@@ -346,8 +345,7 @@ const PRESALE_ABI = [
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
-  },
-];
+  },];
 
 const ERC20_ABI = [
   "function approve(address spender, uint256 amount) returns (bool)",
@@ -366,6 +364,7 @@ let state = {
   userBalance: 0,
   maticPrice: 0,
   contractBalance: 0,
+  isMobile: false
 };
 
 // DOM Elements
@@ -430,6 +429,11 @@ async function switchToPolygon() {
   }
 }
 
+const checkMobileDevice = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  state.isMobile = /android|ios|iphone|ipad/i.test(userAgent.toLowerCase());
+};
+
 async function fetchOwnerAddress() {
   try {
     if (!window.ethereum) throw new Error("MetaMask not installed");
@@ -463,6 +467,13 @@ function updateUI() {
 
     button.classList.toggle("loading", state.isLoading);
   });
+
+  if (state.isMobile) {
+  // Example: Add mobile-specific class to certain elements
+    document.body.classList.add('mobile-view');
+  } else {
+    document.body.classList.remove('mobile-view');
+  }
 
   // Modal handling
   if (state.isModalOpen) {
@@ -903,6 +914,7 @@ closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
+  checkMobileDevice();
   // Verify all elements exist
   Object.entries(elements).forEach(([key, element]) => {
     if (!element) {
@@ -918,6 +930,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (elements.adminUI) {
     adminUI = new AdminUI();
   }
+
+  window.addEventListener('resize', checkMobileDevice);
 });
 
 // Event Listeners
