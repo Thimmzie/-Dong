@@ -854,7 +854,7 @@ class AdminUI {
        state.tokensLeft = formatNumberWithCommas(Number(unsoldTokens.toString()));
        document.getElementById("unsoldTokensAmount").textContent = state.tokensLeft; 
 
-      // Update dates if they exist
+     /*  // Update dates if they exist
       if (startTime) {
         const startDate = new Date(Number(startTime) * 1000);
         document.getElementById("startDate").value = startDate
@@ -867,7 +867,30 @@ class AdminUI {
         document.getElementById("endDate").value = endDate
           .toISOString()
           .slice(0, 16);
-      }
+      } */
+
+     // Convert blockchain timestamps to local date-time format
+    if (startTime) {
+      // Convert BigNumber to number if needed
+      const startTimeValue = Number(startTime.toString());
+      // Convert seconds to milliseconds for JavaScript Date
+      const startDate = new Date(startTimeValue * 1000);
+      // Format for datetime-local input (YYYY-MM-DDThh:mm)
+      document.getElementById("startDate").value = startDate
+        .toISOString()
+        .slice(0, 16);
+    }
+
+    if (endTime) {
+      // Convert BigNumber to number if needed
+      const endTimeValue = Number(endTime.toString());
+      // Convert seconds to milliseconds for JavaScript Date
+      const endDate = new Date(endTimeValue * 1000);
+      // Format for datetime-local input (YYYY-MM-DDThh:mm)
+      document.getElementById("endDate").value = endDate
+        .toISOString()
+        .slice(0, 16);
+    }
     } catch (error) {
       console.error("Error updating contract info:", error);
     }
