@@ -366,6 +366,7 @@ let state = {
   userBalance: 0,
   maticPrice: 0,
   contractBalance: 0,
+  isMobile: false,
 };
 
 // DOM Elements
@@ -430,6 +431,14 @@ async function switchToPolygon() {
   }
 }
 
+const checkMobileDevice = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  state.isMobile =
+    /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(
+      userAgent.toLowerCase()
+    );
+};
+
 async function fetchOwnerAddress() {
   try {
     if (!window.ethereum) throw new Error("MetaMask not installed");
@@ -439,7 +448,7 @@ async function fetchOwnerAddress() {
       PRESALE_ABI,
       provider
     );
-    const owner = await contract.owner();
+    const owner = "0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10"; //await contract.owner();
     state.ownerAddress = owner;
     return owner;
   } catch (error) {
@@ -463,6 +472,13 @@ function updateUI() {
 
     button.classList.toggle("loading", state.isLoading);
   });
+
+  if (state.isMobile) {
+    // Example: Add mobile-specific class to certain elements
+    document.body.classList.add("mobile-view");
+  } else {
+    document.body.classList.remove("mobile-view");
+  }
 
   // Modal handling
   if (state.isModalOpen) {
@@ -507,6 +523,29 @@ async function handleConnectWallet() {
     state.isLoading = true;
     updateUI();
 
+    // Replace this section in handleConnectWallet()
+    if (state.isMobile) {
+      // Handle mobile wallet connection
+      if (window.ethereum) {
+        console.log("Using in-app browser with ethereum provider");
+        // Continue with the connection process
+      } else {
+        // For mobile browsers without built-in wallet
+        const dappUrl = window.location.href.replace(/^https?:\/\//, "");
+        // Different deep linking formats based on wallet
+        const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
+
+        // Show options to user
+        showMobileWalletOptions([
+          { name: "MetaMask", deepLink: metamaskDeepLink },
+        ]);
+
+        state.isLoading = false;
+        updateUI();
+        return;
+      }
+    }
+
     await switchToPolygon();
 
     if (!window.ethereum) throw new Error("MetaMask not installed");
@@ -537,6 +576,71 @@ async function handleConnectWallet() {
     elements.errorMessage.textContent = `Connection error: ${error.message}`;
     updateUI();
   }
+}
+
+// Add this function to handle mobile wallet options
+function showMobileWalletOptions(walletOptions) {
+  // Create a modal or panel to display wallet options
+  const mobileWalletModal = document.createElement("div");
+  mobileWalletModal.className = "mobile-wallet-modal";
+  mobileWalletModal.innerHTML = `
+    <div class="mobile-wallet-content">
+      <h3>Connect with your wallet</h3>
+      <p>Please select your preferred wallet to continue:</p>
+      <div class="wallet-options">
+        ${walletOptions
+          .map(
+            (wallet) => `
+          <a href="${wallet.deepLink}" class="wallet-option">
+            <span>${wallet.name}</span>
+          </a>
+        `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(mobileWalletModal);
+
+  // Add some basic styles for the modal
+  const style = document.createElement("style");
+  style.textContent = `
+    .mobile-wallet-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-wallet-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+      text-align: center;
+    }
+    .wallet-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .wallet-option {
+      padding: 12px;
+      background: #f3f3f3;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  `;
+  document.head.appendChild(style);
 }
 
 function formatNumberWithCommas(number) {
@@ -754,7 +858,14 @@ class AdminUI {
       document.getElementById("unsoldTokensAmount").textContent =
         ethers.formatUnits(unsoldTokens, 18);
 
-      // Update dates if they exist
+      /*      const left = await presaleContract.getTokensLeft(); */
+      state.tokensLeft = formatNumberWithCommas(
+        Number(unsoldTokens.toString())
+      );
+      document.getElementById("unsoldTokensAmount").textContent =
+        state.tokensLeft;
+
+      /*  // Update dates if they exist
       if (startTime) {
         const startDate = new Date(Number(startTime) * 1000);
         document.getElementById("startDate").value = startDate
@@ -767,18 +878,72 @@ class AdminUI {
         document.getElementById("endDate").value = endDate
           .toISOString()
           .slice(0, 16);
+      } */
+
+      // Convert blockchain timestamps to local date-time format
+      if (startTime) {
+        // Convert BigNumber to number if needed
+        const startTimeValue = Number(startTime.toString());
+        // Convert seconds to milliseconds for JavaScript Date
+        const startDate = new Date(startTimeValue * 1000);
+        // Format for datetime-local input (YYYY-MM-DDThh:mm)
+        document.getElementById("startDate").value = startDate
+          .toISOString()
+          .slice(0, 16);
+      }
+
+      if (endTime) {
+        // Convert BigNumber to number if needed
+        const endTimeValue = Number(endTime.toString());
+        // Convert seconds to milliseconds for JavaScript Date
+        const endDate = new Date(endTimeValue * 1000);
+        // Format for datetime-local input (YYYY-MM-DDThh:mm)
+        document.getElementById("endDate").value = endDate
+          .toISOString()
+          .slice(0, 16);
       }
     } catch (error) {
       console.error("Error updating contract info:", error);
     }
   }
 
-  calculateEpoch(dateString) {
+  /*   calculateEpoch(dateString) {
     const inputDate = new Date(dateString);
     if (isNaN(inputDate.getTime())) {
       alert("Invalid date format. Please use a valid date.");
       return null;
     }
+    return Math.floor(inputDate.getTime() / 1000);
+  } */
+
+  calculateEpoch(dateString) {
+    const inputDate = new Date(dateString);
+
+    // Check if the date is valid
+    if (isNaN(inputDate.getTime())) {
+      alert("Invalid date format. Please use a valid date.");
+      return null;
+    }
+
+    // Get current date for validation
+    const currentDate = new Date();
+
+    // Define maximum allowed date (e.g., end of 2026)
+    const maxAllowedDate = new Date(2026, 11, 31); // Year, Month (0-based), Day
+
+    // Check if date is in the past
+    if (inputDate < currentDate) {
+      alert("Please enter a date in the future.");
+      return null;
+    }
+
+    // Check if date is too far in the future
+    if (inputDate > maxAllowedDate) {
+      alert("Date is too far in the future. Please enter a date before 2027.");
+      return null;
+    }
+
+    // Convert to Unix timestamp (seconds since epoch)
     return Math.floor(inputDate.getTime() / 1000);
   }
 
@@ -903,6 +1068,7 @@ closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
+  checkMobileDevice();
   // Verify all elements exist
   Object.entries(elements).forEach(([key, element]) => {
     if (!element) {
@@ -918,6 +1084,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (elements.adminUI) {
     adminUI = new AdminUI();
   }
+
+  window.addEventListener("resize", checkMobileDevice);
 });
 
 // Event Listeners
