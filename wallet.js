@@ -176,28 +176,28 @@ async function handleConnectWallet() {
     state.isLoading = true;
     updateUI();
 
-    if (state.isMobile) {
-      // Handle mobile wallet connection
-      if (window.ethereum) {
-        console.log("Using in-app browser with ethereum provider");
-      } else {
-        // For mobile browsers without built-in wallet
-        const dappUrl = window.location.href;
-        // Different deep linking formats based on wallet
-        const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
-        //const trustWalletDeepLink = `https://link.trustwallet.com/open_url?url=${dappUrl}`;
-        
-        // Show options to user
-        showMobileWalletOptions([
-          { name: "MetaMask", deepLink: metamaskDeepLink },
-          /* { name: "Trust Wallet", deepLink: trustWalletDeepLink } */
-        ]);
-        
-        state.isLoading = false;
-        updateUI();
-        return;
-      }
-    }
+// Replace this section in handleConnectWallet()
+if (state.isMobile) {
+  // Handle mobile wallet connection
+  if (window.ethereum) {
+    console.log("Using in-app browser with ethereum provider");
+    // Continue with the connection process
+  } else {
+    // For mobile browsers without built-in wallet
+    const dappUrl = window.location.href.replace(/^https?:\/\//, '');
+    // Different deep linking formats based on wallet
+    const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
+    
+    // Show options to user
+    showMobileWalletOptions([
+      { name: "MetaMask", deepLink: metamaskDeepLink },
+    ]);
+    
+    state.isLoading = false;
+    updateUI();
+    return;
+  }
+}
 
     await switchToPolygon();
 
@@ -229,6 +229,68 @@ async function handleConnectWallet() {
     elements.errorMessage.textContent = `Connection error: ${error.message}`;
     updateUI();
   }
+}
+
+
+// Add this function to handle mobile wallet options
+function showMobileWalletOptions(walletOptions) {
+  // Create a modal or panel to display wallet options
+  const mobileWalletModal = document.createElement('div');
+  mobileWalletModal.className = 'mobile-wallet-modal';
+  mobileWalletModal.innerHTML = `
+    <div class="mobile-wallet-content">
+      <h3>Connect with your wallet</h3>
+      <p>Please select your preferred wallet to continue:</p>
+      <div class="wallet-options">
+        ${walletOptions.map(wallet => `
+          <a href="${wallet.deepLink}" class="wallet-option">
+            <span>${wallet.name}</span>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(mobileWalletModal);
+  
+  // Add some basic styles for the modal
+  const style = document.createElement('style');
+  style.textContent = `
+    .mobile-wallet-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-wallet-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+      text-align: center;
+    }
+    .wallet-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .wallet-option {
+      padding: 12px;
+      background: #f3f3f3;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  `;
+  document.head.appendChild(style);
 }
 
 function formatNumberWithCommas(number) {
