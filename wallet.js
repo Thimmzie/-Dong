@@ -176,28 +176,28 @@ async function handleConnectWallet() {
     state.isLoading = true;
     updateUI();
 
-// Replace this section in handleConnectWallet()
-if (state.isMobile) {
-  // Handle mobile wallet connection
-  if (window.ethereum) {
-    console.log("Using in-app browser with ethereum provider");
-    // Continue with the connection process
-  } else {
-    // For mobile browsers without built-in wallet
-    const dappUrl = window.location.href.replace(/^https?:\/\//, '');
-    // Different deep linking formats based on wallet
-    const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
-    
-    // Show options to user
-    showMobileWalletOptions([
-      { name: "MetaMask", deepLink: metamaskDeepLink },
-    ]);
-    
-    state.isLoading = false;
-    updateUI();
-    return;
-  }
-}
+    // Replace this section in handleConnectWallet()
+    if (state.isMobile) {
+      // Handle mobile wallet connection
+      if (window.ethereum) {
+        console.log("Using in-app browser with ethereum provider");
+        // Continue with the connection process
+      } else {
+        // For mobile browsers without built-in wallet
+        const dappUrl = window.location.href.replace(/^https?:\/\//, '');
+        // Different deep linking formats based on wallet
+        const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
+        
+        // Show options to user
+        showMobileWalletOptions([
+          { name: "MetaMask", deepLink: metamaskDeepLink },
+        ]);
+        
+        state.isLoading = false;
+        updateUI();
+        return;
+      }
+    }
 
     await switchToPolygon();
 
