@@ -1,10 +1,12 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x4A874bb5702983f8a6685D852aDBC2F075a2A543"
-const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff"
+/* const CONTRACT_ADDRESS = "0x4A874bb5702983f8a6685D852aDBC2F075a2A543"
+const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff" */
+
+const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
+const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254";
 
 // Contract ABIs
-const PRESALE_ABI = [
-  {
+const PRESALE_ABI = [  {
     inputs: [
       {
         internalType: "address",
@@ -346,8 +348,7 @@ const PRESALE_ABI = [
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
-  },
-];
+  },];
 
 const ERC20_ABI = [
   "function approve(address spender, uint256 amount) returns (bool)",
@@ -771,51 +772,6 @@ class AdminUI {
     this.addEventListeners();
   }
 
-  // createAdminTemplate() {
-  //   return `
-  //           <div class="admin-panel">
-  //   <ion-icon id="adminCloseButton" class="close-button" name="close-outline"></ion-icon>
-  //   <h1 class="admin-pre-panel">
-  //     Token Presale Admin Panel
-  //   </h1>
-  //   <p class="connected-p">
-  //     <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
-  //   </p>
-
-  //   <!-- Manage Presale Section -->
-  //   <div class="admin-section">
-  //     <h2 class="section-title">Manage Presale</h2>
-  //     <div class="input-group">
-  //       <label class="time-label">Start Time:</label><br>
-  //       <input type="datetime-local" id="startDate">
-  //     </div>
-  //     <div class="input-group">
-  //       <label class="time-label">End Time:</label><br>
-  //       <input type="datetime-local" id="endDate">
-  //     </div>
-  //     <button class="update-button" id="updateTimesBtn">Update Times</button>
-  //   </div>
-
-  //   <!-- Withdraw Tokens Section -->
-  //   <div class="admin-section">
-  //     <h2 class="section-title">Withdraw Unsold Tokens</h2>
-  //     <p class="unsold"><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
-  //     <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
-  //   </div>
-
-  //   <!-- Transfer Ownership Section -->
-  //   <div class="admin-section">
-  //     <h2 class="section-title">Transfer Ownership</h2>
-  //     <div class="input-group">
-  //       <label class="time-label">New Owner Address:</label>
-  //       <input type="text" id="newOwnerAddress"><br>
-  //       <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
-  //     </div>
-  //   </div>
-  // </div>
-  //       `;
-  // }
-
   async initContract() {
     if (!window.ethereum) {
       alert("Please install MetaMask!");
@@ -1105,13 +1061,6 @@ if (elements.closeButton) {
       document.body.style.overflow = "auto";
       document.body.style.height = "auto";
     }
-    // if (elements.adminUI) {
-    //   elements.adminUI.classList.remove("active");
-    //   document.querySelector(".page-content").style.filter = "none";
-    //   document.querySelector(".modal-overlay").style.display = "none";
-    //   document.body.style.overflow = "auto";
-    //   document.body.style.height = "auto";
-    // }
     state.isModalOpen = false;
   });
 }
