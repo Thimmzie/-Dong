@@ -170,7 +170,7 @@ html {
   opacity: 0;
   left: 50%;
   width: 90%;
-  height: 90vh;
+  height: 94vh;
   border-radius: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
@@ -1308,7 +1308,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    height: 80vh;
+    height: 87vh;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
     transform: translate(-50%, -50%);
@@ -1359,7 +1359,7 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
   .modal-overlay {
     display: none;
@@ -2520,7 +2520,7 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 3rem;
+    padding-top: 2rem;
   }
   .modal-overlay {
     display: none;
@@ -3627,7 +3627,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    height: 80vh;
+    height: 85vh;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
     transform: translate(-50%, -50%);
@@ -3678,7 +3678,7 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
   .modal-overlay {
     display: none;
