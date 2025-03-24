@@ -170,7 +170,7 @@ html {
   opacity: 0;
   left: 50%;
   width: 90%;
-  height: 94vh;
+  min-height: 94vh;
   border-radius: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
@@ -1307,7 +1307,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    height: 87vh;
+    min-height: 87vh;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
     transform: translate(-50%, -50%);

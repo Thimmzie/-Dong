@@ -1109,12 +1109,3 @@ window.addEventListener("resize", () => {
     modal.style.top = "50%";
   }
 });
-
-function adjustModalHeight() {
-  const modal = document.querySelector(".modal.active");
-  if (modal) {
-    modal.style.height = `${window.innerHeight}px`;
-  }
-}
-
-window.addEventListener("resize", adjustModalHeight);
