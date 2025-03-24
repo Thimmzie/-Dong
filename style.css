@@ -1308,7 +1308,7 @@ label {
     left: 50%;
     width: 90%;
     bottom: 0;
-    max-height: 87vh;
+    min-height: 87vh;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
     transform: translate(-50%, -50%);
