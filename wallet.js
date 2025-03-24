@@ -1097,3 +1097,14 @@ if (window.ethereum) {
     updateUI();
   });
 }
+window.addEventListener("resize", () => {
+  const modal = document.querySelector(".modal.active");
+
+  if (!modal) return;
+
+  if (window.innerHeight < screen.height * 0.7) {
+    modal.style.top = "20%";
+  } else {
+    modal.style.top = "50%";
+  }
+});
