@@ -488,7 +488,8 @@ function updateUI() {
     document.querySelector(".page-content").style.filter = "none";
     document.querySelector(".modal-overlay").style.display = "block";
     document.body.style.overflow = "hidden";
-    document.body.style.height = "100vh";
+    // document.body.style.height = "100vh";
+    document.body.style.position = "fixed";
 
     if (state.isOwner) {
       elements.adminUI.classList.add("active");
@@ -1080,7 +1081,8 @@ if (elements.closeAdminButton) {
       document.querySelector(".page-content").style.filter = "none";
       document.querySelector(".modal-overlay").style.display = "none";
       document.body.style.overflow = "auto";
-      document.body.style.height = "auto";
+      // document.body.style.height = "auto";
+      document.body.style.position = "";
     }
     state.isModalOpen = false;
   });
@@ -1120,7 +1122,7 @@ function adjustModalHeight() {
 
   const newHeight = window.innerHeight / remSize;
 
-  modal.style.minHeight = "43.5rem";
+  modal.style.minHeight = "50rem";
   modal.style.height = `${Math.max(newHeight, 30)}rem`;
 }
 
