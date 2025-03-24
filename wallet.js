@@ -1146,3 +1146,9 @@ if (window.ethereum) {
     updateUI();
   });
 }
+document.querySelectorAll(".input-field").forEach((input) => {
+  input.addEventListener("focus", () => {
+    document.querySelector(".modal").style.transform =
+      "translateX(-50%) translateY(-20%)";
+  });
+});

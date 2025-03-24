@@ -212,7 +212,6 @@ html {
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
-  /* justify-content: center; */
 }
 .modal-overlay {
   display: none;
