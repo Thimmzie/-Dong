@@ -1,12 +1,13 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x4A874bb5702983f8a6685D852aDBC2F075a2A543"
-const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff"
+const CONTRACT_ADDRESS = "0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
 const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
 
 // Contract ABIs
-const PRESALE_ABI = [  {
+const PRESALE_ABI = [
+  {
     inputs: [
       {
         internalType: "address",
@@ -348,7 +349,8 @@ const PRESALE_ABI = [  {
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
-  },];
+  },
+];
 
 const ERC20_ABI = [
   "function approve(address spender, uint256 amount) returns (bool)",
@@ -794,108 +796,114 @@ class AdminUI {
     }
   }
 
-// This function reads from the blockchain and updates the UI
-async updateContractInfo() {
-  try {
-    const [owner, startTime, endTime, unsoldTokens] = await Promise.all([
-      this.contract.owner(),
-      this.contract.getStartTime(),
-      this.contract.getEndTime(),
-      this.contract.getTokensLeft(),
-    ]);
-    
-    // Update wallet address display
-    const adminWalletAddress = document.getElementById("adminWalletAddress");
-    const currentAddress = await window.ethereum.request({
-      method: "eth_accounts",
-    });
-    adminWalletAddress.textContent = currentAddress[0] || "Not connected";
-    
-    // Update unsold tokens display (clean up the duplicate code)
-    state.tokensLeft = formatNumberWithCommas(Number(unsoldTokens.toString()));
-    document.getElementById("unsoldTokensAmount").textContent = state.tokensLeft;
-    
-    // Convert blockchain timestamps to local date-time format
-    if (startTime) {
-      const startTimeValue = Number(startTime.toString());
-      const startDate = new Date(startTimeValue * 1000);
-      document.getElementById("startDate").value = startDate
-        .toISOString()
-        .slice(0, 16);
-    }
-    
-    if (endTime) {
-      const endTimeValue = Number(endTime.toString());
-      const endDate = new Date(endTimeValue * 1000);
-      document.getElementById("endDate").value = endDate
-        .toISOString()
-        .slice(0, 16);
-    }
-  } catch (error) {
-    console.error("Error updating contract info:", error);
-  }
-}
+  // This function reads from the blockchain and updates the UI
+  async updateContractInfo() {
+    try {
+      const [owner, startTime, endTime, unsoldTokens] = await Promise.all([
+        this.contract.owner(),
+        this.contract.getStartTime(),
+        this.contract.getEndTime(),
+        this.contract.getTokensLeft(),
+      ]);
 
-// This function calculates relative time for sending to the blockchain
-calculateEpoch(dateString) {
-  const inputDate = new Date(dateString);
-  
-  // Check if the date is valid
-  if (isNaN(inputDate.getTime())) {
-    alert("Invalid date format. Please use a valid date.");
-    return null;
-  }
-  
-  // Get current date for validation and relative calculation
-  const currentDate = new Date();
-  
-  // Define maximum allowed date (e.g., end of 2026)
-  const maxAllowedDate = new Date(2026, 11, 31);
-  
-  // Check if date is in the past
-  if (inputDate < currentDate) {
-    alert("Please enter a date in the future.");
-    return null;
-  }
-  
-  // Check if date is too far in the future
-  if (inputDate > maxAllowedDate) {
-    alert("Date is too far in the future. Please enter a date before 2027.");
-    return null;
-  }
-  
-  // Calculate RELATIVE time in seconds from now (this is the key change)
-  return Math.floor((inputDate.getTime() - currentDate.getTime()) / 1000);
-}
+      // Update wallet address display
+      const adminWalletAddress = document.getElementById("adminWalletAddress");
+      const currentAddress = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+      adminWalletAddress.textContent = currentAddress[0] || "Not connected";
 
-async setDate(isStartDate) {
-  try {
-    const dateInputId = isStartDate ? "startDate" : "endDate";
-    const dateString = document.getElementById(dateInputId).value;
-    
-    // Calculate relative seconds from now
-    const relativeSeconds = this.calculateEpoch(dateString);
-    
-    if (relativeSeconds === null) {
-      return; // Validation failed
+      // Update unsold tokens display (clean up the duplicate code)
+      state.tokensLeft = formatNumberWithCommas(
+        Number(unsoldTokens.toString())
+      );
+      document.getElementById("unsoldTokensAmount").textContent =
+        state.tokensLeft;
+
+      // Convert blockchain timestamps to local date-time format
+      if (startTime) {
+        const startTimeValue = Number(startTime.toString());
+        const startDate = new Date(startTimeValue * 1000);
+        document.getElementById("startDate").value = startDate
+          .toISOString()
+          .slice(0, 16);
+      }
+
+      if (endTime) {
+        const endTimeValue = Number(endTime.toString());
+        const endDate = new Date(endTimeValue * 1000);
+        document.getElementById("endDate").value = endDate
+          .toISOString()
+          .slice(0, 16);
+      }
+    } catch (error) {
+      console.error("Error updating contract info:", error);
     }
-    
-    // Call the appropriate contract function
-    if (isStartDate) {
-      await this.contract.setStartTime(relativeSeconds);
-    } else {
-      await this.contract.setEndTime(relativeSeconds);
-    }
-    
-    alert(`${isStartDate ? "Start" : "End"} date updated successfully!`);
-    
-    // Update UI after blockchain confirms the transaction
-    await this.updateContractInfo();
-  } catch (error) {
-    console.error(`Error setting ${isStartDate ? "start" : "end"} date:`, error);
-    alert(`Failed to update date: ${error.message}`);
   }
-}
+
+  // This function calculates relative time for sending to the blockchain
+  calculateEpoch(dateString) {
+    const inputDate = new Date(dateString);
+
+    // Check if the date is valid
+    if (isNaN(inputDate.getTime())) {
+      alert("Invalid date format. Please use a valid date.");
+      return null;
+    }
+
+    // Get current date for validation and relative calculation
+    const currentDate = new Date();
+
+    // Define maximum allowed date (e.g., end of 2026)
+    const maxAllowedDate = new Date(2026, 11, 31);
+
+    // Check if date is in the past
+    if (inputDate < currentDate) {
+      alert("Please enter a date in the future.");
+      return null;
+    }
+
+    // Check if date is too far in the future
+    if (inputDate > maxAllowedDate) {
+      alert("Date is too far in the future. Please enter a date before 2027.");
+      return null;
+    }
+
+    // Calculate RELATIVE time in seconds from now (this is the key change)
+    return Math.floor((inputDate.getTime() - currentDate.getTime()) / 1000);
+  }
+
+  async setDate(isStartDate) {
+    try {
+      const dateInputId = isStartDate ? "startDate" : "endDate";
+      const dateString = document.getElementById(dateInputId).value;
+
+      // Calculate relative seconds from now
+      const relativeSeconds = this.calculateEpoch(dateString);
+
+      if (relativeSeconds === null) {
+        return; // Validation failed
+      }
+
+      // Call the appropriate contract function
+      if (isStartDate) {
+        await this.contract.setStartTime(relativeSeconds);
+      } else {
+        await this.contract.setEndTime(relativeSeconds);
+      }
+
+      alert(`${isStartDate ? "Start" : "End"} date updated successfully!`);
+
+      // Update UI after blockchain confirms the transaction
+      await this.updateContractInfo();
+    } catch (error) {
+      console.error(
+        `Error setting ${isStartDate ? "start" : "end"} date:`,
+        error
+      );
+      alert(`Failed to update date: ${error.message}`);
+    }
+  }
 
   setLoading(isLoading) {
     this.loading = isLoading;
@@ -1089,9 +1097,3 @@ if (window.ethereum) {
     updateUI();
   });
 }
-document.querySelectorAll(".input-field").forEach((input) => {
-  input.addEventListener("focus", () => {
-    document.querySelector(".modal").style.transform =
-      "translateX(-50%) translateY(-20%)";
-  });
-});
