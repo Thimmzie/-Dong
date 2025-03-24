@@ -1098,14 +1098,27 @@ if (window.ethereum) {
   });
 }
 
-window.addEventListener("resize", () => {
+// window.addEventListener("resize", () => {
+//   const modal = document.querySelector(".modal.active");
+
+//   if (!modal) return;
+
+//   if (window.innerHeight < screen.height * 0.7) {
+//     modal.style.top = "20%";
+//   } else {
+//     modal.style.top = "50%";
+//   }
+// });
+
+function adjustModalHeight() {
   const modal = document.querySelector(".modal.active");
-
-  if (!modal) return;
-
-  if (window.innerHeight < screen.height * 0.7) {
-    modal.style.top = "20%";
-  } else {
-    modal.style.top = "50%";
+  if (modal) {
+    const remSize = parseFloat(
+      getComputedStyle(document.documentElement).fontSize
+    );
+    modal.style.height = `${window.innerHeight / remSize}rem`;
   }
-});
+}
+
+window.addEventListener("resize", adjustModalHeight);
+window.addEventListener("load", adjustModalHeight);
