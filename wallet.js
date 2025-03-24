@@ -1121,17 +1121,13 @@ function adjustModalHeight() {
   const remSize = parseFloat(
     getComputedStyle(document.documentElement).fontSize
   );
-  const newHeight = window.innerHeight / remSize;
+  const currentHeight = window.innerHeight / remSize;
 
   if (!originalModalHeight) {
     originalModalHeight = modal.clientHeight / remSize;
   }
 
-  if (newHeight < originalModalHeight * 0.8) {
-    modal.style.height = `${newHeight}rem`;
-  } else {
-    modal.style.height = `${originalModalHeight}rem`;
-  }
+  modal.style.maxHeight = `${Math.max(currentHeight, originalModalHeight)}rem`;
 }
 
 window.addEventListener("resize", adjustModalHeight);
