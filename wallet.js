@@ -1112,19 +1112,19 @@ if (window.ethereum) {
 //   }
 // });
 
-function adjustModalHeight() {
-  const modal = document.querySelector(".modal.active");
-  if (!modal) return;
+// function adjustModalHeight() {
+//   const modal = document.querySelector(".modal.active");
+//   if (!modal) return;
 
-  const remSize = parseFloat(
-    getComputedStyle(document.documentElement).fontSize
-  );
+//   const remSize = parseFloat(
+//     getComputedStyle(document.documentElement).fontSize
+//   );
 
-  const newHeight = window.innerHeight / remSize;
+//   const newHeight = window.innerHeight / remSize;
 
-  modal.style.minHeight = "50rem";
-  modal.style.height = `${Math.max(newHeight, 30)}rem`;
-}
+//   modal.style.minHeight = "50rem";
+//   modal.style.height = `${Math.max(newHeight, 30)}rem`;
+// }
 
-window.addEventListener("resize", adjustModalHeight);
-window.addEventListener("load", adjustModalHeight);
+// window.addEventListener("resize", adjustModalHeight);
+// window.addEventListener("load", adjustModalHeight);
