@@ -1110,15 +1110,15 @@ if (window.ethereum) {
 //   }
 // });
 
-function adjustModalHeight() {
-  const modal = document.querySelector(".modal.active");
-  if (modal) {
-    const remSize = parseFloat(
-      getComputedStyle(document.documentElement).fontSize
-    );
-    modal.style.height = `${window.innerHeight / remSize}rem`;
-  }
-}
+// function adjustModalHeight() {
+//   const modal = document.querySelector(".modal.active");
+//   if (modal) {
+//     const remSize = parseFloat(
+//       getComputedStyle(document.documentElement).fontSize
+//     );
+//     modal.style.height = `${window.innerHeight / remSize}rem`;
+//   }
+// }
 
-window.addEventListener("resize", adjustModalHeight);
-window.addEventListener("load", adjustModalHeight);
+// window.addEventListener("resize", adjustModalHeight);
+// window.addEventListener("load", adjustModalHeight);
