@@ -1111,24 +1111,3 @@ if (window.ethereum) {
 //     modal.style.top = "50%";
 //   }
 // });
-
-let originalModalHeight = 0;
-
-function adjustModalHeight() {
-  const modal = document.querySelector(".modal.active");
-  if (!modal) return;
-
-  const remSize = parseFloat(
-    getComputedStyle(document.documentElement).fontSize
-  );
-  const currentHeight = window.innerHeight / remSize;
-
-  if (!originalModalHeight) {
-    originalModalHeight = modal.clientHeight / remSize;
-  }
-
-  modal.style.maxHeight = `${Math.max(currentHeight, originalModalHeight)}rem`;
-}
-
-window.addEventListener("resize", adjustModalHeight);
-window.addEventListener("load", adjustModalHeight);
