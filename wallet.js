@@ -1106,7 +1106,7 @@ window.addEventListener("resize", () => {
   if (!modal) return;
 
   if (window.innerHeight < screen.height * 0.7) {
-    modal.style.top = "70%";
+    modal.style.top = "100%";
   } else {
     modal.style.top = "50%";
   }
