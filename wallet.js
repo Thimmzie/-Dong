@@ -1100,14 +1100,14 @@ if (window.ethereum) {
   });
 }
 
-// window.addEventListener("resize", () => {
-//   const modal = document.querySelector(".modal.active");
+window.addEventListener("resize", () => {
+  const modal = document.querySelector(".modal.active");
 
-//   if (!modal) return;
+  if (!modal) return;
 
-//   if (window.innerHeight < screen.height * 0.7) {
-//     modal.style.top = "20%";
-//   } else {
-//     modal.style.top = "50%";
-//   }
-// });
+  if (window.innerHeight < screen.height * 0.7) {
+    modal.style.top = "70%";
+  } else {
+    modal.style.top = "50%";
+  }
+});
