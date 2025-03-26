@@ -1309,7 +1309,7 @@ label {
     width: 90%;
     bottom: 0;
     height: 87dvh;
-    max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
