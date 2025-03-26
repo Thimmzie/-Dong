@@ -1308,8 +1308,7 @@ label {
     left: 50%;
     width: 90%;
     bottom: 0;
-    min-height: 80dvh;
-    max-height: 250dvh;
+    min-height: 600px;
     overflow-y: auto;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
