@@ -1102,15 +1102,13 @@ if (window.ethereum) {
 
 window.addEventListener("resize", () => {
   const modal = document.querySelector(".modal.active");
-  const token = document.querySelector("#tokenAmount");
 
   if (!modal) return;
 
   if (window.innerHeight < screen.height * 0.7) {
     modal.style.top = "100%";
     document.body.style.position = "fixed";
-    tokenAmount.style.height = "6vh";
-    tokenAmount.style.width = "55vw";
+    document.body.style.overflow = "hidden";
   } else {
     modal.style.top = "50%";
   }
