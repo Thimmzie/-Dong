@@ -1371,6 +1371,7 @@ label {
     height: 100vh;
     background: rgb(0, 0, 0, 0.9);
     z-index: 1200;
+    overflow: hidden;
   }
   .modal-header h1 {
     font-family: "Rebellion-squad-ZpprZ", sans-serif;

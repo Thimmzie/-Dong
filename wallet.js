@@ -1108,7 +1108,6 @@ window.addEventListener("resize", () => {
   if (window.innerHeight < screen.height * 0.7) {
     modal.style.top = "100%";
     document.body.style.position = "fixed";
-    document.body.style.overflow = "hidden";
   } else {
     modal.style.top = "50%";
   }
