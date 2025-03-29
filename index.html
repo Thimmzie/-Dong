@@ -144,7 +144,7 @@
           <img id="latern" src="images/big-latern.png" />
         </div>
         <div class="exchange-container">
-          <h1>EXCHANGE </h1>
+          <h1>EXCHANGE RATE</h1>
           <div class="exchange-rate">
             <div class="exchange-horizontal-one"></div>
             <div class="rate-div">
@@ -490,70 +490,70 @@
     </div> -->
   <!-- </div> -->
 
-  <div class="content-wrapper">
-    <div id="adminUI" class="modal-two">
-      <div class="admin-panel">
-        <ion-icon id="adminCloseButton" class="close-button" name="close-outline"></ion-icon>
-        <h1 class="admin-pre-panel">
-          Admin Panel<br> Token Presale
-        </h1>
-        <p class="connected-p">
-          <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
-        </p>
+  <!-- <div class="content-wrapper"> -->
+  <div id="adminUI" class="modal-two">
+    <div class="admin-panel">
+      <ion-icon id="adminCloseButton" class="close-button" name="close-outline"></ion-icon>
+      <h1 class="admin-pre-panel">
+        Admin Panel<br> Token Presale
+      </h1>
+      <p class="connected-p">
+        <strong>Connected Wallet:</strong> <span id="adminWalletAddress">Not connected</span>
+      </p>
 
-        <!-- Manage Presale Section -->
-        <div class="admin-section">
-          <h2 class="section-title">Manage Presale</h2>
-          <div class="input-group">
-            <label class="time-label">Start Time:</label><br>
-            <input type="datetime-local" id="startDate">
-          </div>
-          <div class="input-group">
-            <label class="time-label">End Time:</label><br>
-            <input type="datetime-local" id="endDate">
-          </div>
-          <button class="update-button" id="updateTimesBtn">Update Times</button>
+      <!-- Manage Presale Section -->
+      <div class="admin-section">
+        <h2 class="section-title">Manage Presale</h2>
+        <div class="input-group">
+          <label class="time-label">Start Time:</label><br>
+          <input type="datetime-local" id="startDate">
         </div>
-
-        <!-- Withdraw Tokens Section -->
-        <div class="admin-section">
-          <h2 class="section-title">Withdraw Unsold Tokens</h2>
-          <p class="unsold"><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
-          <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
+        <div class="input-group">
+          <label class="time-label">End Time:</label><br>
+          <input type="datetime-local" id="endDate">
         </div>
+        <button class="update-button" id="updateTimesBtn">Update Times</button>
+      </div>
 
-        <!-- Transfer Ownership Section -->
-        <div class="admin-section">
-          <h2 class="section-title">Transfer Ownership</h2>
-          <div class="input-group">
-            <label class="time-label">New Owner Address:</label>
-            <input type="text" id="newOwnerAddress"><br>
-            <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
-          </div>
+      <!-- Withdraw Tokens Section -->
+      <div class="admin-section">
+        <h2 class="section-title">Withdraw Unsold Tokens</h2>
+        <p class="unsold"><strong>Unsold Tokens:</strong> <span id="unsoldTokensAmount">0</span></p>
+        <button class="withdraw-button" id="withdrawTokensBtn">Withdraw Tokens</button>
+      </div>
+
+      <!-- Transfer Ownership Section -->
+      <div class="admin-section">
+        <h2 class="section-title">Transfer Ownership</h2>
+        <div class="input-group">
+          <label class="time-label">New Owner Address:</label>
+          <input type="text" id="newOwnerAddress"><br>
+          <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
         </div>
       </div>
     </div>
-    <div id="userUI" class="modal">
-      <ion-icon id="closeButton" class="close-button" name="close-outline"></ion-icon>
-      <div class="modal-header">
-        <h1>BE AN EARLY INVESTOR</h1>
-      </div>
-      <h1 class="presale">Token Presale</h1>
-      <div id="buySection">
-        <input type="number" id="tokenAmount" class="input-field" placeholder="Amount of tokens to buy">
-      </div>
-      <div id="walletInfo"></div>
-      <div id="presaleInfo"></div>
-      <div id="loadingInfo" style="display: none;">Loading contract data...</div>
-      <button id="buyButton" class="buy-button">BUY NOW</button>
-      <div id="errorMessage" class="error"></div>
-      <div id="successMessage" class="success"></div>
+  </div>
+  <div id="userUI" class="modal">
+    <ion-icon id="closeButton" class="close-button" name="close-outline"></ion-icon>
+    <div class="modal-header">
+      <h1>BE AN EARLY INVESTOR</h1>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6.6.0/dist/ethers.umd.min.js"></script>
-    <script src="wallet.js"></script>
-    <script src="main.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <h1 class="presale">Token Presale</h1>
+    <div id="buySection">
+      <input type="number" id="tokenAmount" class="input-field" placeholder="Amount of tokens to buy">
+    </div>
+    <div id="walletInfo"></div>
+    <div id="presaleInfo"></div>
+    <div id="loadingInfo" style="display: none;">Loading contract data...</div>
+    <button id="buyButton" class="buy-button">BUY NOW</button>
+    <div id="errorMessage" class="error"></div>
+    <div id="successMessage" class="success"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.6.0/dist/ethers.umd.min.js"></script>
+  <script src="wallet.js"></script>
+  <script src="main.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
