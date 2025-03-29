@@ -1107,7 +1107,7 @@ window.addEventListener("resize", () => {
   if (!modal || !wrapper) return;
 
   if (window.innerHeight < screen.height * 0.9) {
-    modal.style.top = "120%";
+    modal.style.top = "80%";
     document.body.style.overflow = "hidden";
     wrapper.style.overflow = "hidden";
   } else {
