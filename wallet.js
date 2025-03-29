@@ -488,8 +488,7 @@ function updateUI() {
     document.querySelector(".page-content").style.filter = "none";
     document.querySelector(".modal-overlay").style.display = "block";
     document.body.style.overflow = "hidden";
-    // document.body.style.height = "100vh";
-    document.body.style.position = "fixed";
+    document.body.style.height = "100vh";
 
     if (state.isOwner) {
       elements.adminUI.classList.add("active");
@@ -1102,17 +1101,12 @@ if (window.ethereum) {
 
 window.addEventListener("resize", () => {
   const modal = document.querySelector(".modal.active");
-  const wrapper = document.querySelector(".content-wrapper");
 
   if (!modal || !wrapper) return;
 
   if (window.innerHeight < screen.height * 0.5) {
     modal.style.top = "65%";
-    // document.body.style.overflow = "hidden";
-    // wrapper.style.overflow = "hidden";
   } else {
     modal.style.top = "50%";
-    document.body.style.overflow = "";
-    wrapper.style.overflow = "";
   }
 });
