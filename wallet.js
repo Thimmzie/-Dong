@@ -507,7 +507,7 @@ function updateUI() {
     elements.presaleInfo.innerHTML = `
       <p><span>Tokens Left:</span> ${state.tokensLeft} DONG</p>
       <p><span>Your Balance:</span> ${state.userBalance} DONG</p>
-      <p><span>Price (USD):</span>  $0.04</p>
+      <p><span>Price (USD):</span>  <span id ="price">$0.04</span></p>
     `;
   }
 }
@@ -1109,4 +1109,21 @@ window.addEventListener("resize", () => {
   } else {
     modal.style.top = "50%";
   }
+});
+
+// conversion of usd to dong in the modal
+
+document.getElementById("tokenAmount").addEventListener("input", function () {
+  let inputValue = parseFloat(this.value);
+
+  if (isNaN(inputValue)) {
+    document.getElementById("price").textContent = "$0.04";
+    return;
+  }
+
+  let multipliedValue = inputValue * 25;
+
+  document.getElementById("price").textContent = `${multipliedValue.toFixed(
+    2
+  )}`;
 });
