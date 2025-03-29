@@ -1308,7 +1308,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    height: 87dvh;
+    min-height: 200px;
     overflow-y: visible;
     margin-bottom: 0;
     padding-bottom: 0;
