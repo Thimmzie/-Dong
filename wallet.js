@@ -507,7 +507,7 @@ function updateUI() {
     elements.presaleInfo.innerHTML = `
       <p><span>Tokens Left:</span> ${state.tokensLeft} DONG</p>
       <p><span>Your Balance:</span> ${state.userBalance} DONG</p>
-      <p><span>Price (USD):</span>  <span id ="price">$0.04</span></p>
+      <p><span>Price (USD):</span>  <span id ="price">$0.04</p>
     `;
   }
 }
@@ -1123,7 +1123,7 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
 
   let multipliedValue = inputValue * 25;
 
-  document.getElementById("price").textContent = `${multipliedValue.toFixed(
+  document.getElementById("price").textContent = `$${multipliedValue.toFixed(
     2
   )}`;
 });
