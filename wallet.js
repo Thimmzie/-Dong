@@ -1099,17 +1099,17 @@ if (window.ethereum) {
   });
 }
 
-window.addEventListener("resize", () => {
-  const modal = document.querySelector(".modal.active");
+// window.addEventListener("resize", () => {
+//   const modal = document.querySelector(".modal.active");
 
-  if (!modal || !wrapper) return;
+//   if (!modal || !wrapper) return;
 
-  if (window.innerHeight < screen.height * 0.5) {
-    modal.style.top = "110%";
-  } else {
-    modal.style.top = "50%";
-  }
-});
+//   if (window.innerHeight < screen.height * 0.5) {
+//     modal.style.top = "90%";
+//   } else {
+//     modal.style.top = "50%";
+//   }
+// });
 
 // conversion of usd to dong in the modal
 
@@ -1129,6 +1129,7 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
 });
 
 document.getElementById("tokenAmount").addEventListener("click", () => {
-  const modal = document.querySelector(".modal");
-  modal.style.position = "fixed";
+  const modal = document.querySelector(".modal.active");
+  document.body.style.overflow = "hidden";
+  modal.style.top = "90%";
 });
