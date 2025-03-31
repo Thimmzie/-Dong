@@ -1130,4 +1130,7 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
 
 document.getElementById("tokenAmount").addEventListener("click", () => {
   const modal = document.querySelector(".modal.active");
+  if (modal) {
+    document.body.style.overflow = "hidden";
+  }
 });
