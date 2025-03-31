@@ -1127,3 +1127,8 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
     2
   )}`;
 });
+
+document.getElementById("tokenAmount").addEventListener("click", () => {
+  const modal = document.querySelector(".modal");
+  modal.style.position = "fixed";
+});
