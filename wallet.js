@@ -1130,6 +1130,4 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
 
 document.getElementById("tokenAmount").addEventListener("click", () => {
   const modal = document.querySelector(".modal.active");
-  const thisWrapper = document.querySelector(".content-wrapper");
-  thisWrapper.style.backgroundColor = "rgb(0, 0, 0)";
 });
