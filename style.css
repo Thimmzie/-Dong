@@ -1314,7 +1314,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    min-height: 500px;
+    min-height: 600px;
     margin-bottom: 0;
     padding-bottom: 0;
     padding-left: 0.8rem;
@@ -1413,8 +1413,8 @@ label {
     margin-top: 1.5rem;
   }
   .close-button {
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
+    color: green;
+    font-size: 5rem;
     margin-left: 32rem;
     margin-bottom: 1.5rem;
     cursor: pointer;
