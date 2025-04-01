@@ -1121,7 +1121,7 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
     return;
   }
 
-  let multipliedValue = inputValue * 25;
+  let multipliedValue = inputValue * 0.04;
 
   document.getElementById("price").textContent = `$${multipliedValue.toFixed(
     2
