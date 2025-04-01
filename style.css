@@ -1314,7 +1314,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    min-height: 85vh;
+    min-height: 500px;
     margin-bottom: 0;
     padding-bottom: 0;
     padding-left: 0.8rem;
@@ -1419,6 +1419,7 @@ label {
     margin-bottom: 1.5rem;
     cursor: pointer;
     display: block;
+    border: 2px solid red !important;
   }
   .close-button:active {
     color: rgb(255, 215, 0);
