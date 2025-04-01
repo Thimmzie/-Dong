@@ -1314,7 +1314,7 @@ label {
     opacity: 0;
     left: 50%;
     width: 90%;
-    min-height: 500px;
+    min-height: 600px;
     margin-bottom: 0;
     padding-bottom: 0;
     padding-left: 0.8rem;
@@ -1360,6 +1360,8 @@ label {
   }
   .modal.active {
     display: block;
+    position: fixed;
+    min-height: 600px;
     opacity: 1;
     /* top: 50%; */
     transform: translate(-50%, -50%) scale(1);
