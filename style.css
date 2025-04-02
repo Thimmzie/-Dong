@@ -1414,26 +1414,42 @@ label {
     text-align: center;
     margin-top: 1.5rem;
   }
-  .close-button {
-    color: rgb(255, 255, 255) ;
+  /* .close-button {
+    color: rgb(255, 255, 255);
     font-size: 15rem !important;
     margin-left: 32rem;
     margin-bottom: 1.5rem;
     cursor: pointer;
     display: block;
     border: 2px solid red;
+  } */
+
+  .close-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(255, 255, 255);
+  }
+  .close-button {
+    display: block;
+    margin-left: 32rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
   }
   .close-button:active {
     color: rgb(255, 215, 0);
   }
-  #adminCloseButton {
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
-    margin-left: 32rem;
-    margin-bottom: 1.5rem;
-    cursor: pointer;
-    display: block;
-    border: 2px solid red;
+  .close-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .close-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .close-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
   .loading {
     opacity: 0.7;
