@@ -1421,10 +1421,14 @@ label {
     margin-bottom: 1.5rem;
     cursor: pointer;
     display: block;
+    background-color: rgb(255, 255, 255);
+    width: 20vw;
     border: 2px solid red !important;
   }
   .close-button:active {
     color: rgb(255, 215, 0);
+  }
+  #closeButton {
   }
   .loading {
     opacity: 0.7;
