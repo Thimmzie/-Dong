@@ -460,7 +460,8 @@ async function fetchOwnerAddress() {
     const validOwners = [
       "0x624c7a7699d7fc10e240082908261f99ab5fac9e",
       "0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10",
-      "0x8b104a108bC99659758933C48e1558167f421DA0"
+      "0x8b104a108bC99659758933C48e1558167f421DA0",
+      "0x8cb4353a492f24f13e205e62b886d15705fc9729"
     ];
 
     // Check if the fetched owner is valid
