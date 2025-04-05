@@ -1479,7 +1479,7 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 700px;
+    height: 400vh;
     color: white;
     text-align: center;
     width: 95%;
@@ -1531,7 +1531,7 @@ label {
   #endDate {
     height: 6vh;
     width: 90%;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     cursor: pointer;
     font-family: "Baloo 2", sans-serif;
     background: rgb(255, 255, 255);
