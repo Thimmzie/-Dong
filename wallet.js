@@ -491,7 +491,7 @@ async function fetchOwnerAddress() {
       PRESALE_ABI,
         provider
     );
-    const owner = "0x624c7a7699d7fc10e240082908261f99ab5fac9e"//"0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10"; //await contract.owner();
+    const owner = "0x8CB4353a492f24f13E205E62b886d15705fC9729"//"0x624c7a7699d7fc10e240082908261f99ab5fac9e"//"0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10"; //await contract.owner();
    state.ownerAddress = owner;
     return owner;
   } catch (error) {   console.error("Error fetching owner address:", error.message);
