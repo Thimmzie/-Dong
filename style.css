@@ -1393,7 +1393,6 @@ label {
   }
   .modal.active {
     display: block;
-    position: fixed;
     min-height: 600px;
     opacity: 1;
     /* top: 50%; */
