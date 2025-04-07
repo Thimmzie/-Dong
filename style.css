@@ -167,7 +167,7 @@ html {
 .modal {
   position: fixed;
   /* top: -200%; */
-  top: 10%;
+  top: 50%;
   opacity: 0;
   left: 50%;
   width: 90%;
@@ -2540,7 +2540,7 @@ label {
   /* User UI Styles */
   .modal {
     position: fixed;
-    top: 10%;
+    top: 50%;
     opacity: 0;
     left: 50%;
     width: 90%;
@@ -3723,7 +3723,7 @@ label {
   /* User UI Styles */
   .modal {
     position: fixed;
-    top: 10%;
+    top: 50%;
     opacity: 0;
     left: 50%;
     width: 90%;
