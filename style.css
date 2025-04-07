@@ -1373,7 +1373,7 @@ label {
     overflow-y: auto;
     z-index: 1300;
     padding-bottom: 2rem;
-    padding-top: -10rem;
+    margin-top: -5rem;
   }
   .modal-two.active {
     opacity: 1;
