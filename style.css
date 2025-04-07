@@ -1342,7 +1342,7 @@ label {
   .modal {
     position: fixed;
     /* top: -200%; */
-    top: 10%;
+    top: 50%;
     opacity: 0;
     left: 50%;
     width: 90%;
@@ -1351,7 +1351,6 @@ label {
     padding-bottom: 0;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
-    transform: translate(-50%, -50%);
     background: linear-gradient(270deg, rgb(109, 24, 34), rgb(13, 43, 46));
     transform: translate(-50%, -50%);
     border-radius: 1.5rem;
