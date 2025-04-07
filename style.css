@@ -1365,8 +1365,8 @@ label {
       transform 1000ms ease-in-out;
     overflow-y: auto;
     z-index: 1300;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
   .modal-two.active {
     opacity: 1;
