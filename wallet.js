@@ -624,6 +624,8 @@ async function handleConnectWallet() {
 // Add this function to handle mobile wallet options
 function showMobileWalletOptions(walletOptions) {
   // Create a modal or panel to display wallet options
+
+  if (document.querySelector(".mobile-wallet-modal")) return;
   const mobileWalletModal = document.createElement("div");
   mobileWalletModal.className = "mobile-wallet-modal";
   mobileWalletModal.innerHTML = `
