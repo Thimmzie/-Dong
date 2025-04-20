@@ -442,59 +442,60 @@ const checkMobileDevice = () => {
     );
 };
 
-
 //async function fetchOwnerAddress() {
 //  try {
 //    if (!window.ethereum) throw new Error("MetaMask not installed");
 
-    // Initialize ethers provider
-   // const provider = new ethers.BrowserProvider(window.ethereum);
-    
-    // Initialize contract instance
-   // const contract = new ethers.Contract(CONTRACT_ADDRESS, PRESALE_ABI, provider);
-    
-    // Fetch contract owner
-   // const owner = await contract.owner();
+// Initialize ethers provider
+// const provider = new ethers.BrowserProvider(window.ethereum);
 
-    // Define valid owner addresses
-   // const validOwners = [
-   //   "0x624c7a7699d7fc10e240082908261f99ab5fac9e",
-   //   "0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10",
-   //   "0x8b104a108bC99659758933C48e1558167f421DA0",
-   //   "0x8cb4353a492f24f13e205e62b886d15705fc9729"
-  //  ];
+// Initialize contract instance
+// const contract = new ethers.Contract(CONTRACT_ADDRESS, PRESALE_ABI, provider);
 
-    // Check if the fetched owner is valid
-   // if (validOwners.includes(owner.toLowerCase())) {
-   //   console.log("Owner is valid:", owner);
+// Fetch contract owner
+// const owner = await contract.owner();
+
+// Define valid owner addresses
+// const validOwners = [
+//   "0x624c7a7699d7fc10e240082908261f99ab5fac9e",
+//   "0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10",
+//   "0x8b104a108bC99659758933C48e1558167f421DA0",
+//   "0x8cb4353a492f24f13e205e62b886d15705fc9729"
+//  ];
+
+// Check if the fetched owner is valid
+// if (validOwners.includes(owner.toLowerCase())) {
+//   console.log("Owner is valid:", owner);
 //    } else {
-  // console.log("Owner is not valid.");
- //   }
+// console.log("Owner is not valid.");
+//   }
 //
-    // Store the owner in state (Ensure 'state' is defined in your application)
-   // state.ownerAddress = owner;
+// Store the owner in state (Ensure 'state' is defined in your application)
+// state.ownerAddress = owner;
 
-    // Return the owner address
- //   return owner;
+// Return the owner address
+//   return owner;
 
- // } catch (error) {
-  //  console.error("Error fetching owner address:", error.message);
-  //  return null;
+// } catch (error) {
+//  console.error("Error fetching owner address:", error.message);
+//  return null;
 //  }
 //}
 
 async function fetchOwnerAddress() {
   try {
-   if (!window.ethereum) throw new Error("MetaMask not installed");
-   const provider = new ethers.BrowserProvider(window.ethereum);
-   const contract = new ethers.Contract(     CONTRACT_ADDRESS,
+    if (!window.ethereum) throw new Error("MetaMask not installed");
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const contract = new ethers.Contract(
+      CONTRACT_ADDRESS,
       PRESALE_ABI,
-        provider
+      provider
     );
-    const owner = await contract.owner()//"0x8CB4353a492f24f13E205E62b886d15705fC9729"//"0x624c7a7699d7fc10e240082908261f99ab5fac9e"//"0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10"; //await contract.owner();
-   state.ownerAddress = owner;
+    const owner = await contract.owner(); //"0x8CB4353a492f24f13E205E62b886d15705fC9729"//"0x624c7a7699d7fc10e240082908261f99ab5fac9e"//"0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10"; //await contract.owner();
+    state.ownerAddress = owner;
     return owner;
-  } catch (error) {   console.error("Error fetching owner address:", error.message);
+  } catch (error) {
+    console.error("Error fetching owner address:", error.message);
     return null;
   }
 }
@@ -1166,10 +1167,3 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
     2
   )}`;
 });
-
-// document.getElementById("tokenAmount").addEventListener("click", () => {
-//   const modal = document.querySelector(".modal.active");
-//   if (modal) {
-//     document.body.style.overflow = "hidden";
-//   }
-// });
