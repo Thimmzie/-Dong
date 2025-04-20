@@ -574,7 +574,7 @@ async function handleConnectWallet() {
         // Continue with the connection process
       } else {
         // For mobile browsers without built-in wallet
-        const dappUrl = window.location.href.replace(/^https?:\/\//, "");
+        const dappUrl = window.location.hostname;
         // Different deep linking formats based on wallet
         const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
 
