@@ -655,7 +655,7 @@ html {
 .exchange-container {
   background-color: rgb(245, 245, 245);
   width: 96vw;
-  height: 120vh;
+  min-height: 120vh;
   border-radius: 1.5rem;
   border: none;
   margin-top: 5rem;
@@ -1847,7 +1847,7 @@ label {
   .exchange-container {
     background-color: rgb(245, 245, 245);
     width: 96vw;
-    height: 110vh;
+    min-height: 110vh;
     border-radius: 1.5rem;
     border: none;
     margin-top: 5rem;
