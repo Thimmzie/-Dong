@@ -442,45 +442,6 @@ const checkMobileDevice = () => {
     );
 };
 
-//async function fetchOwnerAddress() {
-//  try {
-//    if (!window.ethereum) throw new Error("MetaMask not installed");
-
-// Initialize ethers provider
-// const provider = new ethers.BrowserProvider(window.ethereum);
-
-// Initialize contract instance
-// const contract = new ethers.Contract(CONTRACT_ADDRESS, PRESALE_ABI, provider);
-
-// Fetch contract owner
-// const owner = await contract.owner();
-
-// Define valid owner addresses
-// const validOwners = [
-//   "0x624c7a7699d7fc10e240082908261f99ab5fac9e",
-//   "0xE8573AAE0Ba55dE2CE0C81996611CBD40088Cf10",
-//   "0x8b104a108bC99659758933C48e1558167f421DA0",
-//   "0x8cb4353a492f24f13e205e62b886d15705fc9729"
-//  ];
-
-// Check if the fetched owner is valid
-// if (validOwners.includes(owner.toLowerCase())) {
-//   console.log("Owner is valid:", owner);
-//    } else {
-// console.log("Owner is not valid.");
-//   }
-//
-// Store the owner in state (Ensure 'state' is defined in your application)
-// state.ownerAddress = owner;
-
-// Return the owner address
-//   return owner;
-
-// } catch (error) {
-//  console.error("Error fetching owner address:", error.message);
-//  return null;
-//  }
-//}
 
 async function fetchOwnerAddress() {
   try {
@@ -564,6 +525,13 @@ async function handleConnectWallet() {
     }
 
     state.isLoading = true;
+   if (elements.errorMessage) {
+      elements.errorMessage.textContent = "";
+    }
+    elements.connectButton.forEach(button => {
+      button.textContent = "CONNECTING...";
+      button.classList.add("loading");
+    });
     updateUI();
 
     // Replace this section in handleConnectWallet()
@@ -574,7 +542,12 @@ async function handleConnectWallet() {
         // Continue with the connection process
       } else {
         // For mobile browsers without built-in wallet
-        const dappUrl = window.location.href.replace(/^https?:\/\//, "");
+        const currentUrl = window.location.href;
+        const hostname = window.location.hostname;
+        const pathname = window.location.pathname;
+        
+        // Create a cleaner dapp URL for MetaMask
+        const dappUrl = `${hostname}${pathname}`;
         // Different deep linking formats based on wallet
         const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
 
@@ -584,6 +557,10 @@ async function handleConnectWallet() {
         ]);
 
         state.isLoading = false;
+        elements.connectButton.forEach(button => {
+          button.textContent = "CONNECT WALLET";
+          button.classList.remove("loading");
+        });
         updateUI();
         return;
       }
@@ -616,7 +593,13 @@ async function handleConnectWallet() {
     updateUI();
   } catch (error) {
     state.isLoading = false;
-    elements.errorMessage.textContent = `Connection error: ${error.message}`;
+     if (elements.errorMessage) {
+      elements.errorMessage.textContent = `Connection error: ${error.message}`;
+    }
+    elements.connectButton.forEach(button => {
+      button.textContent = "CONNECT WALLET";
+      button.classList.remove("loading");
+    });
     updateUI();
   }
 }
@@ -624,27 +607,81 @@ async function handleConnectWallet() {
 // Add this function to handle mobile wallet options
 function showMobileWalletOptions(walletOptions) {
   // Create a modal or panel to display wallet options
+  const existingModal = document.querySelector(".mobile-wallet-modal");
+  if (existingModal) {
+    existingModal.remove();
+  }
+ 
   const mobileWalletModal = document.createElement("div");
   mobileWalletModal.className = "mobile-wallet-modal";
   mobileWalletModal.innerHTML = `
     <div class="mobile-wallet-content">
       <h3>Connect with your wallet</h3>
-      <p>Please select your preferred wallet to continue:</p>
+      <p>Please tap to open MetaMask:</p>
       <div class="wallet-options">
         ${walletOptions
           .map(
             (wallet) => `
-          <a href="${wallet.deepLink}" class="wallet-option">
+          <button class="wallet-option" data-deeplink="${wallet.deepLink}">
             <span>${wallet.name}</span>
-          </a>
+          </button>
         `
           )
           .join("")}
       </div>
+      <button class ="wallet-close-button">Cancel</button>
     </div>
   `;
+  //<a href="${wallet.deepLink}" class="wallet-option">
+   //         <span>${wallet.name}</span>
+   //</a>
 
   document.body.appendChild(mobileWalletModal);
+
+    const walletButtons = mobileWalletModal.querySelectorAll(".wallet-option");
+  walletButtons.forEach(button => {
+    // Use both click and touchend events for maximum compatibility
+    ['click', 'touchend'].forEach(eventType => {
+      button.addEventListener(eventType, function(e) {
+        if (eventType === 'touchend') {
+          e.preventDefault(); // Prevent ghost clicks
+        }
+        
+        const deepLink = this.getAttribute("data-deeplink");
+        console.log(`Opening wallet deep link (${eventType}):`, deepLink);
+        
+        // Show a loading indicator
+        this.innerHTML = '<span class="opening-text">Opening...</span>';
+        this.disabled = true;
+        
+        // Use multiple approaches to open the wallet
+        try {
+          // First try opening in a new tab
+          const newTab = window.open(deepLink, '_blank');
+          
+          // If that didn't work or was blocked, try direct location change
+          if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+            setTimeout(() => {
+              window.location.href = deepLink;
+            }, 100);
+          }
+        } catch (err) {
+          console.error("Error opening wallet:", err);
+          // Final fallback
+          window.location.href = deepLink;
+        }
+      }, { passive: false });
+    });
+  });
+  
+  
+  // Add close button functionality
+  const closeButton = mobileWalletModal.querySelector(".wallet-close-button");
+  if (closeButton) {
+    closeButton.addEventListener("click", function() {
+      mobileWalletModal.remove();
+    });
+  }
 
   // Add some basic styles for the modal
   const style = document.createElement("style");
@@ -656,16 +693,18 @@ function showMobileWalletOptions(walletOptions) {
       right: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.7);
-      z-index: 1000;
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
+      touch-action: manipulation;
     }
     .mobile-wallet-content {
       background: white;
       padding: 20px;
       border-radius: 10px;
       max-width: 90%;
+      width: 300px;
       text-align: center;
     }
     .wallet-options {
@@ -674,13 +713,43 @@ function showMobileWalletOptions(walletOptions) {
       gap: 10px;
       margin-top: 20px;
     }
-    .wallet-option {
-      padding: 12px;
-      background: #f3f3f3;
+     .wallet-option {
+      padding: 12px; /* Extra large touch target */
+      background: #e74c3c;
+      color: white;
       border-radius: 8px;
       text-decoration: none;
-      color: #333;
       font-weight: bold;
+      border: none;
+      font-size: 14px; /* Larger text */
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      touch-action: manipulation;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    }
+    .wallet-option:active {
+      background: #2980b9;
+      transform: translateY(2px);
+    }
+   .wallet-close-button {
+      margin-top: 20px;
+      padding: 12px 28px;
+      background: #e0e0e0;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      touch-action: manipulation;
+    }
+    .wallet-loading {
+      margin-top: 15px;
+      color: #666;
+    }
+    .opening-text {
+      font-style: italic;
+      background: #e74c3c;
+      color: white;
+      font-size: 14px;
     }
   `;
   document.head.appendChild(style);
@@ -1067,6 +1136,7 @@ closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   checkMobileDevice();
+  
   // Verify all elements exist
   Object.entries(elements).forEach(([key, element]) => {
     if (!element) {
@@ -1083,19 +1153,35 @@ document.addEventListener("DOMContentLoaded", () => {
     adminUI = new AdminUI();
   }
 
-  window.addEventListener("resize", checkMobileDevice);
-});
+  elements.connectButton.forEach(button => {
+    // Clone and replace to remove all existing listeners
+    const newButton = button.cloneNode(true);
+    button.parentNode.replaceChild(newButton, button);
+  });
+
+  elements.connectButton = document.querySelectorAll(".connect-button");
 
 // Event Listeners
-elements.connectButton.forEach((button) => {
-  button.addEventListener("click", async () => {
-    try {
-      await handleConnectWallet();
-    } catch (error) {
-      console.error("Error in handleConnectWallet:", error);
-    }
+elements.connectButton.forEach(button => {
+    ['click', 'touchend'].forEach(eventType => {
+      button.addEventListener(eventType, async (e) => {
+        // Prevent default only for touchend to avoid double triggering
+        if (eventType === 'touchend') {
+          e.preventDefault();
+        }
+        console.log(`Connect button ${eventType} event triggered`);
+        
+        try {
+          await handleConnectWallet();
+        } catch (error) {
+          console.error(`Error in handleConnectWallet (${eventType}):`, error);
+          if (elements.errorMessage) {
+            elements.errorMessage.textContent = `Connection error: ${error.message}`;
+          }
+        }
+      }, { passive: false });
+    });
   });
-});
 
 if (elements.buyButton) {
   elements.buyButton.addEventListener("click", buyTokens);
@@ -1139,8 +1225,11 @@ if (window.ethereum) {
   });
 }
 
+window.addEventListener("resize", checkMobileDevice);
+
 window.addEventListener("resize", () => {
   const modal = document.querySelector(".modal.active");
+  const wrapper = document.querySelector(".wrapper");
 
   if (!modal || !wrapper) return;
 
@@ -1166,4 +1255,5 @@ document.getElementById("tokenAmount").addEventListener("input", function () {
   document.getElementById("price").textContent = `$${multipliedValue.toFixed(
     2
   )}`;
+});
 });
