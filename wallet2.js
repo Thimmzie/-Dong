@@ -801,11 +801,53 @@ async function getContractInfo() {
   }
 }
 
+function showMobileNotification(message, type = 'info') {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `mobile-notification ${type}`;
+  notification.textContent = message;
+  
+  // Add to page
+  document.body.appendChild(notification);
+  
+  // Add basic styles
+  notification.style.position = 'fixed';
+  notification.style.bottom = '20px';
+  notification.style.left = '50%';
+  notification.style.transform = 'translateX(-50%)';
+  notification.style.padding = '12px 20px';
+  notification.style.borderRadius = '4px';
+  notification.style.zIndex = '9999';
+  notification.style.textAlign = 'center';
+  notification.style.maxWidth = '90%';
+  notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+  
+  // Style based on type
+  if (type === 'success') {
+    notification.style.backgroundColor = '#4CAF50';
+    notification.style.color = 'white';
+  } else if (type === 'error') {
+    notification.style.backgroundColor = '#F44336';
+    notification.style.color = 'white';
+  } else {
+    notification.style.backgroundColor = '#2196F3';
+    notification.style.color = 'white';
+  }
+  
+  // Auto-remove after 3 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 3000);
+}
+
 // Buy tokens function
 async function buyTokens() {
   const amount = tokenAmount.value;
   if (!amount || parseFloat(amount) <= 0) {
     errorMessage.textContent = "Please enter a valid amount";
+    showMobileNotification("Please enter a valid amount", "error");   
     return;
   }
 
@@ -813,6 +855,8 @@ async function buyTokens() {
   errorMessage.textContent = "";
   successMessage.textContent = "";
   updateUI();
+
+  showMobileNotification("Processing transaction...", "info");
 
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
@@ -840,10 +884,12 @@ async function buyTokens() {
     await getContractInfo();
     tokenAmount.value = "";
     successMessage.textContent = "Tokens purchased successfully!";
+    showMobileNotification("Tokens purchased successfully!", "success");
   } catch (err) {
     console.error("Transaction error:", err);
     errorMessage.textContent =
       "Transaction failed: " + (err.reason || err.message);
+    showMobileNotification("Transaction failed", "error");
   } finally {
     state.isLoading = false;
     updateUI();
@@ -957,6 +1003,7 @@ class AdminUI {
     // Check if the date is valid
     if (isNaN(inputDate.getTime())) {
       alert("Invalid date format. Please use a valid date.");
+      showMobileNotification("Invalid date format", "error");
       return null;
     }
 
@@ -969,12 +1016,14 @@ class AdminUI {
     // Check if date is in the past
     if (inputDate < currentDate) {
       alert("Please enter a date in the future.");
+      showMobileNotification("Please enter a future date", "error");
       return null;
     }
 
     // Check if date is too far in the future
     if (inputDate > maxAllowedDate) {
       alert("Date is too far in the future. Please enter a date before 2027.");
+      showMobileNotification("Date is too far in the future", "error");
       return null;
     }
 
@@ -994,6 +1043,8 @@ class AdminUI {
         return; // Validation failed
       }
 
+      showMobileNotification(`Updating ${isStartDate ? "start" : "end"} date...`, "info");
+
       // Call the appropriate contract function
       if (isStartDate) {
         await this.contract.setStartTime(relativeSeconds);
@@ -1002,6 +1053,7 @@ class AdminUI {
       }
 
       alert(`${isStartDate ? "Start" : "End"} date updated successfully!`);
+      showMobileNotification(`Date updated successfully!`, "success");
 
       // Update UI after blockchain confirms the transaction
       await this.updateContractInfo();
@@ -1011,6 +1063,7 @@ class AdminUI {
         error
       );
       alert(`Failed to update date: ${error.message}`);
+      showMobileNotification("Failed to update date", "error");
     }
   }
 
@@ -1032,6 +1085,7 @@ class AdminUI {
 
         if (!startDate || !endDate) {
           alert("Please set both start and end times");
+          showMobileNotification("Please set both times", "error");
           return;
         }
 
@@ -1042,11 +1096,13 @@ class AdminUI {
 
         if (newEnd <= newStart) {
           alert("End time must be after start time");
+          showMobileNotification("End time must be after start time", "error");
           return;
         }
 
         try {
           this.setLoading(true);
+          showMobileNotification("Updating contract times...", "info");
           const txStart = await this.contract.setStartTime(newStart);
           await txStart.wait();
 
@@ -1054,10 +1110,12 @@ class AdminUI {
           await txEnd.wait();
 
           alert("Start and end times updated successfully!");
+          showMobileNotification("Times updated successfully!", "success");
           await this.updateContractInfo();
         } catch (err) {
           console.error(err);
           alert("Failed to update times: " + (err.reason || err.message));
+          showMobileNotification("Failed to update times", "error");
         } finally {
           this.setLoading(false);
         }
@@ -1069,15 +1127,18 @@ class AdminUI {
       .addEventListener("click", async () => {
         try {
           this.setLoading(true);
+          showMobileNotification("Withdrawing tokens...", "info");
           const tx = await this.contract.withdrawUnsoldTokens();
           await tx.wait();
           alert("Unsold tokens withdrawn successfully!");
+          showMobileNotification("Tokens withdrawn successfully!", "success");
           await this.updateContractInfo();
         } catch (err) {
           console.error(err);
           alert(
             "Failed to withdraw unsold tokens: " + (err.reason || err.message)
           );
+          showMobileNotification("Failed to withdraw tokens", "error");
         } finally {
           this.setLoading(false);
         }
@@ -1092,19 +1153,23 @@ class AdminUI {
 
         if (!ethers.isAddress(newOwnerAddress)) {
           alert("Invalid address format!");
+          showMobileNotification("Invalid address format", "error");
           return;
         }
 
         try {
           this.setLoading(true);
+          showMobileNotification("Transferring ownership...", "info");
           const tx = await this.contract.transferOwnership(newOwnerAddress);
           await tx.wait();
           alert("Ownership transferred successfully!");
+          showMobileNotification("Ownership transferred successfully!", "success");
           document.getElementById("newOwnerAddress").value = "";
           await this.updateContractInfo();
         } catch (err) {
           console.error(err);
           alert("Failed to transfer ownership: " + (err.reason || err.message));
+          showMobileNotification("Failed to transfer ownership", "error");
         } finally {
           this.setLoading(false);
         }
@@ -1113,6 +1178,11 @@ class AdminUI {
     // Auto-update contract info when account changes
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", async () => {
+        if (accounts.length > 0) {
+          showMobileNotification("Wallet account changed", "info");
+        } else {
+          showMobileNotification("Wallet disconnected", "info");
+        }
         await this.updateContractInfo();
       });
     }
@@ -1178,6 +1248,7 @@ elements.connectButton.forEach(button => {
           if (elements.errorMessage) {
             elements.errorMessage.textContent = `Connection error: ${error.message}`;
           }
+          showMobileNotification("Connection error", "error");
         }
       }, { passive: false });
     });
@@ -1218,8 +1289,10 @@ if (window.ethereum) {
     if (accounts.length > 0) {
       state.connectedAddress = accounts[0];
       await getContractInfo();
+      showMobileNotification("Account changed", "info");
     } else {
       state.connectedAddress = null;
+      showMobileNotification("Wallet disconnected", "info");
     }
     updateUI();
   });
