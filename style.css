@@ -3032,7 +3032,7 @@ label {
   .exchange-container {
     background-color: rgb(245, 245, 245);
     width: 96vw;
-    height: 130vh;
+    min-height: 130vh;
     border-radius: 1.5rem;
     border: none;
     margin-top: 5rem;
@@ -4209,7 +4209,7 @@ label {
   .exchange-container {
     background-color: rgb(245, 245, 245);
     width: 96vw;
-    height: 130vh;
+    min-height: 130vh;
     border-radius: 1.5rem;
     border: none;
     margin-top: 5rem;
