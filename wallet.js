@@ -651,7 +651,7 @@ function showMobileWalletOptions(walletOptions) {
         console.log(`Opening wallet deep link (${eventType}):`, deepLink);
         
         // Show a loading indicator
-        this.innerHTML = '<span>Opening...</span>';
+        this.innerHTML = '<span class="opening-text">Opening...</span>';
         this.disabled = true;
         
         // Use multiple approaches to open the wallet
@@ -744,6 +744,12 @@ function showMobileWalletOptions(walletOptions) {
     .wallet-loading {
       margin-top: 15px;
       color: #666;
+    }
+    .opening-text {
+      font-style: italic;
+      background: #e74c3c;
+      color: white;
+      font-size: 14px;
     }
   `;
   document.head.appendChild(style);
