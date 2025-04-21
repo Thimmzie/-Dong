@@ -721,7 +721,7 @@ function showMobileWalletOptions(walletOptions) {
       text-decoration: none;
       font-weight: bold;
       border: none;
-      font-size: 16px; /* Larger text */
+      font-size: 14px; /* Larger text */
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       touch-action: manipulation;
@@ -733,11 +733,11 @@ function showMobileWalletOptions(walletOptions) {
     }
    .wallet-close-button {
       margin-top: 20px;
-      padding: 14px 30px;
+      padding: 12px 28px;
       background: #e0e0e0;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 14px;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       touch-action: manipulation;
     }
