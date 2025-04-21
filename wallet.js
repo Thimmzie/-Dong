@@ -714,18 +714,18 @@ function showMobileWalletOptions(walletOptions) {
       margin-top: 20px;
     }
      .wallet-option {
-      padding: 18px; /* Extra large touch target */
-      background: #3498db;
+      padding: 12px; /* Extra large touch target */
+      background: #e74c3c;
       color: white;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       border: none;
-      font-size: 18px; /* Larger text */
+      font-size: 16px; /* Larger text */
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       touch-action: manipulation;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 5px rgba(0,0,0,0.1);
     }
     .wallet-option:active {
       background: #2980b9;
