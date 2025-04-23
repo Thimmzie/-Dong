@@ -760,37 +760,55 @@ function formatNumberWithCommas(number) {
 }
 
 async function getContractInfo() {
-  if (!state.connectedAddress) return;
-
+  if (!window.ethereum || !state.connectedAddress) {
+    console.log("Not connected to wallet");
+    return;
+  }
+  
   const loadingInfo = document.getElementById("loadingInfo");
   loadingInfo.style.display = "block";
-
+  
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
     const presaleContract = new ethers.Contract(
       CONTRACT_ADDRESS,
       PRESALE_ABI,
-      provider
+      signer
     );
-
-    try {
-      const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
-    } catch (err) {
-      console.error("Error getting tokens left:", err);
-      state.tokensLeft = "Error loading";
-    }
-
-    try {
-      // Fix: Use tokensOwned instead of tokensBalanced
-      const balance = await presaleContract.tokensOwned(state.connectedAddress);
-      // Fix: The balance is already in wei (10^18), so we just need to format it once
-      state.userBalance = formatNumberWithCommas(Number(balance.toString()));
-    } catch (err) {
-      console.error("Error getting user balance:", err);
-      state.userBalance = "Error loading";
-    }
-
+    const tokenContract = new ethers.Contract(
+      TOKEN_ADDRESS,
+      TOKEN_ABI,
+      signer
+    );
+    
+    // Get contract data in parallel for efficiency
+    const [
+      tokensLeft,
+      userBalance,
+      startTime,
+      endTime,
+      tokenPrice,
+      isOwner
+    ] = await Promise.all([
+      presaleContract.getTokensLeft(),
+      tokenContract.balanceOf(state.connectedAddress),
+      presaleContract.getStartTime(),
+      presaleContract.getEndTime(),
+      presaleContract.getTokenPriceInMatic(),
+      presaleContract.owner().then(owner => 
+        owner.toLowerCase() === state.connectedAddress.toLowerCase()
+      )
+    ]);
+    
+    // Update state with all values
+    state.tokensLeft = formatNumberWithCommas(Number(tokensLeft.toString()));
+    state.userBalance = formatNumberWithCommas(Number(userBalance.toString()));
+    state.startTime = Number(startTime.toString()) * 1000;
+    state.endTime = Number(endTime.toString()) * 1000;
+    state.tokenPrice = ethers.formatUnits(tokenPrice.toString());
+    state.isOwner = isOwner;
+    
     updateUI();
   } catch (err) {
     console.error("Error fetching contract info:", err);
