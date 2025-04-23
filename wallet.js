@@ -889,6 +889,7 @@ async function buyTokens() {
   } finally {
     state.isLoading = false;
     updateUI();
+    await getContractInfo(); 
   }
 }
 
