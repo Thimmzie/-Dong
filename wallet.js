@@ -511,6 +511,136 @@ function updateUI() {
       <p><span>Price (USD):</span>  <span id ="price">$0.04</p>
     `;
   }
+
+  // Update tokens left display
+  const tokensLeftElement = document.getElementById("tokensLeftAmount");
+  if (tokensLeftElement) {
+    tokensLeftElement.textContent = state.tokensLeft || "0";
+  }
+
+  // Update user token balance
+  const userTokensElement = document.getElementById("userTokenBalance");
+  if (userTokensElement) {
+    userTokensElement.textContent = state.userTokens || "0";
+  }
+
+  // Update token price
+  const tokenPriceElement = document.getElementById("tokenPrice");
+  if (tokenPriceElement) {
+    tokenPriceElement.textContent = state.tokenPrice ? `${state.tokenPrice} MATIC` : "...";
+  }
+
+  // Update connect buttons state
+  const connectButtons = document.querySelectorAll(".connect-button");
+  connectButtons.forEach(button => {
+    if (state.connectedAddress) {
+      button.textContent = state.connectedAddress.substring(0, 6) + "..." + 
+                          state.connectedAddress.substring(state.connectedAddress.length - 4);
+      button.classList.add("connected");
+    } else {
+      button.textContent = "Connect Wallet";
+      button.classList.remove("connected");
+    }
+  });
+
+  // Show loading state if needed
+  const loadingElements = document.querySelectorAll(".loading-indicator");
+  loadingElements.forEach(element => {
+    element.style.display = state.isLoading ? "block" : "none";
+  });
+
+  // Show admin UI if user is owner
+  if (state.isOwner && elements.adminButton) {
+    elements.adminButton.style.display = "block";
+  } else if (elements.adminButton) {
+    elements.adminButton.style.display = "none";
+  }
+}
+
+// Function to show simple notifications
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  
+  // Style the notification
+  notification.style.position = 'fixed';
+  notification.style.bottom = '20px';
+  notification.style.left = '50%';
+  notification.style.transform = 'translateX(-50%)';
+  notification.style.padding = '12px 20px';
+  notification.style.borderRadius = '4px';
+  notification.style.zIndex = '9999';
+  notification.style.textAlign = 'center';
+  notification.style.maxWidth = '90%';
+  notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+  
+  // Set colors based on type
+  if (type === 'success') {
+    notification.style.backgroundColor = '#4CAF50';
+    notification.style.color = 'white';
+  } else if (type === 'error') {
+    notification.style.backgroundColor = '#F44336';
+    notification.style.color = 'white';
+  } else {
+    notification.style.backgroundColor = '#2196F3';
+    notification.style.color = 'white';
+  }
+  
+  document.body.appendChild(notification);
+  
+  // Auto-remove after 3 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 3000);
+}
+
+function showMobileNotification(message, type = 'info') {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `mobile-notification ${type}`;
+  notification.textContent = message;
+  
+  // Add to page
+  document.body.appendChild(notification);
+  
+  // Add basic styles
+  notification.style.position = 'fixed';
+  notification.style.bottom = '20px';
+  notification.style.left = '50%';
+  notification.style.transform = 'translateX(-50%)';
+  notification.style.padding = '12px 20px';
+  notification.style.borderRadius = '4px';
+  notification.style.zIndex = '9999';
+  notification.style.textAlign = 'center';
+  notification.style.maxWidth = '90%';
+  notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+  
+  // Style based on type
+  if (type === 'success') {
+    notification.style.backgroundColor = '#4CAF50';
+    notification.style.color = 'white';
+  } else if (type === 'error') {
+    notification.style.backgroundColor = '#F44336';
+    notification.style.color = 'white';
+  } else {
+    notification.style.backgroundColor = '#2196F3';
+    notification.style.color = 'white';
+  }
+  
+  // Auto-remove after 3 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 3000);
+}
+
+// Function to format numbers with commas
+function formatNumberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 // Handle wallet connection
@@ -525,7 +655,7 @@ async function handleConnectWallet() {
     }
 
     state.isLoading = true;
-   if (elements.errorMessage) {
+    if (elements.errorMessage) {
       elements.errorMessage.textContent = "";
     }
     elements.connectButton.forEach(button => {
@@ -533,6 +663,8 @@ async function handleConnectWallet() {
       button.classList.add("loading");
     });
     updateUI();
+    
+    showNotification("Connecting to wallet...", "info");
 
     // Replace this section in handleConnectWallet()
     if (state.isMobile) {
@@ -578,6 +710,7 @@ async function handleConnectWallet() {
     }
 
     state.connectedAddress = accounts[0];
+    showNotification("Wallet connected", "success");
 
     const ownerAddr = await fetchOwnerAddress();
     state.isOwner =
@@ -587,19 +720,21 @@ async function handleConnectWallet() {
       await adminUI.initializeUI();
     }
     await getContractInfo();
+    setupAutoRefresh();
 
     state.isLoading = false;
     state.isModalOpen = true;
     updateUI();
   } catch (error) {
     state.isLoading = false;
-     if (elements.errorMessage) {
+    if (elements.errorMessage) {
       elements.errorMessage.textContent = `Connection error: ${error.message}`;
     }
     elements.connectButton.forEach(button => {
       button.textContent = "CONNECT WALLET";
       button.classList.remove("loading");
     });
+    showNotification("Failed to connect wallet", "error");
     updateUI();
   }
 }
@@ -745,26 +880,103 @@ function showMobileWalletOptions(walletOptions) {
       margin-top: 15px;
       color: #666;
     }
-    .opening-text {
-      font-style: italic;
-      background: #e74c3c;
-      color: white;
-      font-size: 14px;
-    }
   `;
   document.head.appendChild(style);
 }
 
-function formatNumberWithCommas(number) {
-  return number.toLocaleString();
+// Function to get and update contract information
+async function getContractInfo() {
+  if (!window.ethereum || !state.connectedAddress) {
+    console.log("Not connected to wallet");
+    return;
+  }
+  
+  const loadingInfo = document.getElementById("loadingInfo");
+  if (loadingInfo) {
+    loadingInfo.style.display = "block";
+  }
+  
+  try {
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const presaleContract = new ethers.Contract(
+      CONTRACT_ADDRESS,
+      PRESALE_ABI,
+      signer
+    );
+    const tokenContract = new ethers.Contract(
+      TOKEN_ADDRESS,
+      TOKEN_ABI,
+      signer
+    );
+    
+    // Get contract data in parallel for efficiency
+    const [
+      tokensLeft,
+      userBalance,
+      startTime,
+      endTime,
+      tokenPrice,
+      isOwner,
+      userTokens
+    ] = await Promise.all([
+      presaleContract.getTokensLeft(),
+      tokenContract.balanceOf(state.connectedAddress),
+      presaleContract.getStartTime(),
+      presaleContract.getEndTime(),
+      presaleContract.getTokenPriceInMatic(),
+      presaleContract.owner().then(owner => 
+        owner.toLowerCase() === state.connectedAddress.toLowerCase()
+      ),
+      tokenContract.balanceOf(state.connectedAddress)
+    ]);
+    
+    // Update state with all values
+    state.tokensLeft = formatNumberWithCommas(Number(tokensLeft.toString()));
+    state.userBalance = formatNumberWithCommas(Number(userBalance.toString()));
+    state.userTokens = formatNumberWithCommas(Number(userTokens.toString()));
+    state.startTime = Number(startTime.toString()) * 1000;
+    state.endTime = Number(endTime.toString()) * 1000;
+    state.tokenPrice = ethers.formatUnits(tokenPrice.toString());
+    state.isOwner = isOwner;
+    
+    updateUI();
+  } catch (err) {
+    console.error("Error fetching contract info:", err);
+    if (elements.errorMessage) {
+      elements.errorMessage.textContent =
+        "Failed to fetch contract info. Please check if you are connected to the correct network.";
+    }
+  } finally {
+    if (loadingInfo) {
+      loadingInfo.style.display = "none";
+    }
+  }
 }
 
-async function getContractInfo() {
-  if (!state.connectedAddress) return;
+// Set up auto-refresh of contract data
+function setupAutoRefresh() {
+  // Initial data load
+  if (window.ethereum && state.connectedAddress) {
+    getContractInfo();
+  }
+  
+  // Set up periodic refresh every 30 seconds
+  const refreshInterval = 30000; // 30 seconds
+  setInterval(() => {
+    if (window.ethereum && state.connectedAddress) {
+      getContractInfo();
+    }
+  }, refreshInterval);
+  
+  // Set up blockchain event listeners for important events
+  setupBlockchainEventListeners();
+}
 
-  const loadingInfo = document.getElementById("loadingInfo");
-  loadingInfo.style.display = "block";
-
+// Set up blockchain event listeners
+async function setupBlockchainEventListeners() {
+  if (!window.ethereum || !state.connectedAddress) return;
+  
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const presaleContract = new ethers.Contract(
@@ -772,74 +984,27 @@ async function getContractInfo() {
       PRESALE_ABI,
       provider
     );
-
-    try {
-      const left = await presaleContract.getTokensLeft();
-      state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
-    } catch (err) {
-      console.error("Error getting tokens left:", err);
-      state.tokensLeft = "Error loading";
-    }
-
-    try {
-      // Fix: Use tokensOwned instead of tokensBalanced
-      const balance = await presaleContract.tokensOwned(state.connectedAddress);
-      // Fix: The balance is already in wei (10^18), so we just need to format it once
-      state.userBalance = formatNumberWithCommas(Number(balance.toString()));
-    } catch (err) {
-      console.error("Error getting user balance:", err);
-      state.userBalance = "Error loading";
-    }
-
-    updateUI();
-  } catch (err) {
-    console.error("Error fetching contract info:", err);
-    elements.errorMessage.textContent =
-      "Failed to fetch contract info. Please check if you are connected to the correct network.";
-  } finally {
-    loadingInfo.style.display = "none";
+    
+    // Listen for token purchase events
+    presaleContract.removeAllListeners(); // Clear any existing listeners
+    
+    // Listen for TokensPurchased events (assumes this event exists in the contract)
+    presaleContract.on("TokensPurchased", (buyer, amount, event) => {
+      console.log("Tokens purchased event:", buyer, amount.toString());
+      
+      // Update contract data
+      getContractInfo();
+      
+      // Show notification if it was someone else's purchase
+      if (buyer.toLowerCase() !== state.connectedAddress.toLowerCase()) {
+        showNotification("New token purchase detected!", "info");
+      }
+    });
+    
+    // Add other event listeners as needed for your contract
+  } catch (error) {
+    console.error("Error setting up event listeners:", error);
   }
-}
-
-function showMobileNotification(message, type = 'info') {
-  // Create notification element
-  const notification = document.createElement('div');
-  notification.className = `mobile-notification ${type}`;
-  notification.textContent = message;
-  
-  // Add to page
-  document.body.appendChild(notification);
-  
-  // Add basic styles
-  notification.style.position = 'fixed';
-  notification.style.bottom = '20px';
-  notification.style.left = '50%';
-  notification.style.transform = 'translateX(-50%)';
-  notification.style.padding = '12px 20px';
-  notification.style.borderRadius = '4px';
-  notification.style.zIndex = '9999';
-  notification.style.textAlign = 'center';
-  notification.style.maxWidth = '90%';
-  notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-  
-  // Style based on type
-  if (type === 'success') {
-    notification.style.backgroundColor = '#4CAF50';
-    notification.style.color = 'white';
-  } else if (type === 'error') {
-    notification.style.backgroundColor = '#F44336';
-    notification.style.color = 'white';
-  } else {
-    notification.style.backgroundColor = '#2196F3';
-    notification.style.color = 'white';
-  }
-  
-  // Auto-remove after 3 seconds
-  setTimeout(() => {
-    if (notification.parentNode) {
-      notification.parentNode.removeChild(notification);
-    }
-  }, 3000);
 }
 
 // Buy tokens function
@@ -847,6 +1012,7 @@ async function buyTokens() {
   const amount = tokenAmount.value;
   if (!amount || parseFloat(amount) <= 0) {
     errorMessage.textContent = "Please enter a valid amount";
+    showNotification("Please enter a valid amount", "error");
     showMobileNotification("Please enter a valid amount", "error");   
     return;
   }
@@ -856,6 +1022,7 @@ async function buyTokens() {
   successMessage.textContent = "";
   updateUI();
 
+  showNotification("Processing transaction...", "info");
   showMobileNotification("Processing transaction...", "info");
 
   try {
@@ -877,18 +1044,33 @@ async function buyTokens() {
       (tokensAmount * tokenPriceInMatic) / ethers.parseUnits("1", 18);
     console.log(maticRequired);
 
-    const buyTx = await presaleContract.buyTokens(amount, { maticRequired });
+    const buyTx = await presaleContract.buyTokens(amount, { value: maticRequired });
     console.log(buyTx);
+    
+    // Set up transaction confirmation event listener for real-time updates
+    provider.once(buyTx.hash, (receipt) => {
+      if (receipt.status === 1) { // Transaction successful
+        getContractInfo(); // Update token information
+        showNotification("Tokens purchased successfully!", "success");
+        showMobileNotification("Tokens purchased successfully!", "success");
+        successMessage.textContent = "Tokens purchased successfully!";
+      } else {
+        showNotification("Transaction failed", "error");
+        showMobileNotification("Transaction failed", "error");
+        errorMessage.textContent = "Transaction failed on the blockchain";
+      }
+    });
+    
     await buyTx.wait();
 
     await getContractInfo();
     tokenAmount.value = "";
     successMessage.textContent = "Tokens purchased successfully!";
-    showMobileNotification("Tokens purchased successfully!", "success");
   } catch (err) {
     console.error("Transaction error:", err);
     errorMessage.textContent =
       "Transaction failed: " + (err.reason || err.message);
+    showNotification("Transaction failed", "error");
     showMobileNotification("Transaction failed", "error");
   } finally {
     state.isLoading = false;
@@ -1004,6 +1186,7 @@ class AdminUI {
     if (isNaN(inputDate.getTime())) {
       alert("Invalid date format. Please use a valid date.");
       showMobileNotification("Invalid date format", "error");
+      showNotification("Invalid date format", "error");
       return null;
     }
 
@@ -1017,6 +1200,7 @@ class AdminUI {
     if (inputDate < currentDate) {
       alert("Please enter a date in the future.");
       showMobileNotification("Please enter a future date", "error");
+      showNotification("Please enter a future date", "error");
       return null;
     }
 
@@ -1024,6 +1208,7 @@ class AdminUI {
     if (inputDate > maxAllowedDate) {
       alert("Date is too far in the future. Please enter a date before 2027.");
       showMobileNotification("Date is too far in the future", "error");
+      showNotification("Date is too far in the future", "error");
       return null;
     }
 
@@ -1044,6 +1229,7 @@ class AdminUI {
       }
 
       showMobileNotification(`Updating ${isStartDate ? "start" : "end"} date...`, "info");
+      showNotification(`Updating ${isStartDate ? "start" : "end"} date...`, "info");
 
       // Call the appropriate contract function
       if (isStartDate) {
@@ -1054,6 +1240,7 @@ class AdminUI {
 
       alert(`${isStartDate ? "Start" : "End"} date updated successfully!`);
       showMobileNotification(`Date updated successfully!`, "success");
+      showNotification(`Date updated successfully!`, "success");
 
       // Update UI after blockchain confirms the transaction
       await this.updateContractInfo();
@@ -1064,6 +1251,7 @@ class AdminUI {
       );
       alert(`Failed to update date: ${error.message}`);
       showMobileNotification("Failed to update date", "error");
+      showNotification("Failed to update date", "error");
     }
   }
 
@@ -1086,6 +1274,7 @@ class AdminUI {
         if (!startDate || !endDate) {
           alert("Please set both start and end times");
           showMobileNotification("Please set both times", "error");
+          showNotification("Please set both times", "error");
           return;
         }
 
@@ -1097,12 +1286,14 @@ class AdminUI {
         if (newEnd <= newStart) {
           alert("End time must be after start time");
           showMobileNotification("End time must be after start time", "error");
+          showNotification("End time must be after start time", "error");
           return;
         }
 
         try {
           this.setLoading(true);
           showMobileNotification("Updating contract times...", "info");
+          showNotification("Updating contract times...", "info");
           const txStart = await this.contract.setStartTime(newStart);
           await txStart.wait();
 
@@ -1111,11 +1302,13 @@ class AdminUI {
 
           alert("Start and end times updated successfully!");
           showMobileNotification("Times updated successfully!", "success");
+          showNotification("Times updated successfully!", "success");
           await this.updateContractInfo();
         } catch (err) {
           console.error(err);
           alert("Failed to update times: " + (err.reason || err.message));
           showMobileNotification("Failed to update times", "error");
+          showNotification("Failed to update times", "error");
         } finally {
           this.setLoading(false);
         }
@@ -1128,10 +1321,12 @@ class AdminUI {
         try {
           this.setLoading(true);
           showMobileNotification("Withdrawing tokens...", "info");
+          showNotification("Withdrawing tokens...", "info");
           const tx = await this.contract.withdrawUnsoldTokens();
           await tx.wait();
           alert("Unsold tokens withdrawn successfully!");
           showMobileNotification("Tokens withdrawn successfully!", "success");
+          showNotification("Tokens withdrawn successfully!", "success");
           await this.updateContractInfo();
         } catch (err) {
           console.error(err);
@@ -1139,6 +1334,7 @@ class AdminUI {
             "Failed to withdraw unsold tokens: " + (err.reason || err.message)
           );
           showMobileNotification("Failed to withdraw tokens", "error");
+          showNotification("Failed to withdraw tokens", "error");
         } finally {
           this.setLoading(false);
         }
@@ -1154,22 +1350,26 @@ class AdminUI {
         if (!ethers.isAddress(newOwnerAddress)) {
           alert("Invalid address format!");
           showMobileNotification("Invalid address format", "error");
+          showNotification("Invalid address format", "error");
           return;
         }
 
         try {
           this.setLoading(true);
           showMobileNotification("Transferring ownership...", "info");
+          showNotification("Transferring ownership...", "info");
           const tx = await this.contract.transferOwnership(newOwnerAddress);
           await tx.wait();
           alert("Ownership transferred successfully!");
           showMobileNotification("Ownership transferred successfully!", "success");
+          showNotification("Ownership transferred successfully!", "success");
           document.getElementById("newOwnerAddress").value = "";
           await this.updateContractInfo();
         } catch (err) {
           console.error(err);
           alert("Failed to transfer ownership: " + (err.reason || err.message));
           showMobileNotification("Failed to transfer ownership", "error");
+          showNotification("Failed to transfer ownership", "error");
         } finally {
           this.setLoading(false);
         }
@@ -1180,8 +1380,10 @@ class AdminUI {
       window.ethereum.on("accountsChanged", async () => {
         if (accounts.length > 0) {
           showMobileNotification("Wallet account changed", "info");
+          showNotification("Wallet account changed", "info");
         } else {
           showMobileNotification("Wallet disconnected", "info");
+          showNotification("Wallet disconnected", "info");
         }
         await this.updateContractInfo();
       });
@@ -1249,6 +1451,7 @@ elements.connectButton.forEach(button => {
             elements.errorMessage.textContent = `Connection error: ${error.message}`;
           }
           showMobileNotification("Connection error", "error");
+          showNotification("Connection error", "error");
         }
       }, { passive: false });
     });
@@ -1290,9 +1493,11 @@ if (window.ethereum) {
       state.connectedAddress = accounts[0];
       await getContractInfo();
       showMobileNotification("Account changed", "info");
+      showNotification("Account changed", "info");
     } else {
       state.connectedAddress = null;
       showMobileNotification("Wallet disconnected", "info");
+      showNotification("Wallet disconnected", "info");
     }
     updateUI();
   });
