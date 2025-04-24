@@ -877,10 +877,10 @@ async function buyTokens() {
     console.log(buyTx);
     await buyTx.wait();
 
-    await getContractInfo();
     tokenAmount.value = "";
     successMessage.textContent = "Tokens purchased successfully!";
     showMobileNotification("Tokens purchased successfully!", "success");
+    await getContractInfo();
   } catch (err) {
     console.error("Transaction error:", err);
     errorMessage.textContent =
