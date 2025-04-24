@@ -760,55 +760,32 @@ function formatNumberWithCommas(number) {
 }
 
 async function getContractInfo() {
-  if (!window.ethereum || !state.connectedAddress) {
-    console.log("Not connected to wallet");
-    return;
-  }
-  
+  if (!state.connectedAddress) return;
   const loadingInfo = document.getElementById("loadingInfo");
   loadingInfo.style.display = "block";
-  
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
     const presaleContract = new ethers.Contract(
       CONTRACT_ADDRESS,
       PRESALE_ABI,
-      signer
+      provider
     );
-    const tokenContract = new ethers.Contract(
-      TOKEN_ADDRESS,
-      TOKEN_ABI,
-      signer
-    );
-    
-    // Get contract data in parallel for efficiency
-    const [
-      tokensLeft,
-      userBalance,
-      startTime,
-      endTime,
-      tokenPrice,
-      isOwner
-    ] = await Promise.all([
-      presaleContract.getTokensLeft(),
-      tokenContract.balanceOf(state.connectedAddress),
-      presaleContract.getStartTime(),
-      presaleContract.getEndTime(),
-      presaleContract.getTokenPriceInMatic(),
-      presaleContract.owner().then(owner => 
-        owner.toLowerCase() === state.connectedAddress.toLowerCase()
-      )
-    ]);
-    
-    // Update state with all values
-    state.tokensLeft = formatNumberWithCommas(Number(tokensLeft.toString()));
-    state.userBalance = formatNumberWithCommas(Number(userBalance.toString()));
-    state.startTime = Number(startTime.toString()) * 1000;
-    state.endTime = Number(endTime.toString()) * 1000;
-    state.tokenPrice = ethers.formatUnits(tokenPrice.toString());
-    state.isOwner = isOwner;
-    
+    try {
+      const left = await presaleContract.getTokensLeft();
+      state.tokensLeft = formatNumberWithCommas(Number(left.toString()));
+    } catch (err) {
+      console.error("Error getting tokens left:", err);
+      state.tokensLeft = "Error loading";
+    }
+    try {
+      // Fix: Use tokensOwned instead of tokensBalanced
+      const balance = await presaleContract.tokensOwned(state.connectedAddress);
+      // Fix: The balance is already in wei (10^18), so we just need to format it once
+      state.userBalance = formatNumberWithCommas(Number(balance.toString()));
+    } catch (err) {
+      console.error("Error getting user balance:", err);
+      state.userBalance = "Error loading";
+    }
     updateUI();
   } catch (err) {
     console.error("Error fetching contract info:", err);
@@ -818,6 +795,7 @@ async function getContractInfo() {
     loadingInfo.style.display = "none";
   }
 }
+
 
 function showMobileNotification(message, type = 'info') {
   // Create notification element
@@ -899,10 +877,10 @@ async function buyTokens() {
     console.log(buyTx);
     await buyTx.wait();
 
-    await getContractInfo();
     tokenAmount.value = "";
     successMessage.textContent = "Tokens purchased successfully!";
     showMobileNotification("Tokens purchased successfully!", "success");
+    await getContractInfo();
   } catch (err) {
     console.error("Transaction error:", err);
     errorMessage.textContent =
@@ -911,6 +889,7 @@ async function buyTokens() {
   } finally {
     state.isLoading = false;
     updateUI();
+    await getContractInfo(); 
   }
 }
 
