@@ -799,7 +799,7 @@ function formatNumberWithCommas(number) {
 async function getContractInfo() {
   if (!state.connectedAddress) return;
   const loadingInfo = document.getElementById("loadingInfo");
-  loadingInfo.style.display = "block";
+  //loadingInfo.style.display = "block";
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const presaleContract = new ethers.Contract(
