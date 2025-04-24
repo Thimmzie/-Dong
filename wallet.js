@@ -513,6 +513,26 @@ function updateUI() {
   }
 }
 
+function saveStateToStorage() {
+  localStorage.setItem('appState', JSON.stringify({
+    connectedAddress: state.connectedAddress,
+    isOwner: state.isOwner,
+    tokensLeft: state.tokensLeft,
+    userBalance: state.userBalance
+  }));
+}
+
+function loadStateFromStorage() {
+  const savedState = localStorage.getItem('appState');
+  if (savedState) {
+    const parsedState = JSON.parse(savedState);
+    state.connectedAddress = parsedState.connectedAddress;
+    state.isOwner = parsedState.isOwner;
+    state.tokensLeft = parsedState.tokensLeft;
+    state.userBalance = parsedState.userBalance;
+  }
+}
+
 // Handle wallet connection
 async function handleConnectWallet() {
   try {
@@ -591,6 +611,7 @@ async function handleConnectWallet() {
     state.isLoading = false;
     state.isModalOpen = true;
     updateUI();
+    startMobileRefreshPolling()
   } catch (error) {
     state.isLoading = false;
      if (elements.errorMessage) {
@@ -601,6 +622,21 @@ async function handleConnectWallet() {
       button.classList.remove("loading");
     });
     updateUI();
+  }
+}
+
+function startMobileRefreshPolling() {
+  if (state.isMobile && state.connectedAddress) {
+    const refreshInterval = setInterval(() => {
+      if (state.connectedAddress) {
+        getContractInfo();
+      } else {
+        clearInterval(refreshInterval);
+      }
+    }, 5000); // Check every 5 seconds
+    
+    // Store the interval ID to clear it later if needed
+    state.refreshIntervalId = refreshInterval;
   }
 }
 
@@ -881,6 +917,7 @@ async function buyTokens() {
     successMessage.textContent = "Tokens purchased successfully!";
     showMobileNotification("Tokens purchased successfully!", "success");
     await getContractInfo();
+    saveStateToStorage()
   } catch (err) {
     console.error("Transaction error:", err);
     errorMessage.textContent =
@@ -1203,6 +1240,7 @@ closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   checkMobileDevice();
+  loadStateFromStorage()
   
   // Verify all elements exist
   Object.entries(elements).forEach(([key, element]) => {
@@ -1213,6 +1251,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (window.ethereum && window.connectedAddress) {
     getContractInfo();
+  }
+
+  if (state.connectedAddress) {
+    getContractInfo().then(() => {
+      // Update UI after loading contract info
+      updateUI();
+    });
   }
 
   // Initialize AdminUI
