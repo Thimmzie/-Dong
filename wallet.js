@@ -582,6 +582,7 @@ async function handleConnectWallet() {
           button.classList.remove("loading");
         });
         updateUI();
+        startMobileRefreshPolling()
         return;
       }
     }
