@@ -1,12 +1,12 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0xaA21D0deAE97EaE290431f173321870e91BE8eF2" // "0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const CONTRACT_ADDRESS = "0xBb3dB02d0ca30A19dF510518875F7A5Dd52aB6aB" // "0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
 const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
 
 // Contract ABIs
-const PRESALE_ABI = [
+const PRESALE_ABI =[
 	{
 		"inputs": [
 			{
@@ -50,9 +50,34 @@ const PRESALE_ABI = [
 		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokenPrice",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "maticAmount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "msgValue",
+				"type": "uint256"
+			}
+		],
+		"name": "DebugPrice",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "recipient",
+				"name": "to",
 				"type": "address"
 			},
 			{
