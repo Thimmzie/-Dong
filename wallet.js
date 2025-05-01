@@ -639,10 +639,7 @@ function loadStateFromStorage() {
 async function handleConnectWallet() {
   try {
     if (state.connectedAddress) {
-      state.connectedAddress = null;
-      state.isOwner = false;
-      state.isModalOpen = false;
-      updateUI();
+      await disconnectWallet();
       return;
     }
 
@@ -713,6 +710,7 @@ async function handleConnectWallet() {
 
     state.isLoading = false;
     state.isModalOpen = true;
+    saveStateToStorage();
     updateUI();
     startMobileRefreshPolling()
   } catch (error) {
@@ -725,6 +723,149 @@ async function handleConnectWallet() {
       button.classList.remove("loading");
     });
     updateUI();
+    showMobileNotification(`Connection error: ${error.message}`, "error");	  
+  }
+}
+
+async function disconnectWallet() {
+  try {
+    // Clear the state
+    state.connectedAddress = null;
+    state.isOwner = false;
+    state.isModalOpen = false;
+    state.userBalance = 0;
+    
+    // If there's a refresh interval running (for mobile), clear it
+    if (state.refreshIntervalId) {
+      clearInterval(state.refreshIntervalId);
+      state.refreshIntervalId = null;
+    }
+    
+    // Close any open modals
+    const mobileWalletModal = document.querySelector(".mobile-wallet-modal");
+    if (mobileWalletModal) {
+      mobileWalletModal.remove();
+    }
+    
+    // Reset UI elements
+    if (elements.errorMessage) {
+      elements.errorMessage.textContent = "";
+    }
+    
+    // Remove mobile-specific classes if any
+    if (state.isMobile) {
+      // Any mobile-specific cleanup
+    }
+    
+    // Save the updated state to local storage
+    saveStateToStorage();
+    
+    // Update the UI to reflect disconnected state
+    updateUI();
+    
+    console.log("Wallet disconnected successfully");
+    
+    // Optional: Show a brief success message
+    const successMessage = document.createElement("div");
+    successMessage.className = "disconnect-success-message";
+    successMessage.textContent = "Wallet disconnected successfully";
+    successMessage.style.position = "fixed";
+    successMessage.style.bottom = "20px";
+    successMessage.style.left = "50%";
+    successMessage.style.transform = "translateX(-50%)";
+    successMessage.style.backgroundColor = "#4CAF50";
+    successMessage.style.color = "white";
+    successMessage.style.padding = "10px 20px";
+    successMessage.style.borderRadius = "5px";
+    successMessage.style.zIndex = "9999";
+    
+    document.body.appendChild(successMessage);
+    
+    // Remove the message after 3 seconds
+    setTimeout(() => {
+      if (document.body.contains(successMessage)) {
+        document.body.removeChild(successMessage);
+      }
+    }, 3000);
+    
+  } catch (error) {
+    console.error("Error disconnecting wallet:", error);
+    if (elements.errorMessage) {
+      elements.errorMessage.textContent = `Disconnect error: ${error.message}`;
+    }
+  }
+}
+
+
+// Initialize wallet event listeners
+function initializeWalletListeners() {
+  console.log("Initializing wallet listeners");
+  
+  // Connect button functionality is already handled in your DOMContentLoaded event
+  
+  // Listen for MetaMask events
+  if (window.ethereum) {
+    // Listen for account changes
+    window.ethereum.on("accountsChanged", async (accounts) => {
+      console.log("Account change detected:", accounts);
+      
+      if (accounts.length === 0) {
+        // MetaMask was disconnected or locked
+        console.log("No accounts found - disconnecting wallet");
+        await disconnectWallet();
+        showMobileNotification("Wallet disconnected", "info");
+      } else if (!state.connectedAddress || state.connectedAddress.toLowerCase() !== accounts[0].toLowerCase()) {
+        // Account was switched, update the state
+        console.log("Account switched to:", accounts[0]);
+        state.connectedAddress = accounts[0];
+        
+        // Check if the new account is the owner
+        try {
+          const ownerAddr = await fetchOwnerAddress();
+          const wasOwner = state.isOwner;
+          state.isOwner = state.connectedAddress.toLowerCase() === ownerAddr?.toLowerCase();
+          
+          // Initialize admin UI if the user is now owner
+          if (state.isOwner && !wasOwner) {
+            console.log("New account is owner - initializing admin UI");
+            const adminUI = new AdminUI();
+            await adminUI.initializeUI();
+          }
+          
+          // Update UI and other necessary information
+          await getContractInfo();
+          updateUI();
+          showMobileNotification("Account changed", "info");
+        } catch (error) {
+          console.error("Error during account change handling:", error);
+        }
+      }
+    });
+    
+    // Listen for chain/network changes
+    window.ethereum.on("chainChanged", (chainId) => {
+      console.log("Chain changed to:", chainId);
+      showMobileNotification("Network changed - reloading page", "info");
+      
+      // Reload the page on chain change as recommended by MetaMask
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    });
+    
+    // Some wallet providers (not all) support the disconnect event
+    if (window.ethereum.on && typeof window.ethereum.on === 'function') {
+      try {
+        window.ethereum.on("disconnect", (error) => {
+          console.log("Wallet disconnect event detected", error);
+          disconnectWallet();
+          showMobileNotification("Wallet disconnected", "info");
+        });
+      } catch (error) {
+        console.error("Error setting up disconnect listener:", error);
+        // Continue without this listener if the wallet doesn't support it
+      }
+    }
   }
 }
 
@@ -1352,21 +1493,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  if (window.ethereum && window.connectedAddress) {
-    getContractInfo();
-  }
-
-  if (state.connectedAddress) {
+  if (window.ethereum && state.connectedAddress) {
     getContractInfo().then(() => {
       // Update UI after loading contract info
       updateUI();
     });
   }
 
-  // Initialize AdminUI
-  if (elements.adminUI) {
+  if (elements.adminUI && state.isOwner && state.connectedAddress) {
+    console.log("Initializing admin UI for owner");
     adminUI = new AdminUI();
   }
+
+  initializeWalletListeners();
 
   elements.connectButton.forEach(button => {
     // Clone and replace to remove all existing listeners
@@ -1429,19 +1568,19 @@ if (elements.closeAdminButton) {
   });
 }
 // Initialize MetaMask Events
-if (window.ethereum) {
-  window.ethereum.on("accountsChanged", async (accounts) => {
-    if (accounts.length > 0) {
-      state.connectedAddress = accounts[0];
-      await getContractInfo();
-      showMobileNotification("Account changed", "info");
-    } else {
-      state.connectedAddress = null;
-      showMobileNotification("Wallet disconnected", "info");
-    }
-    updateUI();
-  });
-}
+//if (window.ethereum) {
+ // window.ethereum.on("accountsChanged", async (accounts) => {
+   // if (accounts.length > 0) {
+   //   state.connectedAddress = accounts[0];
+   //   await getContractInfo();
+   //   showMobileNotification("Account changed", "info");
+   // } else {
+     // state.connectedAddress = null;
+   //   showMobileNotification("Wallet disconnected", "info");
+  //  }
+  //  updateUI();
+ // });
+//}
 
 window.addEventListener("resize", checkMobileDevice);
 
