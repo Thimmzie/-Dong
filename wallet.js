@@ -682,6 +682,7 @@ async function handleConnectWallet() {
         });
         updateUI();
         startMobileRefreshPolling()
+	await switchToPolygon();
         return;
       }
     }
