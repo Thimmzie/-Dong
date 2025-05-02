@@ -730,6 +730,14 @@ async function handleConnectWallet() {
 
 async function disconnectWallet() {
   try {
+    // Handle disconnection based on platform
+    if (state.isMobile) {
+      await disconnectMobileWallet();
+    } else {
+      await disconnectDesktopWallet();
+    }
+    
+    // Common disconnection tasks
     // Clear the state
     state.connectedAddress = null;
     state.isOwner = false;
@@ -753,12 +761,10 @@ async function disconnectWallet() {
       elements.errorMessage.textContent = "";
     }
     
-    // Remove mobile-specific classes if any
-    if (state.isMobile) {
-      // Any mobile-specific cleanup
-    }
+    // Remove any stored connection data from localStorage
+    localStorage.removeItem('appState');
     
-    // Save the updated state to local storage
+    // Save the updated state to local storage (empty state)
     saveStateToStorage();
     
     // Update the UI to reflect disconnected state
@@ -766,28 +772,8 @@ async function disconnectWallet() {
     
     console.log("Wallet disconnected successfully");
     
-    // Optional: Show a brief success message
-    const successMessage = document.createElement("div");
-    successMessage.className = "disconnect-success-message";
-    successMessage.textContent = "Wallet disconnected successfully";
-    successMessage.style.position = "fixed";
-    successMessage.style.bottom = "20px";
-    successMessage.style.left = "50%";
-    successMessage.style.transform = "translateX(-50%)";
-    successMessage.style.backgroundColor = "#4CAF50";
-    successMessage.style.color = "white";
-    successMessage.style.padding = "10px 20px";
-    successMessage.style.borderRadius = "5px";
-    successMessage.style.zIndex = "9999";
-    
-    document.body.appendChild(successMessage);
-    
-    // Remove the message after 3 seconds
-    setTimeout(() => {
-      if (document.body.contains(successMessage)) {
-        document.body.removeChild(successMessage);
-      }
-    }, 3000);
+    // Show a brief success message
+    showDisconnectSuccess();
     
   } catch (error) {
     console.error("Error disconnecting wallet:", error);
@@ -797,6 +783,132 @@ async function disconnectWallet() {
   }
 }
 
+// Handle desktop wallet disconnection
+async function disconnectDesktopWallet() {
+  if (!window.ethereum) return;
+  
+  try {
+    // Method 1: Try to disconnect using wallet_revokePermissions (works for newer versions)
+    if (window.ethereum.request) {
+      try {
+        await window.ethereum.request({
+          method: "wallet_revokePermissions",
+          params: [{ eth_accounts: {} }],
+        });
+        console.log("Successfully revoked permissions");
+      } catch (permError) {
+        console.warn("Permission revocation not supported by this wallet:", permError);
+      }
+    }
+    
+    // Method 2: For older wallet versions or as a fallback
+    // Clear any existing connections in the wallet's memory
+    if (window.ethereum._state && window.ethereum._state.accounts) {
+      window.ethereum._state.accounts = [];
+    }
+    
+    // Force the wallet to forget about our site
+    // This is a more aggressive approach
+    if (window.ethereum.disable) {
+      await window.ethereum.disable();
+    }
+  } catch (error) {
+    console.warn("Error during desktop wallet disconnection:", error);
+    // Continue with app disconnection even if wallet methods fail
+  }
+}
+
+// Handle mobile wallet disconnection
+async function disconnectMobileWallet() {
+  if (!window.ethereum) return;
+  
+  try {
+    // For in-app browser wallets
+    if (window.ethereum.request) {
+      try {
+        // First try standard revocation
+        await window.ethereum.request({
+          method: "wallet_revokePermissions",
+          params: [{ eth_accounts: {} }],
+        });
+      } catch (error) {
+        console.warn("Mobile wallet revocation failed:", error);
+      }
+    }
+    
+    // For WalletConnect-based connections
+    if (window.ethereum.disconnect && typeof window.ethereum.disconnect === 'function') {
+      await window.ethereum.disconnect();
+    }
+    
+    // Special handling for deep link based wallets
+    // We can't really "disconnect" from these, just clear our app state
+  } catch (error) {
+    console.warn("Error during mobile wallet disconnection:", error);
+    // Continue with app disconnection even if wallet methods fail
+  }
+}
+
+// Show success message
+function showDisconnectSuccess() {
+  const successMessage = document.createElement("div");
+  successMessage.className = "disconnect-success-message";
+  successMessage.textContent = "Wallet disconnected successfully";
+  successMessage.style.position = "fixed";
+  successMessage.style.bottom = "20px";
+  successMessage.style.left = "50%";
+  successMessage.style.transform = "translateX(-50%)";
+  successMessage.style.backgroundColor = "#4CAF50";
+  successMessage.style.color = "white";
+  successMessage.style.padding = "10px 20px";
+  successMessage.style.borderRadius = "5px";
+  successMessage.style.zIndex = "9999";
+  
+  document.body.appendChild(successMessage);
+  
+  // Remove the message after 3 seconds
+  setTimeout(() => {
+    if (document.body.contains(successMessage)) {
+      document.body.removeChild(successMessage);
+    }
+  }, 3000);
+}
+
+
+async function initializeApp() {
+  // Check if we're on mobile
+  state.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  // Set up event listeners
+  initializeWalletListeners();
+  
+  // Load state from storage
+  loadStateFromStorage();
+  
+  // If we have a stored address, try to reconnect
+  if (state.connectedAddress) {
+    console.log("Found stored address, attempting to reconnect...");
+    
+    // Check if wallet is available
+    if (window.ethereum) {
+      try {
+        // Try auto-reconnect
+        await tryAutoReconnect();
+      } catch (error) {
+        console.error("Failed to auto-reconnect:", error);
+        // Clear invalid state if auto-reconnect fails
+        await disconnectWallet();
+      }
+    } else {
+      console.warn("Wallet not available, clearing stored connection");
+      // If wallet is not available but we have stored address, clean up
+      await disconnectWallet();
+    }
+  }
+  
+  // Update UI with current state
+  updateUI();
+}
 
 // Initialize wallet event listeners
 function initializeWalletListeners() {
@@ -1481,6 +1593,13 @@ closeButton.addEventListener("click", () => userUI.classList.remove("active"));
 // closeAdminButton.addEventListener("click", () =>
 //   adminUI.classList.remove("active")
 // );
+
+document.addEventListener("DOMContentLoaded", initializeApp);
+
+// For the case where the page is already loaded
+if (document.readyState === "complete") {
+  initializeApp();
+}
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
