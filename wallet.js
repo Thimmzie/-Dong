@@ -801,7 +801,7 @@ async function disconnectWallet() {
     updateUI();
     
     console.log("Wallet disconnected successfully");
-    showDisconnectSuccess();
+    //showDisconnectSuccess();
     
     return true;
   } catch (error) {
@@ -892,6 +892,54 @@ function showDisconnectSuccess() {
   }, 3000);
 }
 
+function showNotification(message, type = 'info') {
+  // Remove any existing notifications first
+  const existingNotifications = document.querySelectorAll('.notification-message');
+  existingNotifications.forEach(notification => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  });
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification-message ${type}`;
+  notification.textContent = message;
+  
+  // Add to page
+  document.body.appendChild(notification);
+  
+  // Add basic styles
+  notification.style.position = 'fixed';
+  notification.style.bottom = '20px';
+  notification.style.left = '50%';
+  notification.style.transform = 'translateX(-50%)';
+  notification.style.padding = '12px 20px';
+  notification.style.borderRadius = '4px';
+  notification.style.zIndex = '9999';
+  notification.style.textAlign = 'center';
+  notification.style.maxWidth = '90%';
+  notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+  
+  // Style based on type
+  if (type === 'success') {
+    notification.style.backgroundColor = '#4CAF50';
+    notification.style.color = 'white';
+  } else if (type === 'error') {
+    notification.style.backgroundColor = '#F44336';
+    notification.style.color = 'white';
+  } else {
+    notification.style.backgroundColor = '#2196F3';
+    notification.style.color = 'white';
+  }
+  
+  // Auto-remove after 3 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 3000);
+}
 
 async function initializeApp() {
   // Check if we're on mobile
