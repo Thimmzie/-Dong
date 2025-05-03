@@ -491,24 +491,22 @@ const elements = {
 // User Interface Functions
 async function switchToPolygon() {
   if (!window.ethereum) {
-    alert("MetaMask is not installed!");
-    return;
+    throw new Error("No Ethereum provider found");
   }
-
+  
   try {
-    const polygonChainId = "0x89"; // Polygon Mainnet Chain ID
-    const chainId = await window.ethereum.request({ method: "eth_chainId" });
-
-    if (chainId !== polygonChainId) {
-      await window.ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: polygonChainId }],
-      });
-    } else {
-      console.log("Already on Polygon network");
-    }
-  } catch (error) {
-    if (error.code === 4902) {
+    // Polygon Mainnet chain ID (in hex)
+    const polygonChainId = "0x89"; // 137 in decimal
+    
+    // Try to switch to Polygon
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: polygonChainId }]
+    });
+    
+  } catch (switchError) {
+    // This error code indicates that the chain has not been added to MetaMask
+    if (switchError.code === 4902) {
       try {
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
@@ -516,22 +514,21 @@ async function switchToPolygon() {
             {
               chainId: "0x89",
               chainName: "Polygon Mainnet",
-              rpcUrls: ["https://polygon-rpc.com/"],
               nativeCurrency: {
                 name: "MATIC",
                 symbol: "MATIC",
-                decimals: 18,
+                decimals: 18
               },
-              blockExplorerUrls: ["https://polygonscan.com/"],
-            },
-          ],
+              rpcUrls: ["https://polygon-rpc.com/"],
+              blockExplorerUrls: ["https://polygonscan.com/"]
+            }
+          ]
         });
       } catch (addError) {
-        console.error("Error adding Polygon network:", addError.message);
+        throw new Error(`Failed to add Polygon network: ${addError.message}`);
       }
     } else {
-      console.error("Error switching to Polygon network:", error.message);
-      alert("Failed to switch networks. Please check your MetaMask settings.");
+      throw new Error(`Failed to switch to Polygon network: ${switchError.message}`);
     }
   }
 }
@@ -636,38 +633,40 @@ function loadStateFromStorage() {
 }
 
 // Handle wallet connection
+// Simplified wallet connection handler
 async function handleConnectWallet() {
   try {
+    // If already connected, disconnect
     if (state.connectedAddress) {
       await disconnectWallet();
       return;
     }
 
+    // Set loading state
     state.isLoading = true;
-   if (elements.errorMessage) {
+    if (elements.errorMessage) {
       elements.errorMessage.textContent = "";
     }
+    
+    // Update UI to show loading
     elements.connectButton.forEach(button => {
       button.textContent = "CONNECTING...";
       button.classList.add("loading");
     });
     updateUI();
 
-    // Replace this section in handleConnectWallet()
+    // Handle mobile-specific connection
     if (state.isMobile) {
-      // Handle mobile wallet connection
       if (window.ethereum) {
         console.log("Using in-app browser with ethereum provider");
-        // Continue with the connection process
+        // Continue with ethereum provider
       } else {
         // For mobile browsers without built-in wallet
-        const currentUrl = window.location.href;
-        const hostname = window.location.hostname;
         const pathname = window.location.pathname;
+        const hostname = window.location.hostname;
         
         // Create a cleaner dapp URL for MetaMask
         const dappUrl = `${hostname}${pathname}`;
-        // Different deep linking formats based on wallet
         const metamaskDeepLink = `https://metamask.app.link/dapp/${dappUrl}`;
 
         // Show options to user
@@ -681,16 +680,19 @@ async function handleConnectWallet() {
           button.classList.remove("loading");
         });
         updateUI();
-        startMobileRefreshPolling()
-	await switchToPolygon();
         return;
       }
     }
 
+    // Ensure ethereum provider exists
+    if (!window.ethereum) {
+      throw new Error("No Ethereum provider found. Please install MetaMask.");
+    }
+
+    // Switch to Polygon network first
     await switchToPolygon();
 
-    if (!window.ethereum) throw new Error("MetaMask not installed");
-
+    // Connect to wallet
     const provider = new ethers.BrowserProvider(window.ethereum);
     const accounts = await provider.send("eth_requestAccounts", []);
 
@@ -698,56 +700,81 @@ async function handleConnectWallet() {
       throw new Error("No accounts found");
     }
 
+    // Update state with connected address
     state.connectedAddress = accounts[0];
 
+    // Check if user is contract owner
     const ownerAddr = await fetchOwnerAddress();
-    state.isOwner =
-      state.connectedAddress.toLowerCase() === ownerAddr?.toLowerCase();
+    state.isOwner = state.connectedAddress.toLowerCase() === ownerAddr?.toLowerCase();
+    
     if (state.isOwner) {
       const adminUI = new AdminUI();
       await adminUI.initializeUI();
     }
+    
+    // Get contract information
     await getContractInfo();
 
+    // Update UI and persist state
     state.isLoading = false;
     state.isModalOpen = true;
     saveStateToStorage();
     updateUI();
-    startMobileRefreshPolling()
+    
+    // For mobile devices, start refresh polling
+    if (state.isMobile) {
+      startMobileRefreshPolling();
+    }
+    
+    return true;
   } catch (error) {
+    console.error("Connection error:", error);
     state.isLoading = false;
-     if (elements.errorMessage) {
+    
+    if (elements.errorMessage) {
       elements.errorMessage.textContent = `Connection error: ${error.message}`;
     }
+    
     elements.connectButton.forEach(button => {
       button.textContent = "CONNECT WALLET";
       button.classList.remove("loading");
     });
+    
     updateUI();
-    showMobileNotification(`Connection error: ${error.message}`, "error");	  
+    showMobileNotification(`Connection error: ${error.message}`, "error");
+    return false;
   }
 }
 
 async function disconnectWallet() {
   try {
-    // Handle disconnection based on platform
-    if (state.isMobile) {
-      await disconnectMobileWallet();
-    } else {
-      await disconnectDesktopWallet();
-    }
+    console.log("Disconnecting wallet...");
     
-    // Common disconnection tasks
-    // Clear the state
-    state.connectedAddress = null;
-    state.isOwner = false;
-    state.isModalOpen = false;
-    state.userBalance = 0;
-    
-    // If there's a refresh interval running (for mobile), clear it
+    // Clear any refresh intervals
     if (state.refreshIntervalId) {
       clearInterval(state.refreshIntervalId);
       state.refreshIntervalId = null;
+    }
+    
+    // For in-app browsers, try standard disconnection methods
+    if (window.ethereum) {
+      try {
+        // Try the modern disconnect method first
+        if (window.ethereum.request) {
+          try {
+            await window.ethereum.request({
+              method: "wallet_revokePermissions",
+              params: [{ eth_accounts: {} }],
+            });
+            console.log("Successfully revoked permissions");
+          } catch (permError) {
+            console.warn("Permission revocation not supported by this wallet:", permError);
+          }
+        }
+      } catch (error) {
+        console.warn("Error during wallet disconnection:", error);
+        // Continue with app disconnection even if wallet methods fail
+      }
     }
     
     // Close any open modals
@@ -756,7 +783,13 @@ async function disconnectWallet() {
       mobileWalletModal.remove();
     }
     
-    // Reset UI elements
+    // Reset state
+    state.connectedAddress = null;
+    state.isOwner = false;
+    state.isModalOpen = false;
+    state.userBalance = 0;
+    
+    // Clear error messages
     if (elements.errorMessage) {
       elements.errorMessage.textContent = "";
     }
@@ -764,88 +797,73 @@ async function disconnectWallet() {
     // Remove any stored connection data from localStorage
     localStorage.removeItem('appState');
     
-    // Save the updated state to local storage (empty state)
-    saveStateToStorage();
-    
-    // Update the UI to reflect disconnected state
+    // Update the UI
     updateUI();
     
     console.log("Wallet disconnected successfully");
-    
-    // Show a brief success message
     showDisconnectSuccess();
     
+    return true;
   } catch (error) {
     console.error("Error disconnecting wallet:", error);
     if (elements.errorMessage) {
       elements.errorMessage.textContent = `Disconnect error: ${error.message}`;
     }
+    return false;
   }
 }
 
-// Handle desktop wallet disconnection
-async function disconnectDesktopWallet() {
-  if (!window.ethereum) return;
-  
-  try {
-    // Method 1: Try to disconnect using wallet_revokePermissions (works for newer versions)
-    if (window.ethereum.request) {
-      try {
-        await window.ethereum.request({
-          method: "wallet_revokePermissions",
-          params: [{ eth_accounts: {} }],
-        });
-        console.log("Successfully revoked permissions");
-      } catch (permError) {
-        console.warn("Permission revocation not supported by this wallet:", permError);
-      }
-    }
-    
-    // Method 2: For older wallet versions or as a fallback
-    // Clear any existing connections in the wallet's memory
-    if (window.ethereum._state && window.ethereum._state.accounts) {
-      window.ethereum._state.accounts = [];
-    }
-    
-    // Force the wallet to forget about our site
-    // This is a more aggressive approach
-    if (window.ethereum.disable) {
-      await window.ethereum.disable();
-    }
-  } catch (error) {
-    console.warn("Error during desktop wallet disconnection:", error);
-    // Continue with app disconnection even if wallet methods fail
+async function tryAutoReconnect() {
+  if (!window.ethereum || !state.connectedAddress) {
+    return false;
   }
-}
-
-// Handle mobile wallet disconnection
-async function disconnectMobileWallet() {
-  if (!window.ethereum) return;
   
   try {
-    // For in-app browser wallets
-    if (window.ethereum.request) {
-      try {
-        // First try standard revocation
-        await window.ethereum.request({
-          method: "wallet_revokePermissions",
-          params: [{ eth_accounts: {} }],
-        });
-      } catch (error) {
-        console.warn("Mobile wallet revocation failed:", error);
-      }
+    console.log("Attempting to auto-reconnect wallet...");
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const accounts = await provider.send("eth_accounts", []);
+    
+    if (!accounts || accounts.length === 0) {
+      console.log("No accounts available for auto-reconnect");
+      throw new Error("No connected accounts found");
     }
     
-    // For WalletConnect-based connections
-    if (window.ethereum.disconnect && typeof window.ethereum.disconnect === 'function') {
-      await window.ethereum.disconnect();
+    // Verify if the stored address matches any available account
+    const matchedAccount = accounts.find(
+      acc => acc.toLowerCase() === state.connectedAddress.toLowerCase()
+    );
+    
+    if (!matchedAccount) {
+      console.log("Stored address no longer available in wallet");
+      throw new Error("Stored address not available");
     }
     
-    // Special handling for deep link based wallets
-    // We can't really "disconnect" from these, just clear our app state
+    // Check if connected to the right network
+    await switchToPolygon();
+    
+    // Refresh contract info
+    await getContractInfo();
+    
+    // Check if owner status
+    const ownerAddr = await fetchOwnerAddress();
+    state.isOwner = state.connectedAddress.toLowerCase() === ownerAddr?.toLowerCase();
+    
+    if (state.isOwner) {
+      const adminUI = new AdminUI();
+      await adminUI.initializeUI();
+    }
+    
+    console.log("Auto-reconnect successful");
+    
+    // For mobile devices, start refresh polling
+    if (state.isMobile) {
+      startMobileRefreshPolling();
+    }
+    
+    return true;
   } catch (error) {
-    console.warn("Error during mobile wallet disconnection:", error);
-    // Continue with app disconnection even if wallet methods fail
+    console.error("Auto-reconnect failed:", error);
+    return false;
   }
 }
 
@@ -914,10 +932,16 @@ async function initializeApp() {
 function initializeWalletListeners() {
   console.log("Initializing wallet listeners");
   
-  // Connect button functionality is already handled in your DOMContentLoaded event
-  
-  // Listen for MetaMask events
+  // Remove any existing listeners first
   if (window.ethereum) {
+    if (window.ethereum.removeAllListeners) {
+      try {
+        window.ethereum.removeAllListeners();
+      } catch (err) {
+        console.warn("Could not remove existing listeners:", err);
+      }
+    }
+    
     // Listen for account changes
     window.ethereum.on("accountsChanged", async (accounts) => {
       console.log("Account change detected:", accounts);
@@ -965,20 +989,6 @@ function initializeWalletListeners() {
         window.location.reload();
       }, 1000);
     });
-    
-    // Some wallet providers (not all) support the disconnect event
-    if (window.ethereum.on && typeof window.ethereum.on === 'function') {
-      try {
-        window.ethereum.on("disconnect", (error) => {
-          console.log("Wallet disconnect event detected", error);
-          disconnectWallet();
-          showMobileNotification("Wallet disconnected", "info");
-        });
-      } catch (error) {
-        console.error("Error setting up disconnect listener:", error);
-        // Continue without this listener if the wallet doesn't support it
-      }
-    }
   }
 }
 
