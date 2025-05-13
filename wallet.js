@@ -7,7 +7,7 @@ const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
 
 // Contract ABIs
 const PRESALE_ABI = [
-	[
+	
 	{
 		"inputs": [
 			{
