@@ -1300,7 +1300,7 @@ async function buyTokens() {
     const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
     console.log(tokenPriceInMatic);
     console.log(amount);
-    const tokensAmount = amount;
+    const tokensAmount = Number(amount);
     console.log(tokensAmount);
     const maticRequired =
       (tokensAmount * tokenPriceInMatic)
