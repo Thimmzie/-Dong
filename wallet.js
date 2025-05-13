@@ -1273,6 +1273,7 @@ function showMobileNotification(message, type = 'info') {
 // Buy tokens function
 async function buyTokens() {
   const amount = tokenAmount.value;
+  console.log(amount)
   if (!amount || parseFloat(amount) <= 0) {
     errorMessage.textContent = "Please enter a valid amount";
     showMobileNotification("Please enter a valid amount", "error");   
@@ -1299,7 +1300,7 @@ async function buyTokens() {
     const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
     console.log(tokenPriceInMatic);
     console.log(amount);
-    const tokensAmount = ethers.parseInt(amount);
+    const tokensAmount = amount;
     console.log(tokensAmount);
     const maticRequired =
       (tokensAmount * tokenPriceInMatic)
