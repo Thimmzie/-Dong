@@ -1,5 +1,5 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x65AEaCe460DB5837253f78092137F6d023Ec480a"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const CONTRACT_ADDRESS = "0x055d2C26eFA18DcB783Dccd3d3EA99294916509F"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
@@ -7,7 +7,6 @@ const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
 
 // Contract ABIs
 const PRESALE_ABI = [
-	
 	{
 		"inputs": [
 			{
@@ -173,25 +172,6 @@ const PRESALE_ABI = [
 		"name": "withdrawUnsoldTokens",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "numberOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "calculateMaticAmount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
