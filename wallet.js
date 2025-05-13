@@ -1299,13 +1299,13 @@ async function buyTokens() {
     const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
     console.log(tokenPriceInMatic);
     console.log(amount);
-    const tokensAmount = ethers.parseUnits(amount);
+    const tokensAmount = ethers.parseInt(amount);
     console.log(tokensAmount);
     const maticRequired =
       (tokensAmount * tokenPriceInMatic)
     console.log(maticRequired);
 
-    const buyTx = await presaleContract.buyTokens(amount, {value: maticRequired });
+    const buyTx = await presaleContract.buyTokens(tokensAmount, {value: maticRequired });
     console.log(buyTx);
     await buyTx.wait();
 
