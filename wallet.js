@@ -1,5 +1,5 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const CONTRACT_ADDRESS = "0x65AEaCe460DB5837253f78092137F6d023Ec480a"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
@@ -7,6 +7,20 @@ const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
 
 // Contract ABIs
 const PRESALE_ABI = [
+	[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "numberOfTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "buyTokens",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
 	{
 		"inputs": [
 			{
@@ -78,6 +92,32 @@ const PRESALE_ABI = [
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_end",
+				"type": "uint256"
+			}
+		],
+		"name": "setEndTime",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_start",
+				"type": "uint256"
+			}
+		],
+		"name": "setStartTime",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -118,14 +158,21 @@ const PRESALE_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "numberOfTokens",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
 			}
 		],
-		"name": "buyTokens",
+		"name": "transferOwnership",
 		"outputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawUnsoldTokens",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -291,32 +338,6 @@ const PRESALE_ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_end",
-				"type": "uint256"
-			}
-		],
-		"name": "setEndTime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_start",
-				"type": "uint256"
-			}
-		],
-		"name": "setStartTime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "startTime",
 		"outputs": [
@@ -430,26 +451,6 @@ const PRESALE_ABI = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdrawUnsoldTokens",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ];
