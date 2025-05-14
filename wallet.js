@@ -1,5 +1,5 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x15c1A48c25f59928854070114905937e05843622"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const CONTRACT_ADDRESS = "0xcfE76869AA2a86C6f93251a729c98fddA6C00787"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff"
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
@@ -7,19 +7,6 @@ const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
 
 // Contract ABIs
 const PRESALE_ABI = [
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "numberOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "buyTokens",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
 	{
 		"inputs": [
 			{
@@ -55,25 +42,6 @@ const PRESALE_ABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "maticAmount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "msgValue",
-				"type": "uint256"
-			}
-		],
-		"name": "DebugMaticAmount",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
 				"indexed": true,
 				"internalType": "address",
 				"name": "to",
@@ -97,36 +65,16 @@ const PRESALE_ABI = [
 				"internalType": "uint256",
 				"name": "newPrice",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokenPriceInMatic",
+				"type": "uint256"
 			}
 		],
 		"name": "PriceUpdated",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_end",
-				"type": "uint256"
-			}
-		],
-		"name": "setEndTime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_start",
-				"type": "uint256"
-			}
-		],
-		"name": "setStartTime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -141,6 +89,18 @@ const PRESALE_ABI = [
 				"indexed": false,
 				"internalType": "uint256",
 				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokenPrice",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "totalCost",
 				"type": "uint256"
 			}
 		],
@@ -169,54 +129,14 @@ const PRESALE_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdrawUnsoldTokens",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "debugPriceCalculation",
-		"outputs": [
-			{
 				"internalType": "uint256",
-				"name": "maticPrice",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenPriceUSD",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenPriceInMaticWei",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "priceFeedDec",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "costOfOneToken",
+				"name": "numberOfTokens",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
+		"name": "buyTokens",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -234,12 +154,62 @@ const PRESALE_ABI = [
 	},
 	{
 		"inputs": [],
+		"name": "forceUpdatePriceCache",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getCurrentTime",
 		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDebugInfo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "lastPrice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cachedPrice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenPriceUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "priceFeedDec",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastUpdateTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentBlockTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "cacheExpired",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -351,19 +321,6 @@ const PRESALE_ABI = [
 	},
 	{
 		"inputs": [],
-		"name": "MIN_PRICE",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "owner",
 		"outputs": [
 			{
@@ -386,6 +343,32 @@ const PRESALE_ABI = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_end",
+				"type": "uint256"
+			}
+		],
+		"name": "setEndTime",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_start",
+				"type": "uint256"
+			}
+		],
+		"name": "setStartTime",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -515,6 +498,26 @@ const PRESALE_ABI = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawUnsoldTokens",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ];
