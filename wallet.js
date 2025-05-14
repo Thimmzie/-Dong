@@ -1,5 +1,5 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x143327dc5Cc4dCeA95A1531312eD99B3FE64E180"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const CONTRACT_ADDRESS = "0x34908038262167BeD4fc508a02D6DaFC0Bd75883"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff"
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
@@ -41,35 +41,15 @@ const PRESALE_ABI = [
 				"internalType": "uint256",
 				"name": "_end",
 				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_priceFeedAddress",
+				"type": "address"
 			}
 		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "tokenPrice",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "maticAmount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "msgValue",
-				"type": "uint256"
-			}
-		],
-		"name": "DebugPrice",
-		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -88,6 +68,19 @@ const PRESALE_ABI = [
 			}
 		],
 		"name": "FundsTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "newPrice",
+				"type": "uint256"
+			}
+		],
+		"name": "PriceUpdated",
 		"type": "event"
 	},
 	{
@@ -241,6 +234,19 @@ const PRESALE_ABI = [
 	},
 	{
 		"inputs": [],
+		"name": "getTokenPriceInMatic",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getTokensLeft",
 		"outputs": [
 			{
@@ -260,6 +266,32 @@ const PRESALE_ABI = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lastSuccessfulMaticPrice",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "maticPriceFeed",
+		"outputs": [
+			{
+				"internalType": "contract AggregatorV3Interface",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -344,6 +376,19 @@ const PRESALE_ABI = [
 				"internalType": "uint8",
 				"name": "",
 				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tokenPriceInUSD",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -1271,13 +1316,13 @@ async function buyTokens() {
     );
     console.log(presaleContract);
 
-    //const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
-    //console.log(tokenPriceInMatic);
+    const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
+    console.log(tokenPriceInMatic);
     console.log(amount);
     const tokensAmount = ethers.parseUnits(amount);
     console.log(`Token amount: ${tokensAmount}`);
     const maticRequired =
-      (tokensAmount * 158973343786890509)
+      (tokensAmount * tokenPriceInMatic)
     console.log(`Matic required: ${maticRequired}`);
 
     const buyTx = await presaleContract.buyTokens(tokensAmount, {value: maticRequired });
