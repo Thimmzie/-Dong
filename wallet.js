@@ -1,5 +1,5 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x34908038262167BeD4fc508a02D6DaFC0Bd75883"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const CONTRACT_ADDRESS = "0x15c1A48c25f59928854070114905937e05843622"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
 const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff"
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
@@ -50,6 +50,25 @@ const PRESALE_ABI = [
 		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "maticAmount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "msgValue",
+				"type": "uint256"
+			}
+		],
+		"name": "DebugMaticAmount",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -165,6 +184,39 @@ const PRESALE_ABI = [
 		"name": "withdrawUnsoldTokens",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "debugPriceCalculation",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "maticPrice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenPriceUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenPriceInMaticWei",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "priceFeedDec",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "costOfOneToken",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -292,6 +344,19 @@ const PRESALE_ABI = [
 				"internalType": "contract AggregatorV3Interface",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MIN_PRICE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
