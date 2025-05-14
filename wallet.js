@@ -1272,7 +1272,7 @@ async function buyTokens() {
     console.log(presaleContract);
 
     //const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
-    console.log(tokenPriceInMatic);
+    //console.log(tokenPriceInMatic);
     console.log(amount);
     const tokensAmount = ethers.parseUnits(amount);
     console.log(`Token amount: ${tokensAmount}`);
