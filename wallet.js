@@ -1304,7 +1304,7 @@ async function buyTokens() {
     console.log(`Token amount: ${tokensAmount}`);
     const buffer = 0.01;
     const maticRequired =
-      (tokensAmount * tokenPriceInMatic + buffer)
+      (tokensAmount * tokenPriceInMatic) + buffer
     console.log(`Matic required: ${maticRequired}`);
 
     const buyTx = await presaleContract.buyTokens(amount, { value : maticRequired });
