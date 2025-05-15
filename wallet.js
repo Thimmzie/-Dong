@@ -1303,7 +1303,7 @@ async function buyTokens() {
     const tokensAmount = ethers.parseUnits(amount);
     console.log(`Token amount: ${tokensAmount}`);
     const bufferInWei = ethers.parseEther("0.01");
-    console.log(bufferinWei)
+    console.log(bufferInWei)
     
     // Properly calculate the matic required with BigInt operations
     const maticRequiredMul = ((tokensAmount * tokenPriceInMatic) / BigInt(10**18))
