@@ -1302,7 +1302,7 @@ async function buyTokens() {
     console.log(amount);
     const tokensAmount = ethers.parseUnits(amount);
     console.log(`Token amount: ${tokensAmount}`);
-    const bufferInWei = ethers.parseEther("0.01");
+    const bufferInWei = ethers.parseEther("0.1");
     console.log(bufferInWei)
     
     // Properly calculate the matic required with BigInt operations
