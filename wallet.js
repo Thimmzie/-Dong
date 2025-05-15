@@ -1302,9 +1302,10 @@ async function buyTokens() {
     console.log(amount);
     const tokensAmount = ethers.parseUnits(amount);
     console.log(`Token amount: ${tokensAmount}`);
-    const buffer = 0.01;
-    const maticRequired =
-      (tokensAmount * tokenPriceInMatic) + buffer
+    const bufferInWei = ethers.parseEther("0.01");
+    
+    // Properly calculate the matic required with BigInt operations
+    const maticRequired = tokensAmount * tokenPriceInMatic / BigInt(10**18) + bufferInWei;
     console.log(`Matic required: ${maticRequired}`);
 
     const buyTx = await presaleContract.buyTokens(amount, { value : maticRequired });
