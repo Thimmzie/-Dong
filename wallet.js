@@ -1,6 +1,6 @@
 // Contract Constants
-const CONTRACT_ADDRESS = "0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
-const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff";
+const CONTRACT_ADDRESS = "0x85D8bfcf054f39B68c4c2d546D71931719ed8f60"//"0x79dC63345e7A93BF29b3F38215f1E8E2129670C1"//"0x4A874bb5702983f8a6685D852aDBC2F075a2A543";
+const TOKEN_ADDRESS = "0x833ddBaB8a7AF355D7566946cbB01569b8dC90Ff"
 
 /* const CONTRACT_ADDRESS = "0x257A8FcB4d4209e10B0e89791B8e1997826B465D";
 const TOKEN_ADDRESS = "0xa6D835059EfD847E6863b60f65e4Efb394209254"; */
@@ -126,25 +126,6 @@ const PRESALE_ABI = [
 		"name": "buyTokens",
 		"outputs": [],
 		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "numberOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "calculateMaticAmount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -1292,6 +1273,7 @@ function showMobileNotification(message, type = 'info') {
 // Buy tokens function
 async function buyTokens() {
   const amount = tokenAmount.value;
+  console.log(amount)
   if (!amount || parseFloat(amount) <= 0) {
     errorMessage.textContent = "Please enter a valid amount";
     showMobileNotification("Please enter a valid amount", "error");   
@@ -1318,13 +1300,19 @@ async function buyTokens() {
     const tokenPriceInMatic = await presaleContract.getTokenPriceInMatic();
     console.log(tokenPriceInMatic);
     console.log(amount);
-    const tokensAmount = ethers.parseUnits(amount.toString());
-    console.log(tokensAmount);
-    const maticRequired =
-      (tokensAmount * tokenPriceInMatic) / ethers.parseUnits("1", 18);
-    console.log(maticRequired);
+    const tokensAmount = ethers.parseUnits(amount);
+    console.log(`Token amount: ${tokensAmount}`);
+    const bufferInWei = ethers.parseEther("0.1");
+    console.log(bufferInWei)
+    
+    // Properly calculate the matic required with BigInt operations
+    const maticRequiredMul = ((tokensAmount * tokenPriceInMatic) / BigInt(10**18))
+    const maticRequired = maticRequiredMul + bufferInWei;
+    console.log(`Matic mul: ${maticRequiredMul}`)
+    console.log(`Token Price: ${tokenPriceInMatic}`)
+    console.log(`Matic required: ${maticRequired}`);
 
-    const buyTx = await presaleContract.buyTokens(amount, { maticRequired });
+    const buyTx = await presaleContract.buyTokens(amount, { value : maticRequired });
     console.log(buyTx);
     await buyTx.wait();
 
