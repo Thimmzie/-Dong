@@ -121,7 +121,7 @@ html {
   visibility: collapse;
 }
 .superman-section-one {
-  background-image: url("images/Superman.png");
+  background-image: url("images/Dongreplaced.JPG");
   background-repeat: no-repeat;
   height: 50vh;
   background-size: cover;
@@ -1296,7 +1296,7 @@ label {
     visibility: collapse;
   }
   .superman-section-one {
-    background-image: url("images/Superman.png");
+    background-image: url("images/Dongreplaced.JPG");
     background-repeat: no-repeat;
     height: 50vh;
     background-size: cover;
@@ -1309,7 +1309,7 @@ label {
     flex-direction: column;
     align-items: end;
     padding-right: 0.5rem;
-    padding-top: 19rem;
+    padding-top: 21rem;
   }
   .btn10 {
     background-color: rgb(244, 39, 64);
@@ -2494,7 +2494,7 @@ label {
     visibility: collapse;
   }
   .superman-section-one {
-    background-image: url("images/Superman.png");
+    background-image: url("images/Dongreplaced.JPG");
     background-repeat: no-repeat;
     height: 70vh;
     background-size: cover;
@@ -3679,7 +3679,7 @@ label {
     visibility: collapse;
   }
   .superman-section-one {
-    background-image: url("images/Superman.png");
+    background-image: url("images/Dongreplaced.JPG");
     background-repeat: no-repeat;
     height: 70vh;
     background-size: cover;
@@ -4748,10 +4748,10 @@ label {
         rgb(0, 0, 0, 0.5),
         rgb(0, 0, 0, 0.5)
       ),
-      url("images/Superman.png");
+      url("images/Dongreplaced.JPG");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 120vh;
+    height: 140vh;
     position: relative;
   }
   .menu {
@@ -5938,10 +5938,10 @@ label {
         rgb(0, 0, 0, 0.5),
         rgb(0, 0, 0, 0.5)
       ),
-      url("images/Superman.png");
+      url("images/Dongreplaced.JPG");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 140vh;
+    height: 145vh;
     position: relative;
   }
   .menu {
@@ -6509,7 +6509,7 @@ label {
   }
   .bigger-exchange {
     background-color: rgb(2, 2, 2);
-    height: 140vh;
+    height: 160vh;
   }
   .exchange-section {
     display: flex;
